@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
 
+import {AktortEFilmit} from './Admin/AktortEFilmit/AktortEFilmit';
+import {AktortESerialit} from './Admin/AktortESerialit/AktortESerialit';
+import {DetajetEAktoritTeFilmit} from './Aktort/DetajetEAktoritTeFilmit';
+import {DetajetEAktoritTeSerialit} from './Aktort/DetajetEAktoritTeSerialit';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Navigation} from './Admin/Navigation';
+import {Footer} from './Footer/Footer';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+     <Navigation/>
+
+     <Switch>
+       <Route path='/aktortefilmit' component={AktortEFilmit} exact/>
+       <Route path='/detajeteaktorittefilmit' component={DetajetEAktoritTeFilmit} exact/>
+       <Route path='/aktorteserialit' component={AktortESerialit} exact/>
+       <Route path='/detajeteaktoritteserialit' component={DetajetEAktoritTeSerialit} exact/>
+     </Switch>
+
+     <Footer/>
+    </BrowserRouter>
   );
 }
 
