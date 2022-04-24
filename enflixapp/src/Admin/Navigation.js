@@ -15,8 +15,11 @@ export class Navigation extends Component{
                 <NavLink className="nav-link d-inline p-1 text-light" to="/aktortefilmit">
                     Aktort
                 </NavLink>
-
+                <NavLink className="nav-link d-inline p-1 text-light" to="/producentetefilmit">
+                    Producentet
+                </NavLink>
                 </Nav>
+            
                 </Navbar.Collapse>
             </Navbar>
         )
