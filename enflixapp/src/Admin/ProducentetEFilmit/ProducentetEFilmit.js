@@ -49,8 +49,13 @@ export class ProducentetEFilmit extends Component{
             <div className="container">
                 <Dropdown className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
-                    Producentet E Filmit
+                    Producentet e Filmit
                   </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <NavLink className="nav-link d-inline p-1 text-black" to="producenteteserialit">
+                      Producentet e Serialit
+                    </NavLink>
+                  </Dropdown.Menu>
                 </Dropdown>
                 
                 <ButtonToolbar>

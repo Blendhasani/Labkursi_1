@@ -121,7 +121,7 @@ namespace Enflix.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{pID}")]
 
         public JsonResult Delete(int pID)
         {
