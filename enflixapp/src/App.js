@@ -11,6 +11,7 @@ import {DetajetEProducenteveTeFilmit} from './Producentet/DetajetEProducenteveTe
 import {DetajetEProducenteveTeSerialit} from './Producentet/DetajetEProducenteveTeSerialit';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Navigation} from './Admin/Navigation';
+import {Dashboard} from './Admin/Dashboard';
 import {Footer} from './Footer/Footer';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
        <Route path='/detajeteproducentevetefilmit' component={DetajetEProducenteveTeFilmit} exact/>
        <Route path='/producenteteserialit' component={ProducentetESerialit} exact/>
        <Route path='/detajeteproducenteveteserialit' component={DetajetEProducenteveTeSerialit} exact/>
+       <Route path='/dashboard' component={Dashboard} exact/>
      </Switch>
 
      <Footer/>
