@@ -66,3 +66,17 @@ Biografia varchar(8000)
 INSERT INTO Regjisoret_Filmit([Emri],[Mbiemri],[Biografia]) VALUES ('Sly','Stallone','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s')
 INSERT INTO Regjisoret_Filmit([Emri],[Mbiemri],[Biografia]) VALUES ('Jason','Statham','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s')
 INSERT INTO Regjisoret_Filmit ([Emri],[Mbiemri],[Biografia]) VALUES ('Dolph','Lundergen','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s')
+
+
+create table Kategorit_Filmit(
+    KategoriaFId int Primary Key identity(1,1),
+	Kategoria varchar (256)
+	)
+
+
+	insert into Kategorit_Filmit values('Dram')
+	insert into Kategorit_Filmit values('Aksion')
+	insert into Kategorit_Filmit values('Komedi')
+
+
+	select * from Kategorit_Filmit
