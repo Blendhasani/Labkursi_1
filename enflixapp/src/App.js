@@ -15,6 +15,7 @@ import {Dashboard} from './Admin/Dashboard';
 import {Footer} from './Footer/Footer';
 import { RegjisoretEFilmit } from './Admin/RegjisoretEFilmit/RegjisoretEFilmit';
 import{DetajetERegjisoreveTeFilmit} from './Regjisoret/DetajetERegjisoreveTeFilmit';
+import{KategoritEFilmit} from './Admin/KategoritEFilmit/KategoritEFilmit';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
        <Route path='/dashboard' component={Dashboard} exact/>
        <Route path='/regjisoretefilmit' component={RegjisoretEFilmit} exact/>
        <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
+       <Route path='/kategoritefilmit' component={KategoritEFilmit} exact/>
      </Switch>
 
      <Footer/>
