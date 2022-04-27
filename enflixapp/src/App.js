@@ -16,6 +16,7 @@ import {Footer} from './Footer/Footer';
 import { RegjisoretEFilmit } from './Admin/RegjisoretEFilmit/RegjisoretEFilmit';
 import{DetajetERegjisoreveTeFilmit} from './Regjisoret/DetajetERegjisoreveTeFilmit';
 import{KategoritEFilmit} from './Admin/KategoritEFilmit/KategoritEFilmit';
+import{PageNotFound} from './PageNotFound/PageNotFound';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
      <Navigation/>
 
      <Switch>
+     <Route path='/' component={DetajetEAktoritTeFilmit} exact/>
        <Route path='/aktortefilmit' component={AktortEFilmit} exact/>
        <Route path='/detajeteaktorittefilmit' component={DetajetEAktoritTeFilmit} exact/>
        <Route path='/aktorteserialit' component={AktortESerialit} exact/>
@@ -36,6 +38,7 @@ function App() {
        <Route path='/regjisoretefilmit' component={RegjisoretEFilmit} exact/>
        <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
        <Route path='/kategoritefilmit' component={KategoritEFilmit} exact/>
+       <Route component={PageNotFound} exact/>
      </Switch>
 
      <Footer/>
