@@ -13,6 +13,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Navigation} from './Admin/Navigation';
 import {Dashboard} from './Admin/Dashboard';
 import {Footer} from './Footer/Footer';
+import { RegjisoretEFilmit } from './Admin/RegjisoretEFilmit/RegjisoretEFilmit';
+import{DetajetERegjisoreveTeFilmit} from './Regjisoret/DetajetERegjisoreveTeFilmit';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
        <Route path='/producenteteserialit' component={ProducentetESerialit} exact/>
        <Route path='/detajeteproducenteveteserialit' component={DetajetEProducenteveTeSerialit} exact/>
        <Route path='/dashboard' component={Dashboard} exact/>
+       <Route path='/regjisoretefilmit' component={RegjisoretEFilmit} exact/>
+       <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
      </Switch>
 
      <Footer/>
