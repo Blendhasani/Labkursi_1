@@ -8,6 +8,7 @@ import { Button , ButtonToolbar} from 'react-bootstrap';
 import { AddRegjisoretEFilmit } from './AddRegjisoretEFilmit';
 
 import { EditRegjisoretEFilmit } from './EditRegjisoretEFilmit';
+import {Helmet} from "react-helmet";
 
 
 export class RegjisoretEFilmit extends Component{
@@ -53,6 +54,9 @@ export class RegjisoretEFilmit extends Component{
         let editModalShow = ()=>this.setState({editModalShow:false});
         return(
             <div className="container">
+                <Helmet>
+                <title>Regjisoret e Filmit</title>
+                </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                     <Dropdown.Toggle variant="success">
                         Regjisoret e Filmit

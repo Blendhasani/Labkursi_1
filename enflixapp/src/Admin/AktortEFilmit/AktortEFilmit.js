@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {NavLink} from 'react-router-dom';
 import {Table, Dropdown} from 'react-bootstrap';
+import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddAktortEFilmit} from './AddAktortEFilmit';
@@ -28,7 +29,7 @@ export class AktortEFilmit extends Component{
     }
     
     deleteAkt(aktid){
-        if(window.confirm('Jeni i sigurt qe doni ta fshini Aktorin e fimlmit?')){
+        if(window.confirm('Jeni i sigurt qe doni ta fshini Aktorin e filmit?')){
             fetch(process.env.REACT_APP_API+'aktortefilmit/'+aktid,{
                 method:'DELETE',
                 header:{
@@ -45,6 +46,9 @@ export class AktortEFilmit extends Component{
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
             <div className="container">
+                <Helmet>
+                <title>Aktort E Filmit</title>
+                </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
                     Aktort E Filmit

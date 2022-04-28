@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {NavLink} from 'react-router-dom';
 import {Table, Dropdown} from 'react-bootstrap';
+import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddAktortESerialit} from './AddAktortESerialit';
@@ -45,6 +46,9 @@ export class AktortESerialit extends Component{
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
             <div className="container">
+                <Helmet>
+                <title>Aktort E Serialit</title>
+                </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
                     Aktort E Serialit

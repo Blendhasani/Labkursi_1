@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import {Card} from 'react-bootstrap';
+import {Helmet} from "react-helmet";
 
 
 export class DetajetEAktoritTeFilmit extends Component{
@@ -8,7 +9,9 @@ export class DetajetEAktoritTeFilmit extends Component{
     render(){
         return(
             <div className="container">
-                
+                <Helmet>
+                <title>Detajet e Aktorit Te Filmit</title>
+                </Helmet>
                 <Card className="mt-4 d-flex flex-row" style={{ width: '70rem' }}>
                   <Card.Body>
                     <Card.Title className="mb-4">Emri I Aktorit te Filmit</Card.Title>

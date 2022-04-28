@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {NavLink} from 'react-router-dom';
 import {Table, Dropdown} from 'react-bootstrap';
+import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddKategoritEFilmit} from './AddKategoritEFilmit';
@@ -45,6 +46,9 @@ export class KategoritEFilmit extends Component{
         let editModalClose=()=>this.setState({editModalShow:false});
         return(
             <div className="container">
+                <Helmet>
+                <title>Kategorit E Filmit</title>
+                </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
                     Kategorit E Filmit
