@@ -13,7 +13,7 @@ export class Navigation extends Component{
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
-                    Admin Panel
+                    Admin
                 </NavLink>
                 </Nav>
             

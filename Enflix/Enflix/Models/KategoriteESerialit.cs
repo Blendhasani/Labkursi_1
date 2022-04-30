@@ -2,7 +2,7 @@
 {
     public class KategoriteESerialit
     {
-        public int KategoriaSId { get; set; }
+        public int KategoriaSID { get; set; }
 
         public string Kategoria { get; set; }
     }

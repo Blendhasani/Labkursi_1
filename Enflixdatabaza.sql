@@ -83,12 +83,15 @@ create table Kategorit_Filmit(
 
 
 	create table Kategorite_Serialit(
-    KategoriaSId int Primary Key identity(1,1),
+    KategoriaSID int Primary Key identity(1,1),
 	Kategoria varchar (256)
 	)
+	
 
 	INSERT INTO Kategorite_Serialit VALUES ('Aksion')
 	INSERT INTO Kategorite_Serialit VALUES ('Aventure')
 	INSERT INTO Kategorite_Serialit VALUES ('Drame')
 	INSERT INTO Kategorite_Serialit VALUES ('Horror')
 	INSERT INTO Kategorite_Serialit VALUES ('Thriller')
+
+	SELECT * FROM Kategorite_Serialit

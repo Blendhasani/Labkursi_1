@@ -82,7 +82,7 @@ namespace Enflix.Controllers
 
         public JsonResult Put(KategoriteESerialit kategorite)
         {
-            string query = @"update Kategorite_Serialit set Kategoria = '" + kategorite.Kategoria + @"' where KategoriaSID = " + kategorite.KategoriaSId + @"";
+            string query = @"update Kategorite_Serialit set Kategoria = '" + kategorite.Kategoria + @"' where KategoriaSID = " + kategorite.KategoriaSID + @"";
 
             DataTable table = new DataTable();
 

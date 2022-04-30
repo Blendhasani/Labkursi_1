@@ -16,7 +16,10 @@ import {Footer} from './Footer/Footer';
 import { RegjisoretEFilmit } from './Admin/RegjisoretEFilmit/RegjisoretEFilmit';
 import{DetajetERegjisoreveTeFilmit} from './Regjisoret/DetajetERegjisoreveTeFilmit';
 import{KategoritEFilmit} from './Admin/KategoritEFilmit/KategoritEFilmit';
+import{KategoriteESerialit} from './Admin/KategoriteESerialit/KategoriteESerialit';
 import{PageNotFound} from './PageNotFound/PageNotFound';
+
+
 
 function App() {
   return (
@@ -38,7 +41,10 @@ function App() {
        <Route path='/regjisoretefilmit' component={RegjisoretEFilmit} exact/>
        <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
        <Route path='/kategoritefilmit' component={KategoritEFilmit} exact/>
+       <Route path='/kategoriteserialit' component={KategoriteESerialit} exact/>
        <Route component={PageNotFound} exact/>
+     
+       
      </Switch>
 
      <Footer/>

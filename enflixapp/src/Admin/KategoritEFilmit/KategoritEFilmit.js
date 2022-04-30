@@ -9,7 +9,7 @@ import {EditKategoritEFilmit} from './EditKategoritEFilmit';
 
 export class KategoritEFilmit extends Component{
     constructor(props){
-        super(props)
+        super(props);
         this.state={cate:[], addModalShow:false, editModalShow:false}
     }
 
@@ -54,7 +54,7 @@ export class KategoritEFilmit extends Component{
                     Kategorit E Filmit
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <NavLink className="nav-link d-inline p-1 text-black" to="#">
+                    <NavLink className="nav-link d-inline p-1 text-black" to="kategoriteserialit">
                       Kategorit E Serialit
                     </NavLink>
                   </Dropdown.Menu>
