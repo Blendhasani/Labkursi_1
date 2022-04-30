@@ -41,9 +41,9 @@ export class Dashboard extends Component{
                 <NavLink className="nav-link d-inline" to="kategoritefilmit">
                 <Card className="mt-4" border="primary" style={{ width: '17rem', height: '10rem' }}>
                   <Card.Body>
-                    <Card.Title className="text-primary d-flex justify-content-center">Kategorit</Card.Title>
+                    <Card.Title className="text-primary d-flex justify-content-center">Kategorite</Card.Title>
                       <Card.Text className="text-center">
-                        Klikoni ketu per te menaxhuar Kategorit.
+                        Klikoni ketu per te menaxhuar Kategorite.
                       </Card.Text>
                   </Card.Body>
                 </Card>
