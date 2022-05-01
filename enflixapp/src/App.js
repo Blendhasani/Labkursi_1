@@ -17,6 +17,7 @@ import { RegjisoretEFilmit } from './Admin/RegjisoretEFilmit/RegjisoretEFilmit';
 import{DetajetERegjisoreveTeFilmit} from './Regjisoret/DetajetERegjisoreveTeFilmit';
 import{KategoritEFilmit} from './Admin/KategoritEFilmit/KategoritEFilmit';
 import{KategoriteESerialit} from './Admin/KategoriteESerialit/KategoriteESerialit';
+import{RegjisoretESerialit} from './Admin/RegjisoretESerialit/RegjisoretESerialit';
 import{PageNotFound} from './PageNotFound/PageNotFound';
 
 
@@ -42,6 +43,7 @@ function App() {
        <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
        <Route path='/kategoritefilmit' component={KategoritEFilmit} exact/>
        <Route path='/kategoriteserialit' component={KategoriteESerialit} exact/>
+       <Route path='/regjisoreteserialit' component={RegjisoretESerialit} exact/>
        <Route component={PageNotFound} exact/>
      
        

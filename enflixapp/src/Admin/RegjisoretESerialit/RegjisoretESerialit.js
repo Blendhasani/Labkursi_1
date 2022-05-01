@@ -1,27 +1,20 @@
-
 import React , {Component} from 'react';
-
 import {Table, Dropdown} from 'react-bootstrap';
-
-import { Button , ButtonToolbar} from 'react-bootstrap';
-
-import { AddRegjisoretEFilmit } from './AddRegjisoretEFilmit';
-
-import { EditRegjisoretEFilmit } from './EditRegjisoretEFilmit';
-import {Helmet} from "react-helmet";
 import {NavLink} from 'react-router-dom';
+import { Button , ButtonToolbar} from 'react-bootstrap';
+import {Helmet} from "react-helmet";
+import { AddRegjisoretESerialit } from './AddRegjisoretESerialit';
+import { EditRegjisoretESerialit } from './EditRegjisoretSerialit';
 
 
-export class RegjisoretEFilmit extends Component{
-
+export class RegjisoretESerialit extends Component{
     constructor(props){
         super(props);
         this.state={regs:[] , addModalShow:false , editModalShow:false}
     }
 
-
     refreshList(){
-        fetch(process.env.REACT_APP_API+'regjisoretefilmit')
+        fetch(process.env.REACT_APP_API+'regjisoreteserialit')
         .then(response=>response.json())
         .then(data=>{
             this.setState({regs:data});
@@ -39,7 +32,7 @@ export class RegjisoretEFilmit extends Component{
 
     deleteReg(regID){
         if(window.confirm('Jeni te sigurt qe doni ta fshini Regjisorin e Filmit ?')){
-            fetch(process.env.REACT_APP_API+'regjisoretefilmit/' +regID,{
+            fetch(process.env.REACT_APP_API+'regjisoreteserialit/'+regID,{
                 method:'DELETE',
                 header :{
                     'Accept':'application/json',
@@ -50,31 +43,30 @@ export class RegjisoretEFilmit extends Component{
     }
 
     render(){
-        const{regs, regEmri , regMbiemri , regBiografia , regID}=this.state;
+        const{regs, regemri, regmbi, regbio, regid}=this.state;
         let addModalClose =()=>this.setState({addModalShow:false});
         let editModalShow = ()=>this.setState({editModalShow:false});
         return(
             <div className="container">
                 <Helmet>
-                <title>Regjisoret e Filmit</title>
+                <title>Regjisoret e Serialit</title>
                 </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                     <Dropdown.Toggle variant="success">
-                        Regjisoret e Filmit
+                        Regjisoret e Serialit
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <NavLink className="nav-link d-inline p-1 text-black" to="regjisoreteserialit">
-                            Regjisoret e Serialit
+                        <NavLink className="nav-link d-inline p-1 text-black" to="regjisoretefilmit">
+                            Regjisoret e Filmit
                         </NavLink>
                     </Dropdown.Menu>
-                    
                 </Dropdown>
 
                 <ButtonToolbar>
                     <Button className="mt-4" variant="primary" onClick={()=>this.setState({addModalShow:true})}>
                         Shto Regjisorin
                     </Button>
-                    <AddRegjisoretEFilmit show={this.state.addModalShow}  onHide={addModalClose}/>
+                    <AddRegjisoretESerialit show={this.state.addModalShow}  onHide={addModalClose}/>
                 </ButtonToolbar>
 
                 <Table className="mt-4"  striped bordered hover size="sm">
@@ -87,26 +79,26 @@ export class RegjisoretEFilmit extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {regs.map(r=>
-                            <tr key={r.RegjisoriFID}>
-                                <td>{r.Emri}</td>
-                                <td>{r.Mbiemri}</td>
-                                <td>{r.Biografia}</td>
+                        {regs.map(regj=>
+                            <tr key={regj.RegjisoriSID}>
+                                <td>{regj.Emri}</td>
+                                <td>{regj.Mbiemri}</td>
+                                <td>{regj.Biografia}</td>
                                 <td>
                                     <ButtonToolbar>
-                                        <Button className="mr-2" variant="info" onClick={()=>this.setState({editModalShow:true, regID:r.RegjisoriFID, regEmri:r.Emri,
-                                        regMbiemri:r.Mbiemri, regBiografia:r.Biografia})}>
+                                        <Button className="mr-2" variant="info" onClick={()=>this.setState({editModalShow:true, regid:regj.RegjisoriSID, regemri:regj.Emri,
+                                        regmbi:regj.Mbiemri, regbio:regj.Biografia})}>
                                             Edit
                                             </Button>
                                             
-                                        <Button className="mr-2" variant="danger" onClick={()=>this.deleteReg(r.RegjisoriFID)}> 
+                                        <Button className="mr-2" variant="danger" onClick={()=>this.deleteReg(regj.RegjisoriSID)}> 
                                         Delete
                                         </Button>
-                                        <EditRegjisoretEFilmit show={this.state.editModalShow} onHide={editModalShow}
-                                            regID={regID}
-                                            regEmri={regEmri}
-                                            regMbiemri={regMbiemri}
-                                            regBiografia={regBiografia}
+                                        <EditRegjisoretESerialit show={this.state.editModalShow} onHide={editModalShow}
+                                            regid={regid}
+                                            regemri={regemri}
+                                            regmbi={regmbi}
+                                            regbio={regbio}
                                             />
                                     </ButtonToolbar>
                                 </td>
