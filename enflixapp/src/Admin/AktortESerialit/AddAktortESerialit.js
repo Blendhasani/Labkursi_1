@@ -25,11 +25,7 @@ export class AddAktortESerialit extends Component{
                 "Mbiemri te permbaj vetem Shkronja dhe te jete me i gjate se 3 shkronja dhe jo me i gjate se 15 shkronja."
               ),
             Biografia: Yup.string()
-            .required('Biografia duhet te plotesohet.')
-            .matches(
-                /^[A-Za-z .]{20,8000}$/,
-                "Biografia te permbaj vetem Shkronja dhe te jete me i gjate se 20 shkronja dhe me i shkurt se 8000 shkronja."
-              ),
+            .required('Biografia duhet te plotesohet.'),
         });
       }
 
