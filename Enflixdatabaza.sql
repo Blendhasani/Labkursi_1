@@ -104,3 +104,16 @@ create table Kategorit_Filmit(
 	INSERT INTO Kategorite_Serialit VALUES ('Thriller')
 
 	SELECT * FROM Kategorite_Serialit
+
+
+	create table Skenaristet_Filmit(
+    SkenaristatId int Primary Key identity(1,1),
+	Emri varchar (256),
+	Mbiemri varchar (256),
+Biografia varchar(8000)
+	)
+
+	INSERT INTO Skenaristet_Filmit VALUES ('Benet','Muhaxheri','ASJKDASDJHKASDJAHSD')
+	INSERT INTO Skenaristet_Filmit VALUES ('Artan','Muhaxheri','Lorem Ipsum is simply dummy text industry.')
+
+	select * from Skenaristet_Filmit
