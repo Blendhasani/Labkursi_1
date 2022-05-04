@@ -2,6 +2,7 @@ import React,{Component} from "react";
 import {NavLink} from 'react-router-dom';
 import {Table, Dropdown} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
+import ReadMoreReact from 'read-more-react';
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddAktortESerialit} from './AddAktortESerialit';
@@ -82,7 +83,9 @@ export class AktortESerialit extends Component{
                             <tr key={akt.AktortSId}>
                                 <td>{akt.Emri}</td>
                                 <td>{akt.Mbiemri}</td>
-                                <td>{akt.Biografia}</td>
+                                <td style={{ cursor: 'pointer' }}><ReadMoreReact text={akt.Biografia}
+                                    min={50}
+                                    readMoreText="Read more"/></td>
                                 <td>
                                <ButtonToolbar>
                                    <Button className="mr-2" variant="info" onClick={()=>this.setState({editModalShow:true, aktid:akt.AktortSId,

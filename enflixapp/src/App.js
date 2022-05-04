@@ -10,7 +10,7 @@ import {DetajetEAktoritTeSerialit} from './Aktort/DetajetEAktoritTeSerialit';
 import {DetajetEProducenteveTeFilmit} from './Producentet/DetajetEProducenteveTeFilmit';
 import {DetajetEProducenteveTeSerialit} from './Producentet/DetajetEProducenteveTeSerialit';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {Navigation} from './Admin/Navigation';
+import {Navigation} from './Navigation/Navigation';
 import {Dashboard} from './Admin/Dashboard';
 import {Footer} from './Footer/Footer';
 import { RegjisoretEFilmit } from './Admin/RegjisoretEFilmit/RegjisoretEFilmit';
