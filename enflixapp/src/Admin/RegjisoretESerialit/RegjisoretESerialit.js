@@ -1,6 +1,8 @@
 import React , {Component} from 'react';
 import {Table, Dropdown} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
+import ReadMoreReact from 'read-more-react';
+
 import { Button , ButtonToolbar} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 import { AddRegjisoretESerialit } from './AddRegjisoretESerialit';
@@ -83,7 +85,9 @@ export class RegjisoretESerialit extends Component{
                             <tr key={regj.RegjisoriSID}>
                                 <td>{regj.Emri}</td>
                                 <td>{regj.Mbiemri}</td>
-                                <td>{regj.Biografia}</td>
+                                <td style={{ cursor: 'pointer' }}><ReadMoreReact text={regj.Biografia}
+                                    min={50}
+                                    readMoreText="Read more"/></td>
                                 <td>
                                     <ButtonToolbar>
                                         <Button className="mr-2" variant="info" onClick={()=>this.setState({editModalShow:true, regid:regj.RegjisoriSID, regemri:regj.Emri,
