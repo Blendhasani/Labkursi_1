@@ -53,6 +53,7 @@ export class AddRegjisoretESerialit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/regjisoreteserialit"}
     }
     render(){
         const initialValues = {

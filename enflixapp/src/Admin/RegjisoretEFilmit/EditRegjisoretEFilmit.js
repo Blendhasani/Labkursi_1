@@ -35,7 +35,7 @@ export class EditRegjisoretEFilmit extends Component{
           alert('Ka ndodhur nje gabim!');
           })
  
-      
+          {window.location.href="/regjisoretefilmit"}
 
     }
 

@@ -39,6 +39,7 @@ export class AddKategoriteESerialit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/kategoriteserialit"}
     }
     render(){
         const initialValues = {

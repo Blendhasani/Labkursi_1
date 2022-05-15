@@ -55,6 +55,7 @@ export class AddProducentetESerialit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/producenteteserialit"}
     }
 
     render(){

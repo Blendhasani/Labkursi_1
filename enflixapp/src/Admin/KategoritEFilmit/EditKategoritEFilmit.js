@@ -28,6 +28,7 @@ export class EditKategoritEFilmit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/kategoritefilmit"}
     }
     render(){
         return(

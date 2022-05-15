@@ -34,6 +34,7 @@ export class EditRegjisoretESerialit extends Component{
           (error)=>{
           alert('Ka ndodhur nje gabim!');
           })
+          {window.location.href="/regjisoreteserialit"}
     }
 
     render(){

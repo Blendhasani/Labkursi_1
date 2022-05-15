@@ -60,7 +60,7 @@ render(){
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <NavLink className="nav-link d-inline p-1 text-black" to="kategoritEFilmit">
-                            Producentet e Filmit
+                            Kategorit e Filmit
                         </NavLink>
                     </Dropdown.Menu>
                 </Dropdown>

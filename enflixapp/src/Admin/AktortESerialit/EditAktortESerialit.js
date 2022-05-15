@@ -30,6 +30,7 @@ export class EditAktortESerialit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/aktorteserialit"}
     }
     render(){
         return(

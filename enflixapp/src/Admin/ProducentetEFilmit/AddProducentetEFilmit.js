@@ -50,6 +50,7 @@ export class AddProducentetEFilmit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/producentetefilmit"}
     }
 
     render(){

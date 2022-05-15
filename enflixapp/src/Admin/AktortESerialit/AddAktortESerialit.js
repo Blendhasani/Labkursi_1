@@ -50,6 +50,7 @@ export class AddAktortESerialit extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
+        {window.location.href="/aktorteserialit"}
     }
     render(){
         const initialValues = {

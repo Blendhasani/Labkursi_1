@@ -5,22 +5,48 @@ import {Helmet} from "react-helmet";
 
 export class DetajetEAktoritTeFilmit extends Component{
     
+  constructor(props){
+    super(props)
+    this.state={akto:[]}
+}
+
+refreshList(){
+  let {id} = this.props.match.params;
+  fetch(process.env.REACT_APP_API+`aktortefilmit/${id}`, {
+    method: 'GET'
+  })
+    .then(response=>response.json())
+    .then(data=>{
+        this.setState({akto:data});
+    });
+}
+componentDidMount(){
+    this.refreshList();
+}
+
+componentDidUpdate(){
+    this.refreshList();
+}
+
 
     render(){
+      const {akto}=this.state;
         return(
             <div className="container">
                 <Helmet>
                 <title>Detajet e Aktorit Te Filmit</title>
                 </Helmet>
-                <Card className="mt-4 d-flex flex-row" style={{ width: '70rem' }}>
+                <div className="container d-flex flex-wrap">
+                {akto.map(akt=><Card className="mt-4" key={akt.AktortiFId}>
+                  <Card className="mt-4 d-flex flex-row" style={{ width: '70rem' }}>
                   <Card.Body>
                     <Card.Title className="mb-4">Emri I Aktorit te Filmit</Card.Title>
-                      <Card.Subtitle>Enes</Card.Subtitle>
+                      <Card.Subtitle>{akt.Emri}</Card.Subtitle>
                   </Card.Body>
 
                   <Card.Body>
                     <Card.Title className="mb-4">Mbiemri I Aktorit te Filmit</Card.Title>
-                      <Card.Subtitle>Hetemi</Card.Subtitle>
+                      <Card.Subtitle>{akt.Mbiemri}</Card.Subtitle>
                   </Card.Body>
                 </Card>
 
@@ -28,10 +54,13 @@ export class DetajetEAktoritTeFilmit extends Component{
                   <Card.Body>
                     <Card.Title className="mb-4">Biografia I Aktorit te Filmit</Card.Title>
                     <Card.Text>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    {akt.Biografia}
                     </Card.Text>
                   </Card.Body>
                 </Card>
+                </Card>
+                )}
+                </div>
             </div>
         )
     }

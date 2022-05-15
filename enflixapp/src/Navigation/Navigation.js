@@ -12,6 +12,11 @@ export class Navigation extends Component{
                 <Navbar.Toggle aria-controls="basic-navbar-nav "/>
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
+                <NavLink className="nav-link d-inline p-1 text-light" to="/aktorfilmi">
+                    Aktort
+                </NavLink>
+                </Nav>
+                <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
                     Admin
                 </NavLink>
