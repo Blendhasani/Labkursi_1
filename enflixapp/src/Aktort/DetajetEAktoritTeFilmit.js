@@ -1,6 +1,7 @@
 import React,{Component} from "react";
-import {Card} from 'react-bootstrap';
+import {Card, Dropdown} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
+import {NavLink} from 'react-router-dom';
 
 
 export class DetajetEAktoritTeFilmit extends Component{
@@ -36,6 +37,16 @@ componentDidUpdate(){
                 <Helmet>
                 <title>Detajet e Aktorit Te Filmit</title>
                 </Helmet>
+                <Dropdown className="d-flex justify-content-end mt-4">
+                  <Dropdown.Toggle variant="success">
+                    Detajet e Aktorit te Filmit
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <NavLink className="nav-link d-inline p-1 text-black" to="/aktorfilmi">
+                      Aktort E Filmit
+                    </NavLink>
+                  </Dropdown.Menu>
+                </Dropdown>
                 <div className="container d-flex flex-wrap">
                 {akto.map(akt=><Card className="mt-4" key={akt.AktortiFId}>
                   <Card className="mt-4 d-flex flex-row" style={{ width: '70rem' }}>
