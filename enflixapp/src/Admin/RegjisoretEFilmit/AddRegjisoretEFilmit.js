@@ -68,12 +68,12 @@ export class AddRegjisoretEFilmit extends Component{
           };
         return(
             <div className="container">
-                  <Modal {...this.props}
+                <Modal {...this.props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                        Shto Regjisorin e Filmit
+                            Shto Regjisorin e Filmit
                         </Modal.Title>
                     </Modal.Header>
 
