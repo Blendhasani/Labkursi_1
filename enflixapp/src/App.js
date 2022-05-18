@@ -21,6 +21,8 @@ import{RegjisoretESerialit} from './Admin/RegjisoretESerialit/RegjisoretESeriali
 import { AktorFilmi } from './Aktort/AktorFilmi';
 import{PageNotFound} from './PageNotFound/PageNotFound';
 import { AktorSeriali } from './Aktort/AktorSeriali';
+import { DetajetERegjisoritTeSerialit } from './Regjisoret/DetajetERegjisoritTeSerialit';
+import { RegjisorSeriali } from './Regjisoret/RegjisorSeriali';
 
 
 
@@ -43,11 +45,13 @@ function App() {
        <Route path='/dashboard' component={Dashboard} exact/>
        <Route path='/regjisoretefilmit' component={RegjisoretEFilmit} exact/>
        <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
+       <Route path='/detajeteregjisoritteserialit/:id' component={DetajetERegjisoritTeSerialit} exact/>
        <Route path='/kategoritefilmit' component={KategoritEFilmit} exact/>
        <Route path='/kategoriteserialit' component={KategoriteESerialit} exact/>
        <Route path='/regjisoreteserialit' component={RegjisoretESerialit} exact/>
        <Route path='/aktorfilmi' component={AktorFilmi} exact/>
        <Route path='/aktorseriali' component={AktorSeriali} exact/>
+       <Route path='/regjisorseriali' component={RegjisorSeriali} exact/>
        <Route component={PageNotFound} exact/>
      
        

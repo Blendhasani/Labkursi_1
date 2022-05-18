@@ -17,6 +17,11 @@ export class Navigation extends Component{
                 </NavLink>
                 </Nav>
                 <Nav>
+                <NavLink className="nav-link d-inline p-1 text-light" to="/regjisorseriali">
+                    Regjisoret
+                </NavLink>
+                </Nav>
+                <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
                     Admin
                 </NavLink>
