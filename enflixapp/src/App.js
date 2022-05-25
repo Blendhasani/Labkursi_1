@@ -23,7 +23,7 @@ import{PageNotFound} from './PageNotFound/PageNotFound';
 import { AktorSeriali } from './Aktort/AktorSeriali';
 import { DetajetERegjisoritTeSerialit } from './Regjisoret/DetajetERegjisoritTeSerialit';
 import { RegjisorSeriali } from './Regjisoret/RegjisorSeriali';
-
+import{RegjisorFilmi} from './Regjisoret/RegjisorFilmi';
 
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
        <Route path='/detajeteproducenteveteserialit' component={DetajetEProducenteveTeSerialit} exact/>
        <Route path='/dashboard' component={Dashboard} exact/>
        <Route path='/regjisoretefilmit' component={RegjisoretEFilmit} exact/>
-       <Route path='/detajeteregjisorevetefilmit' component={DetajetERegjisoreveTeFilmit} exact/>
+       <Route path='/detajeteregjisorevetefilmit/:id' component={DetajetERegjisoreveTeFilmit} exact/>
        <Route path='/detajeteregjisoritteserialit/:id' component={DetajetERegjisoritTeSerialit} exact/>
        <Route path='/kategoritefilmit' component={KategoritEFilmit} exact/>
        <Route path='/kategoriteserialit' component={KategoriteESerialit} exact/>
@@ -52,6 +52,7 @@ function App() {
        <Route path='/aktorfilmi' component={AktorFilmi} exact/>
        <Route path='/aktorseriali' component={AktorSeriali} exact/>
        <Route path='/regjisorseriali' component={RegjisorSeriali} exact/>
+       <Route path='/regjisorfilmi' component={RegjisorFilmi} exact/>
        <Route component={PageNotFound} exact/>
      
        
