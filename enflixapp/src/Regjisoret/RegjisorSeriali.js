@@ -37,7 +37,7 @@ export class RegjisorSeriali extends Component{
                     Regjisoret E Serialit
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <NavLink className="nav-link d-inline p-1 text-black" to="#">
+                    <NavLink className="nav-link d-inline p-1 text-black" to="/regjisorfilmi">
                       Regjisoret E Filmit
                     </NavLink>
                   </Dropdown.Menu>

@@ -46,6 +46,27 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
+        [HttpGet("{id}")]
+        public JsonResult Get(int id) {
+            string query = @"Select * from Regjisoret_Filmit where RegjisoriFID = " +id+@"";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader reader;
+            using(SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand cmd = new SqlCommand(query, myCon)) { 
+                   reader=cmd.ExecuteReader();
+                    table.Load(reader);
+                    reader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
 
         [HttpPost]
 
