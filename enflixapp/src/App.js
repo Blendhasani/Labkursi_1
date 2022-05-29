@@ -23,6 +23,7 @@ import{PageNotFound} from './PageNotFound/PageNotFound';
 import { AktorSeriali } from './Aktort/AktorSeriali';
 import { DetajetERegjisoritTeSerialit } from './Regjisoret/DetajetERegjisoritTeSerialit';
 import { RegjisorSeriali } from './Regjisoret/RegjisorSeriali';
+import { Filmat } from './Admin/Filmat/Filmat';
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
      <Switch>
      <Route path='/' component={AktortEFilmit} exact/>
+     <Route path='/Filmat' component={Filmat} exact/>
        <Route path='/aktortefilmit' component={AktortEFilmit} exact/>
        <Route path='/detajeteaktorittefilmit/:id' component={DetajetEAktoritTeFilmit} exact/>
        <Route path='/aktorteserialit' component={AktortESerialit} exact/>

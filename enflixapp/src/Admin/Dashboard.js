@@ -8,7 +8,7 @@ export class Dashboard extends Component{
     render(){
         return(
             <div className="container d-flex flex-wrap">
-                <NavLink className="nav-link d-inline" to="#">
+                <NavLink className="nav-link d-inline" to="/Filmat">
                 <Card className="mt-4" border="primary" style={{ width: '17rem', height: '10rem' }}>
                   <Card.Body>
                     <Card.Title className="text-primary d-flex justify-content-center">Filmat</Card.Title>
