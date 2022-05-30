@@ -147,3 +147,64 @@ Biografia varchar(8000)
     )
 
 	Insert Into Filmat Values ('Central Intelligence', 'anonymous.png', '2022-05-28', 'It is a long established fact that a reader will be distracted', 'https://www.youtube.com/watch?v=MxEw3elSJ8M', '2', '2', '2', '1', '1')
+	
+	CREATE TABLE Seriali(
+    SerialiID int Primary Key identity(1,1),
+    Titulli varchar(256),
+    NrSezonave int,
+	Data_PostimitS datetime DEFAULT CURRENT_TIMESTAMP not null,
+	PershkrimiS varchar(8000),
+	Linku_Serialit varchar(1000),
+	Foto_S varchar(256),
+    SezonaID int,
+    FOREIGN KEY (SezonaID) REFERENCES Sezona (SezonaID),
+    AktortSId INT,
+    FOREIGN KEY (AktortSId) REFERENCES Aktort_Serialit (AktortSId),
+    ProducentiSID int,
+    FOREIGN KEY (ProducentiSID) REFERENCES Producentet_Serialit(ProducentiSID),
+    RegjisoriSID int,
+    FOREIGN KEY (RegjisoriSID) REFERENCES Regjisoret_Serialit(RegjisoriSID),
+    SkenaristatSId int,
+    FOREIGN KEY (SkenaristatSId) REFERENCES Skenaristet_Serialit(SkenaristatSId),
+    KategoriaSID int,
+    FOREIGN KEY (KategoriaSID) REFERENCES Kategorite_Serialit(KategoriaSID)
+
+    )
+
+
+    INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','https://youtu.be/hMANIarjT50','pro.jpg',1,1,1,1,1,2)
+    INSERT INTO Sezona VALUES (1,9,1)
+    INSERT INTO Episoda VALUES ('Entrance in Bank',1,'El profesor tells the band how to enter the band','https://youtu.be/To_kVMMu-Ls')
+
+/*
+    SELECT S.Titulli,SE.NrSezones,E.Titulli,E.NrEpisodes,ASE.Emri,ASE.Mbiemri,E.Linku
+    FROM Seriali S
+    INNER JOIN Sezona SE
+    ON S.SezonaID=SE.SezonaID
+    INNER JOIN Episoda E
+    ON SE.EpisodaID=E.EpisodaID
+    INNER JOIN Aktort_Serialit ASE
+    ON S.AktortSId=ASE.AktortSId
+	*/
+    CREATE TABLE Episoda(
+    EpisodaID int Primary Key identity(1,1),
+    Titulli varchar(256),
+    NrEpisodes int,
+    PershkrimiE varchar(1000),
+    Linku varchar(500)
+
+    )
+
+
+
+    CREATE TABLE Sezona(
+    SezonaID int Primary Key identity(1,1),
+    NrSezones int,
+    NrEpisodave int,
+    EpisodaID int,
+    FOREIGN KEY (EpisodaID) REFERENCES Episoda(EpisodaID),
+
+
+
+
+    )
