@@ -154,7 +154,6 @@ Biografia varchar(8000)
     NrSezonave int,
 	Data_PostimitS datetime DEFAULT CURRENT_TIMESTAMP not null,
 	PershkrimiS varchar(8000),
-	Linku_Serialit varchar(1000),
 	Foto_S varchar(256),
     SezonaID int,
     FOREIGN KEY (SezonaID) REFERENCES Sezona (SezonaID),
@@ -208,3 +207,5 @@ Biografia varchar(8000)
 
 
     )
+
+	drop table Episoda

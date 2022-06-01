@@ -24,7 +24,7 @@ import { AktorSeriali } from './Aktort/AktorSeriali';
 import { DetajetERegjisoritTeSerialit } from './Regjisoret/DetajetERegjisoritTeSerialit';
 import { RegjisorSeriali } from './Regjisoret/RegjisorSeriali';
 import { Filmat } from './Admin/Filmat/Filmat';
-
+import {Seriali} from './Admin/Seriali/Seriali';
 
 import{RegjisorFilmi} from './Regjisoret/RegjisorFilmi';
 import{ProducentFilmi} from './Producentet/ProducentFilmi';
@@ -39,6 +39,7 @@ function App() {
      <Switch>
      <Route path='/' component={AktortEFilmit} exact/>
      <Route path='/Filmat' component={Filmat} exact/>
+     <Route path='/Seriali' component={Seriali} exact/>
        <Route path='/aktortefilmit' component={AktortEFilmit} exact/>
        <Route path='/detajeteaktorittefilmit/:id' component={DetajetEAktoritTeFilmit} exact/>
        <Route path='/aktorteserialit' component={AktortESerialit} exact/>
