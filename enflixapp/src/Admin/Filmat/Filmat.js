@@ -4,11 +4,12 @@ import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddFilmat} from './AddFilmat';
+import {EditFilmat} from './EditFilmat';
 
 export class Filmat extends Component{
     constructor(props){
         super(props)
-        this.state={film:[], addModalShow:false}
+        this.state={film:[], addModalShow:false, editModalShow:false}
     }
 
     refreshList(){
@@ -25,10 +26,23 @@ export class Filmat extends Component{
     componentDidUpdate(){
         this.refreshList();
     }
+
+    deleteFil(filid){
+        if(window.confirm('Jeni i sigurt qe doni ta fshini Filmin?')){
+            fetch(process.env.REACT_APP_API+'filmat/'+filid,{
+                method:'DELETE',
+                header:{
+                    'Accept':'application/json',
+                    'Content-Type':'application/json'
+                }
+            })
+        }
+    }
     
     render(){
-        const {film}=this.state;
+        const {film, filid, tit, foto, persh, link}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
+        let editModalClose=()=>this.setState({editModalShow:false});
         return(
             <div className="container">
                 <Helmet>
@@ -48,7 +62,6 @@ export class Filmat extends Component{
                         <tr>
                         <th>Titulli</th>
                         <th>Foto</th>
-                        <th>Episodi</th>
                         <th>Kategoria</th>
                         <th>Veprime</th>
                         </tr>
@@ -58,17 +71,25 @@ export class Filmat extends Component{
                             <tr key={fil.FilmatId}>
                                 <td>{fil.Titulli}</td>
                                 <td><Image width="70px" height="70px" src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`}/></td>
-                                <td>{fil.Episodi}</td>
                                 <td>{fil.Kategoria}</td>
                                 <td>
                                 <ButtonToolbar>
-                                   <Button className="mr-2" variant="info">
+                                   <Button className="mr-2" variant="info" onClick={()=>this.setState({editModalShow:true, filid:fil.FilmatId, tit:fil.Titulli, foto:fil.Foto, persh:fil.Pershkrimi_Filmit, link:fil.Linku_Filmit})}>
                                        Edit
                                    </Button>
 
-                                   <Button className="mr-2" variant="danger">
+                                   <Button className="mr-2" variant="danger" onClick={()=>this.deleteFil(fil.FilmatId)}>
                                        Delete
                                    </Button>
+
+                                   <EditFilmat show={this.state.editModalShow}
+                                      onHide={editModalClose}
+                                      filid={filid}
+                                      tit={tit}
+                                      foto={foto}
+                                      persh={persh}
+                                      link={link}
+                                    />
                                </ButtonToolbar>
                                 </td>
                             </tr>)}

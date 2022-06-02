@@ -22,7 +22,7 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.KategoriaID, K.KategoriaFId, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID";
+            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.Pershkrimi_Filmit, Linku_Filmit, F.KategoriaID, K.KategoriaFId, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
@@ -65,6 +65,29 @@ namespace Enflix.Controllers
             return new JsonResult("Eshte shtuar me sukses.");
         }
 
+        [HttpPut]
+        public JsonResult Put(Filmat fil)
+        {
+            string query = @"Update Filmat set Titulli = '" + fil.Titulli + @"', Foto = '" + fil.Foto + @"', Data_Postimit = '" + fil.Data_Postimit + @"', Pershkrimi_Filmit = '" + fil.Pershkrimi_Filmit + @"', Linku_Filmit = '" + fil.Linku_Filmit + @"', AktoriID = '" + fil.AktoriID + @"', KategoriaID = '" + fil.KategoriaID + @"', ProducentiID = '" + fil.ProducentiID + @"', RegjisoriID = '" + fil.RegjisoriID + @"', SkenaristiID = '" + fil.SkenaristiID + @"' where FilmatId = " + fil.FilmatId + @"";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Eshte ndryshuar me sukses.");
+        }
+
         [Route("SaveFotoFilmi")]
         [HttpPost]
         public JsonResult SaveFotoFilmi()
@@ -88,6 +111,29 @@ namespace Enflix.Controllers
 
                 return new JsonResult("anonymous.png");
             }
+        }
+
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
+        {
+            string query = @"delete from Filmat where FilmatId = " + id + @"";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Eshte fshire me sukses.");
         }
     }
 }

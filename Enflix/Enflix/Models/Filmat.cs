@@ -18,9 +18,9 @@ namespace Enflix.Models
 
         public string? Linku_Filmit { get; set; }
 
-        public int? KategoriaID { get; set; }
-
         public int? AktoriID { get; set; }
+
+        public int? KategoriaID { get; set; }
 
         public int? ProducentiID { get; set; }
 

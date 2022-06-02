@@ -1,10 +1,8 @@
 import React,{Component} from 'react';
 import {Modal,Button, Row, Col, Form, Image} from 'react-bootstrap';
-import * as Yup from 'yup';
-import { Formik, Field, ErrorMessage } from 'formik';
 
 
-export class AddFilmat extends Component{
+export class EditFilmat extends Component{
     constructor(props){
         super(props);
         this.state={kats:[], akto:[], prod:[], regs:[], sken:[]};
@@ -62,24 +60,16 @@ export class AddFilmat extends Component{
         this.refreshList4();
     }
 
-    validationSchema() {
-        return Yup.object().shape({
-          Titulli: Yup.string()
-            .required('Titulli duhet te plotesohet.'),
-            Pershkrimi_Filmit: Yup.string()
-            .required('Pershkrimi duhet te plotesohet.'),
-        });
-      }
-
     submitFilmat(event){
         event.preventDefault();
         fetch(process.env.REACT_APP_API+'filmat',{
-            method:'POST',
+            method:'PUT',
             headers:{
                 'Accept':'application/json',
                 'Content-Type':'application/json'
             },
             body:JSON.stringify({
+                FilmatId:event.target.FilmatId.value,
                 Titulli:event.target.Titulli.value,
                 Foto:this.fotoisnot,
                 Pershkrimi_Filmit:event.target.Pershkrimi_Filmit.value,
@@ -126,10 +116,6 @@ export class AddFilmat extends Component{
         
     }
     render(){
-        const initialValues = {
-            Titulli: '',
-            Pershkrimi_Filmit: '',
-          };
         return(
             <div className="container">
                 <Modal {...this.props}
@@ -137,51 +123,33 @@ export class AddFilmat extends Component{
                 aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Shto Filmin
+                            Update Filmin
                         </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
                         <Row>
                             <Col sm={6}>
-                            <Formik
-                               initialValues={initialValues}
-                               validationSchema={this.validationSchema}
-                               onSubmit={this.submitFilmat}
-                             >
-                                 {({ submitFilmat, isValid, isSubmitting, dirty }) => (
                                 <Form onSubmit={this.submitFilmat}>
+                                <Form.Group controlId="FilmatId">
+                                        <Form.Control type="text" name="FilmatId" required hidden defaultValue={this.props.filid} placeholder="FilmatId" />
+                                    </Form.Group>
                                     <Form.Group controlId="Titulli">
                                         <Form.Label>Titulli</Form.Label>
-                                        <Field type="text" name="Titulli" required placeholder="Titulli" className="form-control" />
-                                        <ErrorMessage
-                                          name="Titulli"
-                                          component="div"
-                                          className="text-danger"
-                                         />
+                                        <Form.Control type="text" name="Titulli" required placeholder="Titulli" defaultValue={this.props.tit}/>
                                     </Form.Group>
                                     <Form.Group controlId="Foto">
                                         <Form.Label>Foto</Form.Label><br/>
-                                        <Image width="150px" height="150px" src={this.image}/>
+                                        <Image width="150px" height="150px" src={process.env.REACT_APP_PHOTOPATH+this.props.foto} />
                                         <input onChange={this.fotoFilmiSelect} type="File" name="Foto" className="form-control"/>
                                     </Form.Group>
                                     <Form.Group controlId="Pershkrimi_Filmit">
                                         <Form.Label>Pershkrimi Filmit</Form.Label>
-                                        <Field as="textarea" name="Pershkrimi_Filmit" required placeholder="Pershkrimi Filmit" className="form-control" />
-                                        <ErrorMessage
-                                          name="Pershkrimi_Filmit"
-                                          component="div"
-                                          className="text-danger"
-                                         />
+                                        <Form.Control as="textarea" name="Pershkrimi_Filmit" required placeholder="Pershkrimi Filmit" defaultValue={this.props.persh}/>
                                     </Form.Group>
                                     <Form.Group controlId="Linku_Filmit">
                                         <Form.Label>Linku Filmit</Form.Label>
-                                        <input type="url" name="Linku_Filmit" required placeholder="Linku Filmit" className="form-control"/>
-                                        <ErrorMessage
-                                          name="Linku_Filmit"
-                                          component="div"
-                                          className="text-danger"
-                                         />
+                                        <input type="url" name="Linku_Filmit" required placeholder="Linku Filmit" className="form-control" defaultValue={this.props.link}/>
                                     </Form.Group>
                                     <Form.Group controlId="AktoriID">
                                        <Form.Label>Aktori Kryesor</Form.Label>
@@ -221,13 +189,11 @@ export class AddFilmat extends Component{
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
-                                            Shto Aktorin
+                                        <Button variant="primary" type="submit">
+                                            Update Aktorin
                                         </Button>
                                     </Form.Group>
                                 </Form>
-                                   )}
-                                </Formik>
                             </Col>
                         </Row>
                     </Modal.Body>
