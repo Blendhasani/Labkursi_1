@@ -10,6 +10,6 @@
 
         public int NrEpisodave { get; set; }
 
-        public int EpisodaID { get; set; }
+        
     }
 }

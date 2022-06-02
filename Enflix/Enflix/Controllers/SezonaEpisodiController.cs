@@ -8,22 +8,22 @@ namespace Enflix.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SezonaController : ControllerBase
+    public class SezonaEpisodiController : ControllerBase
     {
-
 
         private IConfiguration _configuration;
 
-        public SezonaController(IConfiguration configuration)
+        public SezonaEpisodiController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
 
+
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select S.SezonaID, S.NrSezones, S.NrEpisodave  from Sezona S";
+            string query = @"SELECT SE.SezonaID,SE.EpisodaID FROM SezonaEpisodi SE";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
@@ -44,20 +44,19 @@ namespace Enflix.Controllers
         }
 
 
-
         [HttpPost]
 
 
-        public JsonResult Post(Sezona s)
+        public JsonResult Post(SezonaEpisodi se)
         {
-            string query = "INSERT into Sezona values (' " + s.NrSezones + "','" + s.NrEpisodave + @"')";
+            string query = "INSERT into SezonaEpisodi values (' " + se.SezonaID + "','" + se.EpisodaID +  @"')";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
             SqlDataReader reader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
                 myCon.Open();
-                using(SqlCommand myCommand = new SqlCommand(query, myCon))
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     reader = myCommand.ExecuteReader();
                     table.Load(reader);
@@ -70,47 +69,12 @@ namespace Enflix.Controllers
             return new JsonResult("Shtuar me sukses!");
         }
 
+        [HttpDelete("{seID}")]
 
-        [HttpPut]
-
-        public JsonResult Put(Sezona s)
+        public new JsonResult Delete(int seID)
         {
 
-            string query = @"update Sezona set NrSezones= '" + s.NrSezones + @"', NrEpisodave= '" + s.NrEpisodave + @"'where SezonaID= " + s.SezonaID + @"";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
-
-            SqlDataReader Reader;
-
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    Reader = myCommand.ExecuteReader();
-                    table.Load(Reader);
-
-                    Reader.Close();
-                    myCon.Close();
-
-
-                }
-            }
-            return new JsonResult("Ndryshuar me sukses!");
-
-
-
-        }
-
-
-
-        [HttpDelete("{sID}")]
-
-        public new JsonResult Delete(int sID)
-        {
-
-            string query = @"delete from Sezona where SezonaID= " + sID + @"";
+            string query = @"delete from SezonaEpisodi where EpisodaID= " + seID + @"";
 
             DataTable table = new DataTable();
 
@@ -131,6 +95,8 @@ namespace Enflix.Controllers
             return new JsonResult("Fshire me sukses!");
 
         }
+
+
 
     }
 }
