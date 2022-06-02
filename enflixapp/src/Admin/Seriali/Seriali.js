@@ -73,6 +73,7 @@ render(){
         <Table className="mt-4"  striped bordered hover size="sm">
             <thead>
             <tr>
+                        <th>ID</th>
                         <th>Titulli</th>
                         <th>Numri Episodes</th>
                         <th>Pershkrimi</th>
@@ -82,6 +83,7 @@ render(){
             <tbody>
                 {serie.map(e=>
                     <tr key={e.EpisodaID}>
+                        <td>{e.EpisodaID}</td>
                         <td>{e.Titulli}</td>
                         <td>{e.NrEpisodes}</td>
                         <td>{e.PershkrimiE}</td>

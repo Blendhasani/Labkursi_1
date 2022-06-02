@@ -171,9 +171,25 @@ Biografia varchar(8000)
     )
 
 
-    INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','https://youtu.be/hMANIarjT50','pro.jpg',1,1,1,1,1,2)
+    INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','pro.jpg',1,1,1,1,1,2)
     INSERT INTO Sezona VALUES (1,9,1)
     INSERT INTO Episoda VALUES ('Entrance in Bank',1,'El profesor tells the band how to enter the band','https://youtu.be/To_kVMMu-Ls')
+	 
+
+	 --test
+	 INSERT INTO Episoda VALUES ('Blood is spilled',2,'asdasdasdasda','https://youtu.be/To_kVMMu-Ls')
+	  INSERT INTO Sezona VALUES (1,9,2)
+	  INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','pro.jpg',2,1,1,1,1,2)
+
+	  SELECT S.NrSezones,E.Titulli,E.PershkrimiE,E.NrEpisodes
+	  FROM Sezona S
+	  INNER JOIN Episoda E
+	  ON E.EpisodaID=S.EpisodaID
+	  WHERE 
+
+
+	  SELECT * FROM Episoda
+
 
 /*
     SELECT S.Titulli,SE.NrSezones,E.Titulli,E.NrEpisodes,ASE.Emri,ASE.Mbiemri,E.Linku
@@ -184,13 +200,15 @@ Biografia varchar(8000)
     ON SE.EpisodaID=E.EpisodaID
     INNER JOIN Aktort_Serialit ASE
     ON S.AktortSId=ASE.AktortSId
+	ORDER BY 4
+
 	*/
     CREATE TABLE Episoda(
     EpisodaID int Primary Key identity(1,1),
     Titulli varchar(256),
     NrEpisodes int,
     PershkrimiE varchar(1000),
-    Linku varchar(500)
+    Linku varchar(8000)
 
     )
 
