@@ -23,7 +23,7 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select S.SezonaID, S.NrSezones, S.NrEpisodave  from Sezona S";
+            string query = @"select SezonaID, NrSezones, NrEpisodave  from Sezona";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
