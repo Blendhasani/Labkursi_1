@@ -60,6 +60,7 @@ export class Episoda extends Component{
                       
                         <Dropdown.Item href="seriali">Seriali</Dropdown.Item>
                         <Dropdown.Item href="sezona">Sezonat</Dropdown.Item>
+                        <Dropdown.Item href="sezonaepisodi">Lidhjet Sezone Episod</Dropdown.Item>
                     </Dropdown.Menu>
          
                 </Dropdown>
