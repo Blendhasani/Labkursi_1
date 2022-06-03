@@ -181,11 +181,7 @@ Biografia varchar(8000)
 	  INSERT INTO Sezona VALUES (1,9,2)
 	  INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','pro.jpg',2,1,1,1,1,2)
 
-	  SELECT S.NrSezones,E.Titulli,E.PershkrimiE,E.NrEpisodes
-	  FROM Sezona S
-	  INNER JOIN Episoda E
-	  ON E.EpisodaID=S.EpisodaID
-	  WHERE 
+
 
 
 	  SELECT * FROM Episoda
@@ -217,11 +213,7 @@ Biografia varchar(8000)
     CREATE TABLE Sezona(
     SezonaID int Primary Key identity(1,1),
     NrSezones int,
-    NrEpisodave int,
-    EpisodaID int,
-    FOREIGN KEY (EpisodaID) REFERENCES Episoda(EpisodaID),
-
-
+    NrEpisodave int
 
 
     )

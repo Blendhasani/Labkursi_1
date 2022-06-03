@@ -47,7 +47,7 @@ export class AddSezonen extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
-        {window.location.href="/Seriali"}
+        {window.location.href="/Sezona"}
     }
   render(){
       const initialValues={

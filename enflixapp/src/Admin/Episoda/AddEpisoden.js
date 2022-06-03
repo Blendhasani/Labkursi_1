@@ -47,7 +47,7 @@ export class AddEpisoden extends Component{
         (error)=>{
             alert('Ka ndodhur nje gabim');
         })
-        {window.location.href="/Seriali"}
+        {window.location.href="/episoda"}
     }
   render(){
       const initialValues={
