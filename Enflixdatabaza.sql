@@ -28,6 +28,11 @@ select * from Aktort_Serialit
 
 insert into Aktort_Serialit values('Enes', 'Hetemi', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
 insert into Aktort_Serialit values('Edon', 'Hetemi', 'Lorem Ipsum is simply dummy text industry.')
+insert into Aktort_Serialit values('Pedro', 'Alonso', 'Lorem Ipsum is simply dummy text industry.')
+insert into Aktort_Serialit values('Alvaro', 'Morte', 'Lorem Ipsum is simply dummy text industry.')
+insert into Aktort_Serialit values('Ursula', 'Corbero', 'Lorem Ipsum is simply dummy text industry.')
+insert into Aktort_Serialit values('Jaime', 'Lorente', 'Lorem Ipsum is simply dummy text industry.')
+
 
 create table Producentet_Filmit(
 ProducentiID int Primary Key  identity(1,1),
@@ -155,8 +160,6 @@ Biografia varchar(8000)
 	Data_PostimitS datetime DEFAULT CURRENT_TIMESTAMP not null,
 	PershkrimiS varchar(8000),
 	Foto_S varchar(256),
-    SezonaID int,
-    FOREIGN KEY (SezonaID) REFERENCES Sezona (SezonaID),
     AktortSId INT,
     FOREIGN KEY (AktortSId) REFERENCES Aktort_Serialit (AktortSId),
     ProducentiSID int,
@@ -170,8 +173,22 @@ Biografia varchar(8000)
 
     )
 
+	SELECT * FROM Seriali
 
-    INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','pro.jpg',1,1,1,1,1,2)
+	SELECT S.Titulli,SZ.NrSezones,E.Titulli,E.NrEpisodes
+	FROM Seriali S
+	INNER JOIN Sezona SZ
+	ON S.SezonaID=SZ.SezonaID
+	INNER JOIN SezonaEpisodi SE
+	ON SE.SezonaID=SZ.SezonaID
+	INNER JOIN Episoda E
+	ON E.EpisodaID=SE.EpisodaID
+	WHERE SZ.NrSezones=1
+
+
+
+
+    INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','pro.jpg',1,1,1,1,2)
     INSERT INTO Sezona VALUES (1,9,1)
     INSERT INTO Episoda VALUES ('Entrance in Bank',1,'El profesor tells the band how to enter the band','https://youtu.be/To_kVMMu-Ls')
 	 
@@ -179,13 +196,9 @@ Biografia varchar(8000)
 	 --test
 	 INSERT INTO Episoda VALUES ('Blood is spilled',2,'asdasdasdasda','https://youtu.be/To_kVMMu-Ls')
 	  INSERT INTO Sezona VALUES (1,9,2)
-	  INSERT INTO Seriali VALUES ('La Casa De Papel',5,'2017-09-8','La Casa De Papel is a serie based in Spain , Madrid','pro.jpg',2,1,1,1,1,2)
+	  
 
-	  SELECT S.NrSezones,E.Titulli,E.PershkrimiE,E.NrEpisodes
-	  FROM Sezona S
-	  INNER JOIN Episoda E
-	  ON E.EpisodaID=S.EpisodaID
-	  WHERE 
+
 
 
 	  SELECT * FROM Episoda
@@ -217,13 +230,42 @@ Biografia varchar(8000)
     CREATE TABLE Sezona(
     SezonaID int Primary Key identity(1,1),
     NrSezones int,
-    NrEpisodave int,
-    EpisodaID int,
-    FOREIGN KEY (EpisodaID) REFERENCES Episoda(EpisodaID),
-
-
+    NrEpisodave int
 
 
     )
 
-	drop table Episoda
+
+	CREATE TABLE SezonaEpisodi (
+	SezonaID int not null foreign key references Sezona(SezonaID),
+	EpisodaID int not null foreign key references Episoda(EpisodaID),
+	Constraint Sezona_Episodi Primary key (SezonaID,EpisodaID)
+	)
+
+
+		CREATE TABLE SerialiSezona (
+    SerialiID int not null foreign key references Seriali(SerialiID),
+	SezonaID int not null foreign key references Sezona(SezonaID),
+	
+	Constraint Seriali_Sezona Primary key (SerialiID,SezonaID)
+	)
+
+	INSERT INTO SerialiSezona VALUES(1,1)
+	INSERT INTO SerialiSezona VALUES(1,2)
+	INSERT INTO SerialiSezona VALUES(1,10)
+	INSERT INTO SerialiSezona VALUES(1,13)
+
+	
+	
+
+	
+
+
+
+	
+
+
+
+
+
+

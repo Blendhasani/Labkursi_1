@@ -4,58 +4,59 @@ import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 
 
-export class AddSezonen extends Component{
+
+export class AddSezonaEpisodi extends Component{
 
     constructor(props){
         super(props);
-        this.submitSezonen=this.submitSezonen.bind(this);
+        this.submitSE=this.submitSE.bind(this);
     }
 
 
     validationSchema() {
         return Yup.object().shape({
-            NrSezones: Yup.number()
-            .required('Numri sezones duhet te plotesohet'),
-            NrEpisodave: Yup.number()
-            .required('Numri episodave duhet te plotesohet'),
+            SezonaID: Yup.number()
+            .required('SezonaID duhet te plotesohet'),
+            EpisodaID: Yup.number()
+            .required('EpisodaID duhet te plotesohet'),
         
         });
       
-           
-       
-      }
-    submitSezonen(event){
-        event.preventDefault();
-        fetch(process.env.REACT_APP_API+'sezona',{
-            method:'POST',
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json'
-            },
-
-            body:JSON.stringify({
-                
-                NrSezones:event.target.NrSezones.value,
-                NrEpisodave:event.target.NrEpisodave.value
-               
-            })
-        })
-        .then(res=>res.json())
-        .then((result)=>{
-            alert(result);
-        },
-        (error)=>{
-            alert('Ka ndodhur nje gabim');
-        })
-        {window.location.href="/Sezona"}
     }
-  render(){
-      const initialValues={
-          NrSezones : '',
-          NrEpisodave : '',
-          
+        submitSE(event){
+            event.preventDefault();
+            fetch(process.env.REACT_APP_API+'sezonaepisodi',{
+                method:'POST',
+                headers:{
+                    'Accept':'application/json',
+                    'Content-Type':'application/json'
+                },
+    
+                body:JSON.stringify({
+                    
+                    SezonaID:event.target.SezonaID.value,
+                    EpisodaID:event.target.EpisodaID.value
+                   
+                })
+            })
+            .then(res=>res.json())
+            .then((result)=>{
+                alert(result);
+            },
+            (error)=>{
+                alert('Ka ndodhur nje gabim');
+            })
+            {window.location.href="/SezonaEpisodi"}
+        }
+        render(){
+            const initialValues={
+                SezonaID : '',
+                EpisodaID : '',
+                
+      
+            };
 
-      };
+
 
       return(
           <div className="container">
@@ -64,7 +65,7 @@ export class AddSezonen extends Component{
                 aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Shto Sezonen
+                            Shto Lidhjen
                         </Modal.Title>
                     </Modal.Header>
 
@@ -74,25 +75,25 @@ export class AddSezonen extends Component{
                             <Formik
                                initialValues={initialValues}
                                validationSchema={this.validationSchema}
-                               onSubmit={this.submitSezonen}
+                               onSubmit={this.submitSE}
                              >
-                                 {({ submitSezonen, isValid, isSubmitting, dirty }) => (
-                                     <Form onSubmit={this.submitSezonen}>
-                                         <Form.Group controlId="NrSezones">
-                                        <Form.Label>Numri i sezones</Form.Label>
-                                        <Field min="1" type="number" name="NrSezones" required placeholder="NrSezones" className="form-control" />
+                                 {({ submitSE, isValid, isSubmitting, dirty }) => (
+                                     <Form onSubmit={this.submitSE}>
+                                         <Form.Group controlId="SezonaID">
+                                        <Form.Label>SezonaID</Form.Label>
+                                        <Field min="1" type="number" name="SezonaID" required placeholder="SezonaID" className="form-control" />
                                         <ErrorMessage
-                                          name="NrSezones"
+                                          name="SezonaID"
                                           component="div"
                                           className="text-danger"
                                          />
                                          </Form.Group>
                                          
-                                         <Form.Group controlId="NrEpisodave">
-                                         <Form.Label>Numri i episodave</Form.Label>
-                                         <Field min="1" type="number" name="NrEpisodave" required placeholder="NrEpisodave" className="form-control" />
+                                         <Form.Group controlId="EpisodaID">
+                                         <Form.Label>EpisodaID</Form.Label>
+                                         <Field min="1" type="number" name="EpisodaID" required placeholder="EpisodaID" className="form-control" />
                                          <ErrorMessage
-                                          name="NrEpisodave"
+                                          name="EpisodaID"
                                           component="div"
                                           className="text-danger"
                                          />
@@ -102,7 +103,7 @@ export class AddSezonen extends Component{
                                         
                                     <Form.Group>
                                         <Button disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
-                                            Shto Sezonen
+                                            Shto Lidhjen
                                         </Button>
                                     </Form.Group>
                                      </Form>
@@ -119,5 +120,9 @@ export class AddSezonen extends Component{
                     </Modal>
           </div>
       )
-  }
+      
+
+
 }
+}
+
