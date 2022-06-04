@@ -138,7 +138,7 @@ namespace Enflix.Controllers
             catch (Exception)
             {
 
-                return new JsonResult("anonymous.png");
+                return new JsonResult("pro.png");
             }
         }
 
