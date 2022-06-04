@@ -30,6 +30,8 @@ import{RegjisorFilmi} from './Regjisoret/RegjisorFilmi';
 import{ProducentFilmi} from './Producentet/ProducentFilmi';
 import{ProducentSeriali} from './Producentet/ProducentSeriali';
 import { Filmi } from './Filmat/Filmi';
+import { DetajetEFilmit } from './Filmat/DetajetEFilmit';
+
 import {Sezona} from './Admin/Sezona/Sezona';
 import {Episoda} from './Admin/Episoda/Episoda';
 import{SezonaEpisodi} from './Admin/SezonaEpisodi/SezonaEpisodi';
@@ -42,6 +44,7 @@ function App() {
      <Switch>
      <Route path='/' component={Filmi} exact/>
      <Route path='/Filmat' component={Filmat} exact/>
+     <Route path='/detajetefilmit/:id' component={DetajetEFilmit} exact/>
      <Route path='/Seriali' component={Seriali} exact/>
      <Route path='/Episoda' component={Episoda} exact/>
      <Route path='/Sezona' component={Sezona} exact/>

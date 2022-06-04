@@ -52,7 +52,7 @@ export class DetajetERegjisoreveTeFilmit extends Component{
                   </Dropdown.Menu>
                 </Dropdown>
                   <div className="container d-flex flex-wrap">
-                  {regs.map(r=><Card className="mt-4" key={r.RegjisoriSID}>
+                  {regs.map(r=><Card className="mt-4" key={r.RegjisoriFID}>
                 <Card className="mt-4 d-flex flex-row" style={{ width: '70rem' }}>
                   <Card.Body>
                     <Card.Title className="mb-4">Emri i Regjisorit te Filmit</Card.Title>
