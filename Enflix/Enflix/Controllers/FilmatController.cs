@@ -22,7 +22,36 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.Pershkrimi_Filmit, Linku_Filmit, F.KategoriaID, K.KategoriaFId, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID";
+            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.Pershkrimi_Filmit, Linku_Filmit, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        [HttpGet("{id}")]
+        public JsonResult Get(int id)
+        {
+            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, 
+                           F.Pershkrimi_Filmit, Linku_Filmit, K.Kategoria, A.AktortiFId, A.Emri, A.Mbiemri, P.ProducentiID, P.Emri, P.Mbiemri, R.RegjisoriFID, R.Emri, R.Mbiemri, S.SkenaristatId, S.Emri, S.Mbiemri
+                           from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID
+                           INNER JOIN Aktort_Filmit A ON A.AktortiFId = F.AktoriID
+                           INNER JOIN Producentet_Filmit P ON P.ProducentiID = F.ProducentiID
+                           INNER JOIN Regjisoret_Filmit R ON R.RegjisoriFID = F.RegjisoriID
+                           INNER JOIN Skenaristet_Filmit S ON S.SkenaristatId = F.SkenaristiID where FilmatId = " + id + @"";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
