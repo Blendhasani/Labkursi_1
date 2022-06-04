@@ -4,13 +4,14 @@ import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import { AddEpisoden } from "./AddEpisoden";
+import { EditEpisoden } from "./EditEpisoden";
 
 
 export class Episoda extends Component{
 
       constructor(props){
           super(props)
-          this.state={episod:[],addModalShow:false}
+          this.state={episod:[],addModalShow:false, editModalShow:false}
       }
 
    refreshList(){
@@ -44,8 +45,9 @@ export class Episoda extends Component{
 
 
     render(){
-        const{episod,epid}=this.state;
+        const{episod,epid,eptitulli,epnr,eppershkrimi,eplinku}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
+        let editModalClose=()=>this.setState({editModalShow:false});
         return(
         <div className="container">
              <Helmet>
@@ -92,13 +94,21 @@ export class Episoda extends Component{
                         <td>{e.Linku}</td>
                         <td>
                         <ButtonToolbar>
-                                   <Button className="mr-2" variant="info">
+                                   <Button className="mr-2" variant="info"  onClick={()=>this.setState({editModalShow:true,epid:e.EpisodaID,eptitulli:e.Titulli,epnr:e.NrEpisodes,eppershkrimi:e.PershkrimiE,
+                                        eplinku:e.Linku})}>
                                        Edit
                                    </Button>
 
                                    <Button className="mr-2" variant="danger" onClick={()=>this.deleteEp(e.EpisodaID)}>
                                        Delete
                                    </Button>
+                                   <EditEpisoden show={this.state.editModalShow}
+                                        onHide={editModalClose}
+                                        epid={epid}
+                                        eptitulli={eptitulli}
+                                        epnr={epnr}
+                                        eppershkrimi={eppershkrimi}
+                                        eplinku={eplinku} />
                         </ButtonToolbar>
                          </td>
                     </tr>)}

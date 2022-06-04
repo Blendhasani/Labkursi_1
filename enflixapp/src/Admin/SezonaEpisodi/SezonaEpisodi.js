@@ -47,6 +47,7 @@ export class SezonaEpisodi extends Component{
 render(){
     const{sezoep,seid}=this.state;
     let addModalClose=()=>this.setState({addModalShow:false});
+   
 
 
     return(
@@ -93,13 +94,11 @@ render(){
                         <td>{se.EpisodaID}</td>
                         <td>
                         <ButtonToolbar>
-                                   <Button className="mr-2" variant="info">
-                                       Edit
-                                   </Button>
-
+                                 
                                    <Button className="mr-2" variant="danger" onClick={()=>this.deleteSezonaEpisodi(se.EpisodaID)}>
                                        Delete
                                    </Button>
+                                  
                         </ButtonToolbar>
                          </td>
                     </tr>)}

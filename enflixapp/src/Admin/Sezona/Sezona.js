@@ -4,11 +4,12 @@ import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddSezonen} from './AddSezonen';
+import { EditSezonen } from "./EditSezonen";
 export class Sezona extends Component{
 
     constructor(props){
         super(props)
-        this.state={sezo:[],addModalShow:false}
+        this.state={sezo:[],addModalShow:false,editModalShow:false}
     }
 
     refreshList2(){
@@ -45,9 +46,9 @@ export class Sezona extends Component{
 
 
     render(){
-        const{sezo,szid}=this.state;
+        const{sezo,szid,sznr,sznrep}=this.state;
         let addModalClose=()=>this.setState({addModalShow:false});
-
+        let editModalClose=()=>this.setState({editModalShow:false});
         return(
             <div className="container">
         <Helmet>
@@ -93,13 +94,19 @@ export class Sezona extends Component{
                         <td>{s.NrEpisodave}</td>
                         <td>
                         <ButtonToolbar>
-                                   <Button className="mr-2" variant="info">
+                                   <Button className="mr-2" variant="info" onClick={()=>this.setState({editModalShow:true,szid:s.SezonaID,sznr:s.NrSezones,sznrep:s.NrEpisodave})}>
                                        Edit
                                    </Button>
 
                                    <Button className="mr-2" variant="danger" onClick={()=>this.deleteSz(s.SezonaID)}>
                                        Delete
                                    </Button>
+                                   <EditSezonen show={this.state.editModalShow}
+                                        onHide={editModalClose}
+                                        szid={szid}
+                                        sznr={sznr}
+                                        sznrep={sznrep} 
+                                        />
                         </ButtonToolbar>
                          </td>
                     </tr>)}
