@@ -3,36 +3,37 @@ import {Table,Dropdown} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
-import{AddSezonaEpisodi} from './AddSezonaEpisodi';
+import { AddSerialiSezona } from "./AddSerialiSezona";
 
 
-export class SezonaEpisodi extends Component{
-
+export class SerialiSezona extends Component{
 
     constructor(props){
         super(props)
-        this.state={sezoep:[],addModalShow:false}
-        
+        this.state={sersez:[],addModalShow:false}
     }
-    refreshList3(){
-        fetch(process.env.REACT_APP_API+'sezonaepisodi')
+
+
+    refreshList(){
+        fetch(process.env.REACT_APP_API+'serialisezona')
         .then(response=>response.json())
         .then(data=>{
-            this.setState({sezoep:data});
+            this.setState({sersez:data});
         });
     }
+
     componentDidMount(){
-        this.refreshList3();
+        this.refreshList();
     }
 
     componentDidUpdate(){
-    this.refreshList3();
+    this.refreshList();
     }
 
 
-    deleteSezonaEpisodi(seid){
-        if(window.confirm('Jeni te sigurt qe doni te fshini lidhjen Sezone-Episod?')){
-            fetch(process.env.REACT_APP_API+'sezonaepisodi/'+seid,{
+    deleteSerialiSezona(ssID){
+        if(window.confirm('Jeni te sigurt qe doni te fshini lidhjen Serial-Sezone?')){
+            fetch(process.env.REACT_APP_API+'serialisezona/'+ssID,{
                 method:'DELETE',
                 header:{
                     'Accept':'application/json',
@@ -44,20 +45,20 @@ export class SezonaEpisodi extends Component{
 
 
 
-render(){
-    const{sezoep,seid}=this.state;
-    let addModalClose=()=>this.setState({addModalShow:false});
-   
 
+    render(){
 
-    return(
-        <div className="container">
+        const{sersez,ssID}=this.state;
+        let addModalClose=()=>this.setState({addModalShow:false});
+
+        return(
+            <div className="container">
         <Helmet>
-                <title>Lidhjet Sezone Episod</title>
+                <title>Lidhjet Serial Sezone</title>
         </Helmet>
         <Dropdown className="d-flex justify-content-end mt-4">
                     <Dropdown.Toggle variant="success">
-                        Lidhjet Sezone Episod
+                        Lidhjet Serial Sezone
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
 
@@ -65,38 +66,34 @@ render(){
                         <Dropdown.Item href="seriali">Seriali</Dropdown.Item>
                         <Dropdown.Item href="sezona">Sezonat</Dropdown.Item>
                         <Dropdown.Item href="episoda">Episodat</Dropdown.Item>
-                        <Dropdown.Item href="serialisezona">Lidhjet Serial Sezone</Dropdown.Item>
-                        
+                        <Dropdown.Item href="sezonaepisodi">Lidhjet Sezone Episod</Dropdown.Item>
                     </Dropdown.Menu>
          
                 </Dropdown>
-        <ButtonToolbar>
+                <ButtonToolbar>
         <Button className="mt-4" variant="success" onClick={()=>this.setState({addModalShow:true})}>
             Shto Lidhjen
-        <AddSezonaEpisodi show={this.state.addModalShow} 
+        <AddSerialiSezona show={this.state.addModalShow} 
         onHide={addModalClose}/>
         </Button>
         </ButtonToolbar>
-
-
-
         <Table className="mt-4"  striped bordered hover size="sm">
             <thead>
             <tr>
+                        <th>Seriali ID</th>
                         <th>Sezona ID</th>
-                        <th>Episoda ID</th>
                         <th>Veprime</th>
                         </tr>
             </thead>
             <tbody>
-                {sezoep.map(se=>
-                    <tr key={se.EpisodaID}>
-                        <td>{se.SezonaID}</td>
-                        <td>{se.EpisodaID}</td>
+                {sersez.map(ss=>
+                    <tr key={ss.SezonaID}>
+                        <td>{ss.SerialiID}</td>
+                        <td>{ss.SezonaID}</td>
                         <td>
                         <ButtonToolbar>
                                  
-                                   <Button className="mr-2" variant="danger" onClick={()=>this.deleteSezonaEpisodi(se.EpisodaID)}>
+                                   <Button className="mr-2" variant="danger" onClick={()=>this.deleteSerialiSezona(ss.SezonaID)}>
                                        Delete
                                    </Button>
                                   
@@ -105,14 +102,12 @@ render(){
                     </tr>)}
             </tbody>
         </Table>
+        
+            </div>
+        )
 
 
-
-
-            
-         </div>
-    )
-}
+    }
 
 
 
