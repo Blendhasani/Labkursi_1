@@ -1,0 +1,105 @@
+import React,{Component} from "react";
+import {Link} from 'react-router-dom';
+import {Helmet} from "react-helmet";
+import {Card} from 'react-bootstrap';
+
+
+export class DetajetESerialit extends Component{
+    constructor(props){
+        super(props)
+        this.state={seri:[]}
+    }
+
+
+    refreshList(){
+        let {id} = this.props.match.params;
+        fetch(process.env.REACT_APP_API+`seriali/sezonat/${id}`, {
+          method: 'GET'
+        })
+          .then(response=>response.json())
+          .then(data=>{
+              this.setState({seri:data});
+          });
+      }
+
+
+
+      componentDidMount(){
+        this.refreshList();
+    }
+
+    componentDidUpdate(){
+        this.refreshList();
+    }
+
+    render(){
+        const {seri}=this.state;
+        return(
+            <div className="container">
+                <Helmet>
+                <title>Detajet e Serialit</title>
+                </Helmet>
+                <div className="container d-flex mt-4 flex-wrap">
+                {seri.map(ser=>
+                <div key={ser.SerialiID} style={{width: '100%'}}>
+
+                    Seriali: <strong>{ser.Titulli}</strong>
+
+                <Card className="mt-4">
+                      <Card.Body>
+                          <Card.Body className="container d-flex mt-2 flex-wrap mx-auto">
+                      <Card.Text>
+                         Titulli: <strong>{ser.Titulli}</strong>
+                        </Card.Text>
+                        <Card.Text className="mx-auto">
+                         Kategoria: <strong>{ser.Kategoria}</strong>
+                        </Card.Text>
+                    
+                        <Card.Text>
+                         Numri i sezonave: <strong>{ser.NrSezonave}</strong>
+                        </Card.Text>
+
+                      <Card.Text>
+                         Data Postimit: <strong>{ser.Data_PostimitS}</strong>
+                        </Card.Text>
+                    
+                        <Card.Text>
+                         Emri dhe Mbiemri i Aktorit Kryesor:<Link className="nav-link d-inline" to={`/detajeteaktoritteserialit/${ser.AktortSId}`}><strong>{ser.Emri} {ser.Mbiemri}</strong></Link>
+                        </Card.Text>
+
+                        <Card.Text className="mx-auto">
+                         Emri dhe Mbiemri i Producentit:<Link className="nav-link d-inline" to={`/detajeteproducenteveteserialit/${ser.ProducentiSID}`}><strong>{ser.Emri1} {ser.Mbiemri1}</strong></Link>
+                        </Card.Text>
+
+                        <Card.Text>
+                         Emri dhe Mbiemri i Regjisorit:<Link className="nav-link d-inline" to={`/detajeteregjisoritteserialit/${ser.RegjisoriSID}`}><strong>{ser.Emri2} {ser.Mbiemri2}</strong></Link>
+                        </Card.Text>
+
+                        <Card.Text className="mx-auto">
+                         Emri dhe Mbiemri i Skenaristit: <strong>{ser.Emri3} {ser.Mbiemri3}</strong>
+                        </Card.Text>
+
+                      </Card.Body>
+                    </Card.Body>
+                  </Card>
+                
+                
+                <Card className="mt-4">
+                  <Card.Body>
+                    <Card.Text className="mx-auto">
+                         Pershkrimi i Serialit: <strong>{ser.PershkrimiS}</strong>
+                        </Card.Text>
+                      </Card.Body>
+                  </Card>
+
+                </div>
+                 
+                )}
+                </div>
+            </div>
+        )
+    }
+
+
+
+}

@@ -36,6 +36,12 @@ import {Sezona} from './Admin/Sezona/Sezona';
 import {Episoda} from './Admin/Episoda/Episoda';
 import{SezonaEpisodi} from './Admin/SezonaEpisodi/SezonaEpisodi';
 import {SerialiSezona} from './Admin/SerialiSezona/SerialiSezona';
+import {Serialet} from './Serialet/Serialet';
+
+import{DetajetESezones}from './Serialet/DetajetESezones';
+import{DetajetEEpisodave}from './Serialet/DetajetEEpisodave';
+import{DetajetEEpisodes}from './Serialet/DetajetEEpisodes';
+import{DetajetESerialit} from './Serialet/DetajetESerialit';
 function App() {
   return (
     <BrowserRouter>
@@ -45,7 +51,12 @@ function App() {
      <Switch>
      <Route path='/' component={Filmi} exact/>
      <Route path='/Filmat' component={Filmat} exact/>
+     <Route path='/Serialet' component={Serialet} exact/>
      <Route path='/detajetefilmit/:id' component={DetajetEFilmit} exact/>
+     <Route path='/detajeteserialit/:id' component={DetajetESerialit} exact/>
+     <Route path='/detajetesezones/:seid' component={DetajetESezones} exact/>
+     <Route path='/detajeteepisodave/:sezid' component={DetajetEEpisodave} exact/>
+     <Route path='/detajeteepisodes/:eppid' component={DetajetEEpisodes} exact/>
      <Route path='/Seriali' component={Seriali} exact/>
      <Route path='/Episoda' component={Episoda} exact/>
      <Route path='/Sezona' component={Sezona} exact/>

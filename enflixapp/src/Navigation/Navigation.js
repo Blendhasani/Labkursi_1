@@ -16,6 +16,12 @@ export class Navigation extends Component{
                     Filmat
                 </NavLink>
                 </Nav>
+
+                <Nav>
+                <NavLink className="nav-link d-inline p-1 text-light" to="/Serialet">
+                    Serialet
+                </NavLink>
+                </Nav>
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/aktorfilmi">
                     Aktort

@@ -35,6 +35,12 @@ app.UseStaticFiles(new StaticFileOptions
                     Path.Combine(Directory.GetCurrentDirectory(), "PhotosFilmi")),
     RequestPath = "/PhotosFilmi"
 });
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "PhotosSeriali")),
+    RequestPath = "/PhotosSeriali"
+});
 
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

@@ -11,7 +11,7 @@ export class EditSerialin extends Component{
     }
 
     fotoisnot = "pro.png";
-    image = process.env.REACT_APP_PHOTOPATH+this.fotoisnot;
+    image = process.env.REACT_APP_PHOTOPATHS+this.fotoisnot;
 
     
 refreshList(){
@@ -114,7 +114,7 @@ fotoSerialiSelect(event){
     })
     .then(res=>res.json())
     .then((result)=>{
-        this.image=process.env.REACT_APP_PHOTOPATH+result;
+        this.image=process.env.REACT_APP_PHOTOPATHS+result;
     },
     (error)=>{
         alert('Failed');
@@ -161,7 +161,7 @@ render(){
                                 </Form.Group>
                                 <Form.Group controlId="Foto_S">
                                     <Form.Label>Foto</Form.Label><br/>
-                                    <Image width="150px" height="150px" src={process.env.REACT_APP_PHOTOPATH+this.props.foto}/>
+                                    <Image width="150px" height="150px" src={process.env.REACT_APP_PHOTOPATHS+this.props.foto}/>
                                     <input onChange={this.fotoSerialiSelect} type="File" name="Foto_S" className="form-control"/>
                                 </Form.Group>
                                 

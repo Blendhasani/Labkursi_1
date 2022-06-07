@@ -95,7 +95,7 @@ render(){
                                 <td>{ser.Titulli}</td>
                                 <td>{ser.NrSezonave}</td>
                                 <td>{ser.PershkrimiS}</td>
-                                <td><Image width="70px" height="70px" src={`${process.env.REACT_APP_PHOTOPATH}${ser.Foto_S}`}/></td>
+                                <td><Image width="70px" height="70px" src={`${process.env.REACT_APP_PHOTOPATHS}${ser.Foto_S}`}/></td>
                                 <td>{ser.Kategoria}</td>
                                 <td>
                                 <ButtonToolbar>

@@ -15,8 +15,8 @@ export class AddSerialin extends Component{
 
 
 
-fotoisnot = "pro.png"
-image = process.env.REACT_APP_PHOTOPATH+this.fotoisnot;
+fotoisnot = "pro.png";
+image = process.env.REACT_APP_PHOTOPATHS+this.fotoisnot;
 
 
 
@@ -128,7 +128,7 @@ fotoSerialiSelect(event){
     })
     .then(res=>res.json())
     .then((result)=>{
-        this.image=process.env.REACT_APP_PHOTOPATH+result;
+        this.image=process.env.REACT_APP_PHOTOPATHS+result;
     },
     (error)=>{
         alert('Failed');
