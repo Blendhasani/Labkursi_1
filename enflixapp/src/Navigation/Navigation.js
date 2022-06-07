@@ -33,7 +33,7 @@ export class Navigation extends Component{
                 </Nav>
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
-                    Admin
+                    Dashboard
                 </NavLink>
                 </Nav>
             

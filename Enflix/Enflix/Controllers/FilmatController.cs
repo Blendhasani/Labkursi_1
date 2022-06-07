@@ -22,7 +22,31 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.Pershkrimi_Filmit, Linku_Filmit, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID";
+            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.Pershkrimi_Filmit, F.Linku_Filmit, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+        
+        [HttpGet("Kategoria/{id}")]
+        public JsonResult GetKategoria(int id)
+        {
+            string query = @"select F.FilmatId, F.Titulli, F.Foto, F.Data_Postimit, F.Pershkrimi_Filmit, F.Linku_Filmit, K.Kategoria from Filmat F INNER JOIN Kategorit_Filmit K ON K.KategoriaFID = F.KategoriaID where F.KategoriaID = " + id + @"";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
