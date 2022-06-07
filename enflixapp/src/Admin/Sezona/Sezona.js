@@ -64,6 +64,7 @@ export class Sezona extends Component{
                         <Dropdown.Item href="seriali">Seriali</Dropdown.Item>
                         <Dropdown.Item href="episoda">Episodat</Dropdown.Item>
                         <Dropdown.Item href="sezonaepisodi">Lidhjet Sezone Episod</Dropdown.Item>
+                        <Dropdown.Item href="serialisezona">Lidhjet Serial Sezone</Dropdown.Item>
                     </Dropdown.Menu>
          
                 </Dropdown>

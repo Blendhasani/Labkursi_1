@@ -66,6 +66,7 @@ render(){
                         <Dropdown.Item href="sezona">Sezonat</Dropdown.Item>
                         <Dropdown.Item href="episoda">Episodat</Dropdown.Item>
                         <Dropdown.Item href="sezonaepisodi">Lidhjet Sezone Episod</Dropdown.Item>
+                        <Dropdown.Item href="serialisezona">Lidhjet Serial Sezone</Dropdown.Item>
                     </Dropdown.Menu>
          
                 </Dropdown>
@@ -78,6 +79,7 @@ render(){
             <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
+                            <th>SerialiID</th>
                         <th>Titulli</th>
                         <th>Numri Sezonave</th>
                         <th>Pershkrimi</th>
@@ -89,6 +91,7 @@ render(){
                     <tbody>
                         {seri.map(ser=>
                             <tr key={ser.SerialiID}>
+                                <td>{ser.SerialiID}</td>
                                 <td>{ser.Titulli}</td>
                                 <td>{ser.NrSezonave}</td>
                                 <td>{ser.PershkrimiS}</td>
