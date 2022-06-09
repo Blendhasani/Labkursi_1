@@ -45,10 +45,11 @@ export class DetajetEEpisodes extends Component{
                 {seri.map(ser=>
                 <div key={ser.EpisodaID} style={{width: '100%'}}>
 
-                    Episoda: <strong>{ser.Titulli}</strong>
+                    
 
                 <ReactPlayer url={ser.Linku}
                 width='100%' controls/>
+                Episoda: "<strong>{ser.Titulli}</strong>"
                 
                 </div>
                 )}
