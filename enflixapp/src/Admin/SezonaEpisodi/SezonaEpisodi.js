@@ -85,6 +85,7 @@ render(){
             <tr>
                         <th>Sezona ID</th>
                         <th>Episoda ID</th>
+                        <th>Numri i episodes</th>
                         <th>Veprime</th>
                         </tr>
             </thead>
@@ -93,6 +94,7 @@ render(){
                     <tr key={se.EpisodaID}>
                         <td>{se.SezonaID}</td>
                         <td>{se.EpisodaID}</td>
+                        <td>{se.NrEpisodes}</td>
                         <td>
                         <ButtonToolbar>
                                  

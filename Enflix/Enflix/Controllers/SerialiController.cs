@@ -236,7 +236,7 @@ namespace Enflix.Controllers
         [HttpGet("{eppid}/episoda")]
         public JsonResult GetEpisoden(int eppid)
         {
-            string query = @"SELECT S.SerialiID,SZ.SezonaID,E.NrEpisodes ,E.Linku, E.Titulli FROM Seriali S INNER JOIN SerialiSezona SS ON S.SerialiID=SS.SerialiID INNER JOIN Sezona SZ ON SS.SezonaID=SZ.SezonaID INNER JOIN SezonaEpisodi SE ON SZ.SezonaID=SE.SezonaID INNER JOIN Episoda E ON SE.EpisodaID=E.EpisodaID WHERE SE.EpisodaID= " + eppid + @"";
+            string query = @"SELECT S.SerialiID,SZ.SezonaID,E.NrEpisodes ,E.PershkrimiE,E.Linku, E.Titulli FROM Seriali S INNER JOIN SerialiSezona SS ON S.SerialiID=SS.SerialiID INNER JOIN Sezona SZ ON SS.SezonaID=SZ.SezonaID INNER JOIN SezonaEpisodi SE ON SZ.SezonaID=SE.SezonaID INNER JOIN Episoda E ON SE.EpisodaID=E.EpisodaID WHERE SE.EpisodaID= " + eppid + @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
             SqlDataReader myReader;

@@ -49,7 +49,12 @@ export class DetajetEEpisodes extends Component{
 
                 <ReactPlayer url={ser.Linku}
                 width='100%' controls/>
-                Episoda: "<strong>{ser.Titulli}</strong>"
+                Episoda "<strong>{ser.Titulli}</strong>"
+                <Card className="mt-4">
+                    <Card.Body>
+                    <i>{ser.PershkrimiE}</i>
+                    </Card.Body>
+                </Card>
                 
                 </div>
                 )}

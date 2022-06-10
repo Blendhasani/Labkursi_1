@@ -3,7 +3,7 @@ import {Card, Dropdown} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 import {NavLink} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button ,ButtonToolbar} from 'react-bootstrap';
 
 export class DetajetEEpisodave extends Component{
     
@@ -42,20 +42,22 @@ componentDidUpdate(){
                 <div className="container d-flex flex-wrap">
                 {seri.map(ser=>
                  <Link key={ser.SerialiID} className="nav-link d-inline" to={`/detajeteepisodes/${ser.EpisodaID}`}>
-                <Card className="mt-4 d-flex flex-column" style={{ width: '70rem' }} key={ser.SerialiID}>
+                <Card className="mt-4" style={{ width: '17rem' ,height : '17rem' }} key={ser.SerialiID}>
                
                
                   <Card.Body>
-                    <Card.Title className="mb-4">Numri episodes : </Card.Title>
-                      <Card.Subtitle>{ser.NrEpisodes}</Card.Subtitle>
+                    <Card.Title className="mb-4 d-flex justify-content-center">Episoda: <strong> {ser.NrEpisodes}</strong> </Card.Title>
+                     
                   </Card.Body>
                   <Card.Body>
-                  <Card.Title className="mb-4">Titulli : </Card.Title>
-                      <Card.Subtitle>{ser.Titulli}</Card.Subtitle>
+                  <Card.Title className="mb-4 d-flex justify-content-center"><strong>"<i>{ser.Titulli}</i>"</strong> </Card.Title>
+                     
                   </Card.Body>
                   
                   <Card.Body>
+                  <ButtonToolbar className="d-flex justify-content-center">
                       <Button variant="primary">Luaj</Button>
+                      </ButtonToolbar>
                  </Card.Body>
                 </Card>
                 

@@ -65,19 +65,17 @@ componentDidUpdate(){
                  <Link key={ser.SerialiID} className="nav-link d-inline" to={`/detajeteepisodave/${ser.SezonaID}`}>
                      
                
-                <Card className="mt-4" key={ser.SerialiID}>
+                
                
-                  <Card className="mt-4 d-flex flex-row" style={{ width: '70rem' }}>
+                  <Card className="mt-4 d-flex flex-column" key={ser.SerialiID}style={{ width: '70rem' }}>
                   <Card.Body>
-                    <Card.Title className="mb-4">Sezona : </Card.Title>
-                      <Card.Subtitle>{ser.NrSezones}</Card.Subtitle>
+                    <Card.Title className="mb-4">Sezona <strong> {ser.NrSezones}</strong></Card.Title>
+                      
                       
                   </Card.Body>
-                  <Card.Body>
-                      <Button variant="primary">Luaj</Button>
-                      </Card.Body>
+                 
 
-                </Card>
+                
                 </Card>
                 </Link>
                 )}
