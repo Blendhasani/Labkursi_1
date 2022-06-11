@@ -42,7 +42,7 @@ export class Serialet extends Component{
                 {seri.map(ser=>
                 <Link key={ser.SerialiID} className="nav-link d-inline" to={`/detajetesezones/${ser.SerialiID}`}>
                   <Card style={{ width: '17rem' }}>
-                    <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATHS}${ser.Foto_S}`} />
+                    <Card.Img variant="top" style={{width: '271px', height: '325px'}} src={`${process.env.REACT_APP_PHOTOPATHS}${ser.Foto_S}`} />
                       <Card.Body>
                         <Card.Title>{ser.Titulli}</Card.Title>
                         <Card.Text>

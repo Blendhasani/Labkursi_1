@@ -62,7 +62,7 @@ export class Filmi extends Component{
                 {film.map(fil=>
                 <Link key={fil.FilmatId} className="nav-link d-inline" to={`/detajetefilmit/${fil.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
-                    <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
+                    <Card.Img variant="top" style={{width: '271px', height: '325px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
                       <Card.Body>
                         <Card.Title>{fil.Titulli}</Card.Title>
                         <Card.Text>
