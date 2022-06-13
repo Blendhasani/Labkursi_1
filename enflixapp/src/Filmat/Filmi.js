@@ -47,7 +47,7 @@ export class Filmi extends Component{
                 
                 <Accordion className="container mt-4 w-50">
                    <Accordion.Item eventKey="0">
-                     <Accordion.Header>Zgjedh Kategorin</Accordion.Header>
+                     <Accordion.Header>Zgjedh Kategorine</Accordion.Header>
                      {filmn.map(filmm=>
                        <Accordion.Body key={filmm.KategoriaFId}>
                         <Link className="nav-link d-inline" to={`/kategoritfilmit/${filmm.KategoriaFId}`}>
@@ -62,13 +62,13 @@ export class Filmi extends Component{
                 {film.map(fil=>
                 <Link key={fil.FilmatId} className="nav-link d-inline" to={`/detajetefilmit/${fil.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
-                    <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
+                    <Card.Img variant="top" style={{width: '271px', height: '325px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
                       <Card.Body>
-                        <Card.Title>{fil.Titulli}</Card.Title>
-                        <Card.Text>
+                        <Card.Title className="mb-4 d-flex justify-content-center">{fil.Titulli}</Card.Title>
+                        <Card.Text className="mb-4 d-flex justify-content-center">
                          Kategoria: {fil.Kategoria}
                         </Card.Text>
-                      <Button variant="primary">Shiko me Shume</Button>
+                      
                     </Card.Body>
                   </Card>
                 </Link>

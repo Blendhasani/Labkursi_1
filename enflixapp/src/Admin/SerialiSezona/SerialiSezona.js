@@ -82,6 +82,7 @@ export class SerialiSezona extends Component{
             <tr>
                         <th>Seriali ID</th>
                         <th>Sezona ID</th>
+                        <th>Numri i sezones</th>
                         <th>Veprime</th>
                         </tr>
             </thead>
@@ -90,6 +91,7 @@ export class SerialiSezona extends Component{
                     <tr key={ss.SezonaID}>
                         <td>{ss.SerialiID}</td>
                         <td>{ss.SezonaID}</td>
+                        <td>{ss.NrSezones}</td>
                         <td>
                         <ButtonToolbar>
                                  

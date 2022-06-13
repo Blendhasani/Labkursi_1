@@ -5,31 +5,30 @@ import {Helmet} from "react-helmet";
 import {Card} from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion'
 
-export class KategoritFilmit extends Component{
+
+export class KategoritSerialit extends Component{
     constructor(props){
         super(props)
-        this.state={katf:[], filmn:[]}
+        this.state={kats:[], sert:[]}
     }
 
     refreshList(){
         let {id} = this.props.match.params;
-        fetch(process.env.REACT_APP_API+`filmat/kategoria/${id}`, {
+        fetch(process.env.REACT_APP_API+`seriali/kategoria/${id}`, {
           method: 'GET'
         })
           .then(response=>response.json())
           .then(data=>{
-              this.setState({katf:data});
+              this.setState({kats:data});
           });
       }
-
-    refreshList1(){
-        fetch(process.env.REACT_APP_API+'kategoritefilmit')
+      refreshList1(){
+        fetch(process.env.REACT_APP_API+'kategoriteeserialit')
         .then(response=>response.json())
         .then(data=>{
-            this.setState({filmn:data});
+            this.setState({sert:data});
         });
     }
-
     componentDidMount(){
         this.refreshList();
         this.refreshList1();
@@ -39,25 +38,24 @@ export class KategoritFilmit extends Component{
         this.refreshList();
         this.refreshList1();
     }
-    
     render(){
-        const {katf, filmn}=this.state;
+        const {kats, sert}=this.state;
         return(
             <div className="container">
                 <Helmet>
-                <title>Filmat</title>
+                <title>Serialet</title>
                 </Helmet>
                 
                 <Accordion className="container mt-4 w-50">
                    <Accordion.Item eventKey="0">
                      <Accordion.Header>Zgjedh Kategorine</Accordion.Header>
                        <Accordion.Body>
-                        <Link className="nav-link" to={`/`}>
-                           Filmat
+                        <Link className="nav-link" to={`/serialet`}>
+                           Serialet
                         </Link>
-                        {filmn.map(filmm=>
-                        <Link key={filmm.KategoriaFId} className="nav-link" to={`/kategoritfilmit/${filmm.KategoriaFId}`}>
-                           {filmm.Kategoria}
+                        {sert.map(serr=>
+                        <Link key={serr.KategoriaSID} className="nav-link" to={`/kategoriteeserialit/${serr.KategoriaSID}`}>
+                           {serr.Kategoria}
                         </Link>
                         )}
                        </Accordion.Body>
@@ -65,16 +63,16 @@ export class KategoritFilmit extends Component{
                    </Accordion>
                 
                 <div className="container d-flex mt-4 flex-wrap">
-                {katf.map(kat=>
-                <Link key={kat.FilmatId} className="nav-link d-inline" to={`/detajetefilmit/${kat.FilmatId}`}>
+                {kats.map(kat=>
+                <Link key={kat.SerialiID} className="nav-link d-inline" to={`/detajetesezones/${kat.SerialiID}`}>
                   <Card style={{ width: '17rem' }}>
-                    <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATH}${kat.Foto}`} />
+                    <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATHS}${kat.Foto_S}`} />
                       <Card.Body>
-                        <Card.Title>{kat.Titulli}</Card.Title>
-                        <Card.Text>
-                         Kategoria: {kat.Kategoria}
+                        <Card.Title className="mb-4 d-flex justify-content-center">{kat.Titulli}</Card.Title>
+                        <Card.Text className="mb-4 d-flex justify-content-center">
+                         Kategoria : &nbsp;<strong>{kat.Kategoria}</strong> 
                         </Card.Text>
-                      <Button variant="primary">Shiko me Shume</Button>
+                    
                     </Card.Body>
                   </Card>
                 </Link>

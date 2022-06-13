@@ -36,6 +36,7 @@ import {Sezona} from './Admin/Sezona/Sezona';
 import {Episoda} from './Admin/Episoda/Episoda';
 import{SezonaEpisodi} from './Admin/SezonaEpisodi/SezonaEpisodi';
 import { KategoritFilmit } from './Filmat/KategoritFilmit';
+import { KategoritSerialit } from './Serialet/KategoritSerialit';
 import {SerialiSezona} from './Admin/SerialiSezona/SerialiSezona';
 import {Serialet} from './Serialet/Serialet';
 
@@ -85,6 +86,7 @@ function App() {
        <Route path='/producentfilmi' component={ProducentFilmi} exact/>
        <Route path='/producentseriali' component={ProducentSeriali} exact/>
        <Route path='/kategoritfilmit/:id' component={KategoritFilmit} exact/>
+       <Route path='/kategoritserialit/:id' component={KategoritSerialit} exact/>
        <Route component={PageNotFound} exact/>
      
        

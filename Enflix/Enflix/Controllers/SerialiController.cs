@@ -87,7 +87,28 @@ namespace Enflix.Controllers
             }
             return new JsonResult(table);
         }
+        [HttpGet("Kategoria/{id}")]
+        public JsonResult GetKategoria(int id)
+        {
+            string query = @"select S.SerialiID, S.Titulli , S.NrSezonave , S.PershkrimiS , S.Foto_S ,S.AktortSId, S.ProducentiSID ,S.RegjisoriSID ,S.SkenaristatSId , K.Kategoria FROM Seriali S INNER JOIN Kategorite_Serialit K ON K.KategoriaSID=S.KategoriaSID where S.KategoriaSID = " + id + @"";
 
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
         [HttpPost]
         public JsonResult Post(Seriali ser)
         {
@@ -213,7 +234,7 @@ namespace Enflix.Controllers
         [HttpGet("{sezid}/episodat")]
         public JsonResult GetEpisodat(int sezid)
         {
-            string query = @"SELECT SZ.SezonaID,E.NrEpisodes ,E.EpisodaID, E.Titulli FROM Seriali S INNER JOIN SerialiSezona SS ON S.SerialiID=SS.SerialiID INNER JOIN Sezona SZ ON SS.SezonaID=SZ.SezonaID INNER JOIN SezonaEpisodi SE ON SZ.SezonaID=SE.SezonaID INNER JOIN Episoda E ON SE.EpisodaID=E.EpisodaID WHERE SZ.SezonaID = " + sezid + @"";
+            string query = @"SELECT SZ.SezonaID,E.NrEpisodes ,E.EpisodaID, S.Foto_S, E.Titulli FROM Seriali S INNER JOIN SerialiSezona SS ON S.SerialiID=SS.SerialiID INNER JOIN Sezona SZ ON SS.SezonaID=SZ.SezonaID INNER JOIN SezonaEpisodi SE ON SZ.SezonaID=SE.SezonaID INNER JOIN Episoda E ON SE.EpisodaID=E.EpisodaID WHERE SZ.SezonaID = " + sezid + @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
             SqlDataReader myReader;
@@ -236,7 +257,7 @@ namespace Enflix.Controllers
         [HttpGet("{eppid}/episoda")]
         public JsonResult GetEpisoden(int eppid)
         {
-            string query = @"SELECT S.SerialiID,SZ.SezonaID,E.NrEpisodes ,E.Linku, E.Titulli FROM Seriali S INNER JOIN SerialiSezona SS ON S.SerialiID=SS.SerialiID INNER JOIN Sezona SZ ON SS.SezonaID=SZ.SezonaID INNER JOIN SezonaEpisodi SE ON SZ.SezonaID=SE.SezonaID INNER JOIN Episoda E ON SE.EpisodaID=E.EpisodaID WHERE SE.EpisodaID= " + eppid + @"";
+            string query = @"SELECT S.SerialiID,SZ.SezonaID,E.NrEpisodes ,E.PershkrimiE,E.Linku, E.Titulli FROM Seriali S INNER JOIN SerialiSezona SS ON S.SerialiID=SS.SerialiID INNER JOIN Sezona SZ ON SS.SezonaID=SZ.SezonaID INNER JOIN SezonaEpisodi SE ON SZ.SezonaID=SE.SezonaID INNER JOIN Episoda E ON SE.EpisodaID=E.EpisodaID WHERE SE.EpisodaID= " + eppid + @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
             SqlDataReader myReader;

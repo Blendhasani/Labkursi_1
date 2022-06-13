@@ -26,7 +26,7 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"SELECT SerialiID,SezonaID FROM SerialiSezona";
+            string query = @"SELECT S.SerialiID,S.SezonaID,SZ.NrSezones FROM SerialiSezona S INNER JOIN Sezona SZ on S.SezonaID=SZ.SezonaID ";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
