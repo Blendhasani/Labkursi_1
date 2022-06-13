@@ -42,24 +42,18 @@ componentDidUpdate(){
                 <div className="container d-flex flex-wrap">
                 {seri.map(ser=>
                  <Link key={ser.SerialiID} className="nav-link d-inline" to={`/detajeteepisodes/${ser.EpisodaID}`}>
-                <Card className="mt-4" style={{ width: '17rem' ,height : '17rem' }} key={ser.SerialiID}>
-               
-               
-                  <Card.Body>
-                    <Card.Title className="mb-4 d-flex justify-content-center">Episoda: <strong> {ser.NrEpisodes}</strong> </Card.Title>
-                     
-                  </Card.Body>
-                  <Card.Body>
-                  <Card.Title className="mb-4 d-flex justify-content-center"><strong>"<i>{ser.Titulli}</i>"</strong> </Card.Title>
-                     
-                  </Card.Body>
-                  
-                  <Card.Body>
-                  <ButtonToolbar className="d-flex justify-content-center">
+               <Card style={{ width: '17rem' }}>
+                    <Card.Img variant="top" style={{width: '271px', height: '325px'}} src={`${process.env.REACT_APP_PHOTOPATHS}${ser.Foto_S}`} />
+                      <Card.Body>
+                        <Card.Title className="mb-4 d-flex justify-content-center"><strong>Episoda : {ser.NrEpisodes}</strong></Card.Title>
+                        <Card.Text className="mb-4 d-flex justify-content-center">
+                         <strong><i>"{ser.Titulli}"</i></strong>
+                        </Card.Text>
+                        <ButtonToolbar className="mb-4 d-flex justify-content-center">
                       <Button variant="primary">Luaj</Button>
                       </ButtonToolbar>
-                 </Card.Body>
-                </Card>
+                    </Card.Body>
+                  </Card>
                 
                 </Link>
                 )}

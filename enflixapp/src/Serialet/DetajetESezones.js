@@ -23,13 +23,16 @@ refreshList(){
     });
 }
 
+
 componentDidMount(){
     this.refreshList();
+   
    
 }
 
 componentDidUpdate(){
     this.refreshList();
+   
     
 }
 
@@ -38,27 +41,9 @@ componentDidUpdate(){
       const {seri}=this.state;
         return(
             <div className="container">
-                <Helmet>
-                <title>Detajet e Sezones se Serialit</title>
-                </Helmet>
-               
-                <Dropdown className="d-flex justify-content-end mt-4">
-                    <Dropdown.Toggle variant="success">
-                        Serialet
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
+            
+              
 
-                   
-                    <Link  className="nav-link d-inline p-1 text-black" to={"/detajeteserialit"}>
-                            Detajet E Serialit
-                        </Link>
-                      
-                        
-                    </Dropdown.Menu>
-         
-                </Dropdown>
-
-    
  
                 <div className="container d-flex flex-wrap">
                 {seri.map(ser=>

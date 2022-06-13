@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import {Link} from 'react-router-dom';
 import {Helmet} from "react-helmet";
-import {Card} from 'react-bootstrap';
+import {Card,Dropdown} from 'react-bootstrap';
 
 
 export class DetajetESerialit extends Component{
@@ -39,6 +39,8 @@ export class DetajetESerialit extends Component{
                 <Helmet>
                 <title>Detajet e Serialit</title>
                 </Helmet>
+               
+                
                 <div className="container d-flex mt-4 flex-wrap">
                 {seri.map(ser=>
                 <div key={ser.SerialiID} style={{width: '100%'}}>
@@ -46,6 +48,9 @@ export class DetajetESerialit extends Component{
                     Seriali: <strong>{ser.Titulli}</strong>
 
                 <Card className="mt-4">
+                  <Card.Body className="mb-4 d-flex justify-content-center">
+                  <Card.Img variant="top" style={{width: '352px', height: '450px'}} src={`${process.env.REACT_APP_PHOTOPATHS}${ser.Foto_S}`} />
+                  </Card.Body>
                       <Card.Body>
                           <Card.Body className="container d-flex mt-2 flex-wrap mx-auto">
                       <Card.Text>
@@ -56,15 +61,15 @@ export class DetajetESerialit extends Component{
                         </Card.Text>
                     
                         <Card.Text>
-                         Numri i sezonave: <strong>{ser.NrSezonave}</strong>
+                         Numri i sezonave: <strong>{ser.NrSezonave} &nbsp;</strong>
                         </Card.Text>
 
                       <Card.Text>
-                         Data Postimit: <strong>{ser.Data_PostimitS}</strong>
+                         Data Postimit: <strong>{ser.Data_PostimitS} &nbsp;</strong>
                         </Card.Text>
                     
                         <Card.Text>
-                         Emri dhe Mbiemri i Aktorit Kryesor:<Link className="nav-link d-inline" to={`/detajeteaktoritteserialit/${ser.AktortSId}`}><strong>{ser.Emri} {ser.Mbiemri}</strong></Link>
+                         Emri dhe Mbiemri i Aktorit Kryesor<Link className="nav-link d-inline" to={`/detajeteaktoritteserialit/${ser.AktortSId}`}><strong>{ser.Emri} {ser.Mbiemri}</strong></Link>
                         </Card.Text>
 
                         <Card.Text className="mx-auto">

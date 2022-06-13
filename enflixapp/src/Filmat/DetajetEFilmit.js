@@ -58,9 +58,7 @@ export class DetajetEFilmit extends Component{
                       <Card.Text>
                          Data Postimit: <strong>{fil.Data_Postimit}</strong>
                         </Card.Text>
-                        <Card.Text className="mx-auto">
-                         Kategoria: <strong>{fil.Kategoria}</strong>
-                        </Card.Text>
+                       
                         
                         <Card.Text>
                          Emri dhe Mbiemri i Aktorit Kryesor:<Link className="nav-link d-inline" to={`/detajeteaktorittefilmit/${fil.AktortiFId}`}><strong>{fil.Emri} {fil.Mbiemri}</strong></Link>
