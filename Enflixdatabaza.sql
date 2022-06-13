@@ -258,7 +258,41 @@ Biografia varchar(8000)
 	INSERT INTO SerialiSezona VALUES(1,10)
 	INSERT INTO SerialiSezona VALUES(1,13)
 
-	 
+	
+	
+create table AspNetUsers(
+Id varchar(450) Primary Key,
+UserName varchar(256),
+NormalizedUserName varchar(256),
+Email varchar(256),
+NormalizedEmail varchar(256),
+EmailConfirmed bit not null,
+PasswordHash varchar(max),
+SecurityStamp varchar(max),
+ConcurrencyStamp varchar(max),
+PhoneNumber varchar(max),
+PhoneNumberConfirmed bit not null,
+TwoFactorEnabled bit not null,
+LockoutEnd datetimeoffset(7),
+LockoutEnabled bit not null,
+AccessFailedCount int not null
+)
+
+create table AspNetRoles(
+Id varchar(450) Primary Key,
+Name varchar(256),
+NormalizedName varchar(256),
+ConcurrencyStamp varchar(max)
+)
+
+
+create table AspNetUserRoles(
+UserId varchar(450) not null,
+RoleId varchar(450) not null,
+constraint UserRolesPk primary key (UserId, RoleId),
+constraint UserFk foreign key (UserId) references AspNetUsers(Id),
+constraint RoleFk foreign key (RoleId) references AspNetRoles(Id),
+)
 
 	 
 	 
