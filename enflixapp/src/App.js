@@ -44,6 +44,8 @@ import{DetajetESezones}from './Serialet/DetajetESezones';
 import{DetajetEEpisodave}from './Serialet/DetajetEEpisodave';
 import{DetajetEEpisodes}from './Serialet/DetajetEEpisodes';
 import{DetajetESerialit} from './Serialet/DetajetESerialit';
+import { RegisterAdmin } from './Admin/RegisterAdmin/RegisterAdmin';
+import { RegisterAdminView } from './Admin/RegisterAdmin/RegisterAdminView';
 function App() {
   return (
     <BrowserRouter>
@@ -54,6 +56,8 @@ function App() {
      <Route path='/' component={Filmi} exact/>
      <Route path='/Filmat' component={Filmat} exact/>
      <Route path='/Serialet' component={Serialet} exact/>
+     <Route path='/Admin/registersAdmin' component={RegisterAdmin} exact/>
+     <Route path='/registersview' component={RegisterAdminView} exact/>
      <Route path='/detajetefilmit/:id' component={DetajetEFilmit} exact/>
      <Route path='/detajeteserialit/:id' component={DetajetESerialit} exact/>
      <Route path='/detajetesezones/:seid' component={DetajetESezones} exact/>
