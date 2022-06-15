@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Enflix.Controllers
 {
@@ -45,6 +47,15 @@ namespace Enflix.Controllers
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
+            if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            if (!await _roleManager.RoleExistsAsync(UserRoles.User))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+            if (await _roleManager.RoleExistsAsync(UserRoles.User))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.User);
+            }
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
@@ -75,10 +86,6 @@ namespace Enflix.Controllers
             if (await _roleManager.RoleExistsAsync(UserRoles.Admin))
             {
                 await _userManager.AddToRoleAsync(user, UserRoles.Admin);
-            }
-            if (await _roleManager.RoleExistsAsync(UserRoles.Admin))
-            {
-                await _userManager.AddToRoleAsync(user, UserRoles.User);
             }
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
@@ -127,6 +134,36 @@ namespace Enflix.Controllers
                 );
 
             return token;
+        }
+
+
+        [HttpGet]
+        public JsonResult Get()
+        {
+            string query = @"SELECT ANR.Name,ANU.Email,ANU.UserName, ANUR.UserId
+                                FROM AspNetRoles ANR
+                                LEFT OUTER JOIN AspNetUserRoles ANUR
+                                ON ANR.Id=ANUR.RoleId
+                                LEFT OUTER JOIN AspNetUsers ANU
+                                ON ANU.Id=ANUR.UserId
+                                ORDER BY 3";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
         }
 
     }
