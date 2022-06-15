@@ -44,6 +44,7 @@ import{DetajetESezones}from './Serialet/DetajetESezones';
 import{DetajetEEpisodave}from './Serialet/DetajetEEpisodave';
 import{DetajetEEpisodes}from './Serialet/DetajetEEpisodes';
 import{DetajetESerialit} from './Serialet/DetajetESerialit';
+import{Login} from './Login/Login';
 function App() {
   return (
     <BrowserRouter>
@@ -64,6 +65,7 @@ function App() {
      <Route path='/Sezona' component={Sezona} exact/>
      <Route path='/SezonaEpisodi' component={SezonaEpisodi} exact/>
      <Route path='/SerialiSezona' component={SerialiSezona} exact/>
+     <Route path='/Login' component={Login} exact/>
        <Route path='/aktortefilmit' component={AktortEFilmit} exact/>
        <Route path='/detajeteaktorittefilmit/:id' component={DetajetEAktoritTeFilmit} exact/>
        <Route path='/aktorteserialit' component={AktortESerialit} exact/>
