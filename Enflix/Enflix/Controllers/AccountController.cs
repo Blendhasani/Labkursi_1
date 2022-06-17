@@ -166,5 +166,35 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
+
+
+        [HttpDelete("{emri}")]
+        public JsonResult Delete(string emri)
+        {
+            string query = @"delete ANUR
+                          FROM AspNetRoles ANR
+                          full JOIN AspNetUserRoles ANUR
+                          ON ANR.Id=ANUR.RoleId
+                          full JOIN AspNetUsers ANU
+                          ON ANU.Id=ANUR.UserId
+                          where ANR.Name is not null and ANU.UserName = '" + emri + @"'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Eshte fshire me sukses.");
+        }
     }
 }

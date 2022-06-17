@@ -293,8 +293,6 @@ constraint UserRolesPk primary key (UserId, RoleId),
 constraint UserFk foreign key (UserId) references AspNetUsers(Id),
 constraint RoleFk foreign key (RoleId) references AspNetRoles(Id),
 )
-	 
-	 
 
 
 

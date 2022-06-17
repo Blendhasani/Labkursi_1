@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {Table} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
+import {Link} from 'react-router-dom';
 
 import {Button,ButtonToolbar} from 'react-bootstrap';
 
@@ -8,7 +9,7 @@ import {Button,ButtonToolbar} from 'react-bootstrap';
 export class RegisterAdminView extends Component{
     constructor(props){
         super(props)
-        this.state={accs:[], pranimiModalShow:false}
+        this.state={accs:[]}
     }
 
     refreshList(){
@@ -26,6 +27,18 @@ export class RegisterAdminView extends Component{
         this.refreshList();
     }
     
+
+    deleteReg(Username){
+        if(window.confirm('Jeni i sigurt qe doni ta fshini?')){
+            fetch(process.env.REACT_APP_API+'account/'+Username,{
+                method:'DELETE',
+                header:{
+                    'Accept':'application/json',
+                    'Content-Type':'application/json'
+                }
+            })
+        }
+    }
     
     render(){
         const {accs}=this.state;
@@ -34,6 +47,12 @@ export class RegisterAdminView extends Component{
                 <Helmet>
                 <title>Register Admin</title>
                 </Helmet>
+
+                <ButtonToolbar>
+                <Link to='/Admin/registersAdmin'>
+                <Button className="mt-4" variant="primary">Shto Admin</Button>
+                </Link>
+                </ButtonToolbar>
 
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
@@ -52,11 +71,8 @@ export class RegisterAdminView extends Component{
                                 <td>{acc.Name}</td>
                                 <td>
                                <ButtonToolbar>
-                                   <Button className="mr-2" variant="info" onClick={()=>this.setState({})}>
-                                       Edit
-                                   </Button>
 
-                                   <Button className="mr-2" variant="danger" onClick={()=>this.deleteAkt()}>
+                                   <Button className="mr-2" variant="danger" onClick={()=>this.deleteReg(acc.UserName)}>
                                        Delete
                                    </Button>
 
