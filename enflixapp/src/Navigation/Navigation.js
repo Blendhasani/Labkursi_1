@@ -1,9 +1,17 @@
 import React,{Component} from 'react';
-import {NavLink} from 'react-router-dom';
-import {Navbar,Nav} from 'react-bootstrap';
+import {NavLink,useHistory} from 'react-router-dom';
+import {Navbar,Nav, NavDropdown} from 'react-bootstrap';
 
 export class Navigation extends Component{
+ 
+    //  logout() {
+    //     localStorage.clear();
+    //     history.push('/login')
+    // }
     render(){
+        let user=JSON.parse(localStorage.getItem('user-info'))
+        // const history = useHistory();
+        console.warn(user)
         return(
             <Navbar bg="info" expand="lg">
                 <NavLink className="navbar-brand" to="/">
@@ -47,6 +55,12 @@ export class Navigation extends Component{
                     Dashboard
                 </NavLink>
                 </Nav>
+
+                {/* <Nav>
+                    <NavDropdown title="User Name">
+                        <NavDropdown.Item >Logout</NavDropdown.Item>
+                    </NavDropdown>
+                </Nav> */}
             
                 </Navbar.Collapse>
             </Navbar>
