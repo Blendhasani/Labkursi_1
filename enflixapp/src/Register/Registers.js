@@ -4,9 +4,12 @@ import * as Yup from 'yup';
 import {Button,Form, Card} from 'react-bootstrap';
 import { Formik, Field, ErrorMessage } from 'formik';
 
-export class RegisterAdmin extends Component{
+export class Registers extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            account: []
+        }
         this.submitRegister=this.submitRegister.bind(this);
     }
 
@@ -33,10 +36,9 @@ export class RegisterAdmin extends Component{
         });
       }
 
-      
     submitRegister(event){
         event.preventDefault();
-        fetch(process.env.REACT_APP_API+'account/register-admin',{
+        fetch(process.env.REACT_APP_API+'account/register',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -50,7 +52,6 @@ export class RegisterAdmin extends Component{
         })
         .then(response => this.setState({account: response.data}))
         .catch(err => { alert(err) })
-        
     }
     
     render(){
@@ -62,13 +63,13 @@ export class RegisterAdmin extends Component{
         return(
             <div className="container">
                 <Helmet>
-                <title>Register Admin</title>
+                <title>Register</title>
                 </Helmet>
                 
                 
 
                 <Card style={{ width: '21rem', height: '24rem'}} className="m-auto mt-5 block-example border border-secondary shadow p-3 mb-5 bg-white rounded">
-                    <h6 className="text-center text-primary">Register Admin</h6>
+                    <h6 className="text-center text-primary">Register</h6>
                 <Formik
                 initialValues={initialValues}
                 validationSchema={this.validationSchema}
