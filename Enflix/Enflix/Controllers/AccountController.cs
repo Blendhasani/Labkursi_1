@@ -140,7 +140,7 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"SELECT ANR.Name,ANU.Email,ANU.UserName, ANUR.UserId,ANUR.RoleId
+            string query = @"SELECT ANR.Name,ANU.Email,ANU.UserName, ANU.NormalizedUserName, ANUR.UserId,ANUR.RoleId
                                 FROM AspNetRoles ANR
                                 LEFT OUTER JOIN AspNetUserRoles ANUR
                                 ON ANR.Id=ANUR.RoleId
@@ -168,17 +168,22 @@ namespace Enflix.Controllers
 
 
 
+        
+       
+        
+
+
         [HttpPut]
-        public JsonResult Put(string idja, string emri, string emaili)
+        public JsonResult Put(UpdatesRole rol)
         {
             string query = @"UPDATE ANUR
-SET ANUR.RoleId = '" + idja + @"'
-FROM AspNetUserRoles ANUR
-INNER JOIN AspNetRoles ANR
-ON ANUR.RoleId=ANR.Id
-INNER JOIN AspNetUsers ANU
-ON ANU.Id=ANUR.UserId
-WHERE ANU.NormalizedUserName='" + emri + @"' AND ANU.NormalizedEmail = '" + emaili + @"'";
+                          SET ANUR.RoleId = '" + rol.Id + @"'
+                          FROM AspNetUserRoles ANUR
+                          INNER JOIN AspNetRoles ANR
+                          ON ANUR.RoleId=ANR.Id
+                          INNER JOIN AspNetUsers ANU
+                          ON ANU.Id=ANUR.UserId
+                          WHERE ANU.NormalizedUserName='" + rol.emri + @"'";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
@@ -195,8 +200,7 @@ WHERE ANU.NormalizedUserName='" + emri + @"' AND ANU.NormalizedEmail = '" + emai
                     myCon.Close();
                 }
             }
-            return new JsonResult("Eshte ndryshuar me sukses!");
-
+            return new JsonResult("Eshte ndryshuar me sukses.");
         }
 
 

@@ -47,7 +47,7 @@ import { DetajetESerialit } from "./Serialet/DetajetESerialit";
 import { Login } from "./Login/Login";
 import { RegisterAdmin } from "./Admin/RegisterAdmin/RegisterAdmin";
 import { RegisterAdminView } from "./Admin/RegisterAdmin/RegisterAdminView";
-import { Auth0Provider } from '@auth0/auth0-react';
+//import { Auth0Provider } from '@auth0/auth0-react';
 
 import { Registers } from "./Register/Registers";
 
