@@ -16,6 +16,7 @@ export class KategoritSerialit extends Component{
         let {id} = this.props.match.params;
         fetch(process.env.REACT_APP_API+`seriali/kategoria/${id}`, {
           method: 'GET'
+     
         })
           .then(response=>response.json())
           .then(data=>{

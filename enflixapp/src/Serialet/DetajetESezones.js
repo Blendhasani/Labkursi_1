@@ -15,7 +15,9 @@ export class DetajetESezones extends Component{
 refreshList(){
   let {seid} = this.props.match.params;
   fetch(process.env.REACT_APP_API+`seriali/${seid}`, {
-    method: 'GET'
+    method: 'GET',
+
+
   })
     .then(response=>response.json())
     .then(data=>{

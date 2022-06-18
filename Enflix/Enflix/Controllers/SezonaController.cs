@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Enflix.Controllers
 {
-   
+    
     [Route("api/[controller]")]
     [ApiController]
     public class SezonaController : ControllerBase

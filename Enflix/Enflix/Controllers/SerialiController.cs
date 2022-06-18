@@ -7,8 +7,7 @@ using System.Data.SqlClient;
 
 namespace Enflix.Controllers
 {
-    
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SerialiController : ControllerBase
