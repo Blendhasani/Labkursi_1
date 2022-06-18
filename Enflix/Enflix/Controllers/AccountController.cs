@@ -167,6 +167,34 @@ namespace Enflix.Controllers
         }
 
 
+        [HttpPut]
+        public JsonResult Put(string RoleId, string Id)
+        {
+            string query = @"update AUR set AUR.RoleId = '" + RoleId + @"' FROM AspNetUserRoles AUR
+INNER JOIN AspNetRoles ANUR
+ON ANR.RoleId = ANUR.Id
+INNER JOIN AspNetUsers ANU
+ON ANU.Id = AUR.UserId WHERE ANU.Id = " + Id + @"";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Eshte ndryshuar me sukses.");
+        }
+
+
 
         [HttpDelete("{emri}")]
         public JsonResult Delete(string emri)
