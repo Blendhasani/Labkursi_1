@@ -169,16 +169,16 @@ namespace Enflix.Controllers
 
 
         [HttpPut]
-        public JsonResult Put(string idja , string emri ,string emaili)
+        public JsonResult Put(string idja, string emri, string emaili)
         {
             string query = @"UPDATE ANUR
-SET ANUR.RoleId = '" +idja+@"'
+SET ANUR.RoleId = '" + idja + @"'
 FROM AspNetUserRoles ANUR
 INNER JOIN AspNetRoles ANR
 ON ANUR.RoleId=ANR.Id
 INNER JOIN AspNetUsers ANU
 ON ANU.Id=ANUR.UserId
-WHERE ANU.NormalizedUserName='"+emri+@"' AND ANU.NormalizedEmail = '"+emaili+@"'";
+WHERE ANU.NormalizedUserName='" + emri + @"' AND ANU.NormalizedEmail = '" + emaili + @"'";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
@@ -195,34 +195,9 @@ WHERE ANU.NormalizedUserName='"+emri+@"' AND ANU.NormalizedEmail = '"+emaili+@"'
                     myCon.Close();
                 }
             }
+            return new JsonResult("Eshte ndryshuar me sukses!");
 
-        [HttpPut]
-        public JsonResult Put(string RoleId, string Id)
-        {
-            string query = @"update AUR set AUR.RoleId = '" + RoleId + @"' FROM AspNetUserRoles AUNR
-INNER JOIN AspNetRoles ANUR
-ON ANR.RoleId = ANUR.Id
-INNER JOIN AspNetUsers ANU
-ON ANU.Id = AUR.UserId WHERE ANU.Id = " + Id + @"";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult("Eshte ndryshuar me sukses.");
         }
-
 
 
         [HttpDelete("{emri}")]
@@ -253,5 +228,6 @@ ON ANU.Id = AUR.UserId WHERE ANU.Id = " + Id + @"";
             }
             return new JsonResult("Eshte fshire me sukses.");
         }
+
     }
 }
