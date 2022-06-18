@@ -44,6 +44,11 @@ import{DetajetESezones}from './Serialet/DetajetESezones';
 import{DetajetEEpisodave}from './Serialet/DetajetEEpisodave';
 import{DetajetEEpisodes}from './Serialet/DetajetEEpisodes';
 import{DetajetESerialit} from './Serialet/DetajetESerialit';
+<<<<<<< HEAD
+import{Login} from './Login/Login';
+import { RegisterAdmin } from './Admin/RegisterAdmin/RegisterAdmin';
+import { RegisterAdminView } from './Admin/RegisterAdmin/RegisterAdminView';
+=======
 
 import{Login} from './Login/Login';
 
@@ -51,6 +56,7 @@ import { RegisterAdmin } from './Admin/RegisterAdmin/RegisterAdmin';
 import { RegisterAdminView } from './Admin/RegisterAdmin/RegisterAdminView';
 import { Registers } from './Register/Registers';
 
+>>>>>>> da02010f75777a50230005512acd5dbdf52e903c
 function App() {
   return (
     <BrowserRouter>

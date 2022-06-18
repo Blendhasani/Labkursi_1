@@ -1,4 +1,5 @@
 ﻿using Enflix.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -6,6 +7,8 @@ using System.Data.SqlClient;
 
 namespace Enflix.Controllers
 {
+    
+
     [Route("api/[controller]")]
     [ApiController]
     public class SerialiController : ControllerBase
@@ -138,8 +141,7 @@ namespace Enflix.Controllers
         [HttpPut]
         public JsonResult Put(Seriali ser)
         {
-            string query = @"Update  Seriali set Titulli = '" + ser.Titulli + @"',NrSezonave = '" + ser.NrSezonave + @"',Data_PostimitS= '" + ser.Data_PostimitS + @"',PershkrimiS =  '" + ser.PershkrimiS + @"',Foto_S = '" + ser.Foto_S + @"',AktortSId = '" + ser.AktortSId + @"',ProducentiSID = '" + ser.ProducentiSID + @"',RegjisoriSID = '" + ser.RegjisoriSID + @"' ,SkenaristatSId = '" + ser.SkenaristatSId + @"',KategoriaSID = '" + ser.KategoriaSID + @"'WHERE SerialiID = "+ser.SerialiID+ @"";
-
+            string query = @"Update  Seriali set Titulli = '" + ser.Titulli + @"',NrSezonave = '" + ser.NrSezonave + @"',Data_PostimitS= '" + ser.Data_PostimitS + @"',PershkrimiS =  '" + ser.PershkrimiS + @"',Foto_S = '" + ser.Foto_S + @"',AktortSId = '" + ser.AktortSId + @"',ProducentiSID = '" + ser.ProducentiSID + @"',RegjisoriSID = '" + ser.RegjisoriSID + @"' ,SkenaristatSId = '" + ser.SkenaristatSId + @"',KategoriaSID = '" + ser.KategoriaSID + @"'WHERE SerialiID = " + ser.SerialiID + @"";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
             SqlDataReader myReader;

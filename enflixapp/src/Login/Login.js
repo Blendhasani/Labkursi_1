@@ -2,88 +2,66 @@
 import React,{Component} from "react";
 import {Helmet} from "react-helmet";
 import {Button,Form,ButtonToolbar} from 'react-bootstrap';
+
 export class Login extends Component{
 
-    constructor(props){
-        super(props)
-        this.submitPerdoruesi=this.submitPerdoruesi.bind(this)
-        this.state={seri:[]}
-    }
-  
 
-
-    refreshList(){
-        fetch(process.env.REACT_APP_API+'seriali')
-        .then(response=>response.json())
-        .then(data=>{
-            this.setState({seri:data});
-        });
+    constructor(){
+        super();
+        this.state={
+            Username:null,
+            Password:null,
+            login:false,
+            store:null
+        }
     }
 
-    submitPerdoruesi(event){
-        event.preventDefault();
-        fetch(process.env.REACT_APP_API+'account/login',{
+
+    login(){
+        fetch('http://localhost:5093/api/Account/login',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
                 'Content-Type' : 'application/json'
             },
-            body:JSON.stringify({
-                
-                Username:event.target.Username.value,
-                Password:event.target.Password.value
+            body:JSON.stringify(this.state)
+        }).then((response)=>{
+            response.json().then((result)=>{
+               console.warn("result",result); 
+               localStorage.setItem('login',JSON.stringify({
+                login:true,
+                token:result.token
+               }))
 
+               this.setState({login:true})
+               {window.location.href="/serialet"}
             })
         })
-
-        .then(res=>res.json())
-        .then((result)=>{
-        
-            alert(result);
-        },
-        (error)=>{
-            alert('Ka ndodhur nje gabim');
-        })
-  
-        {window.location.href="/"} 
-        
     }
 
-render(){
+   
+    render(){
 
-
-    return(
-        <div className="container d-flex justify-content-center mt-5 mb-5">
-            <Helmet>Login</Helmet>
-
-
-            <Form onSubmit={this.submitPerdoruesi}>
-  <Form.Group  className="mb-3 " controlId="Username">
-    <Form.Label>Username</Form.Label>
-    <Form.Control className="d-flex justify-content-center" style={{width: '17rem'}} type="text" name="Username" placeholder="Enter username" />
-  </Form.Group>
-
-  <Form.Group  className="mb-3" controlId="Password">
-    <Form.Label>Password</Form.Label>
-    <Form.Control className="d-flex justify-content-center" style={{width: '17rem'}} type="password" name="Password" placeholder="Password" />
-  </Form.Group >
-
-  <ButtonToolbar className="d-flex justify-content-center">
-  <Button variant="primary" type="submit">
-    Log in
-  </Button>
-  </ButtonToolbar>
-  
-</Form>
-
-
-        </div>
-
-
-
-    )
-
-
-}
+        return(
+            <div>
+                <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+               {  
+                !this.state.login?
+                <div>
+                    
+                <input type="text"   onChange={(event)=>{this.setState({Username:event.target.value})}}/>
+               
+               <input type="password"   onChange={(event)=>{this.setState({Password:event.target.value})}}/>
+              
+               <button onClick={()=>{this.login()}}>Log in</button>
+                </div>
+                :
+            <div>
+               
+            </div>
+               }
+                </div>
+        )
+    }
 
 }

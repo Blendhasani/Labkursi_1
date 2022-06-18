@@ -188,8 +188,7 @@ Biografia varchar(8000)
 
 
 
- 
-	  
+
 
 
 
@@ -296,7 +295,6 @@ constraint RoleFk foreign key (RoleId) references AspNetRoles(Id),
 
 
 
-	
 
 
 

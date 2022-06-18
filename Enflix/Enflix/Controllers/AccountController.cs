@@ -137,34 +137,8 @@ namespace Enflix.Controllers
         }
 
 
-        [HttpGet]
-        public JsonResult Get()
-        {
-            string query = @"SELECT ANR.Name,ANU.Email,ANU.UserName, ANUR.UserId
-                                FROM AspNetRoles ANR
-                                LEFT OUTER JOIN AspNetUserRoles ANUR
-                                ON ANR.Id=ANUR.RoleId
-                                LEFT OUTER JOIN AspNetUsers ANU
-                                ON ANU.Id=ANUR.UserId
-                                ORDER BY 3";
 
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
 
-                    myReader.Close();
-                    myCon.Close();
-                }
-            }
-            return new JsonResult(table);
-        }
 
 
         [HttpPut]
