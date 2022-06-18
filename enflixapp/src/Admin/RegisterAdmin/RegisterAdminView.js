@@ -2,14 +2,14 @@ import React,{Component} from "react";
 import {Table} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 import {Link} from 'react-router-dom';
-
+import {UpdateRoleRegister} from './UpdateRoleRegister'
 import {Button,ButtonToolbar} from 'react-bootstrap';
 
 
 export class RegisterAdminView extends Component{
     constructor(props){
         super(props)
-        this.state={accs:[]}
+        this.state={accs:[], updateModalShow:false}
     }
 
     refreshList(){
@@ -41,7 +41,8 @@ export class RegisterAdminView extends Component{
     }
     
     render(){
-        const {accs}=this.state;
+        const {accs, rolname, normname}=this.state;
+        let updateModalClose=()=>this.setState({updateModalShow:false});
         return(
             <div className="container">
                 <Helmet>
@@ -71,12 +72,19 @@ export class RegisterAdminView extends Component{
                                 <td>{acc.Name}</td>
                                 <td>
                                <ButtonToolbar>
+                                 
+                               <Button className="mr-2" variant="info" onClick={()=>this.setState({updateModalShow:true, rolname:acc.Name,
+                               normname:acc.NormalizedUserName})}>
+                                       Edit
+                                   </Button>
 
                                    <Button className="mr-2" variant="danger" onClick={()=>this.deleteReg(acc.UserName)}>
                                        Delete
                                    </Button>
 
-                                   
+                                   <UpdateRoleRegister show={this.state.updateModalShow} onHide={updateModalClose}
+                                   rolname={rolname}
+                                   normname={normname}/>
                                </ButtonToolbar>
 
                                 </td>

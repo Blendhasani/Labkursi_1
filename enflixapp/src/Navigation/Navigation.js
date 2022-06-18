@@ -9,9 +9,9 @@ export class Navigation extends Component{
     //     history.push('/login')
     // }
     render(){
-        let user=JSON.parse(localStorage.getItem('user-info'))
+        //let user=JSON.parse(localStorage.getItem('user-info'))
         // const history = useHistory();
-        console.warn(user)
+        //console.warn(user)
         return(
             <Navbar bg="info" expand="lg">
                 <NavLink className="navbar-brand" to="/">

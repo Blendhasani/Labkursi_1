@@ -140,7 +140,7 @@ namespace Enflix.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"SELECT ANR.Name,ANU.Email,ANU.UserName, ANUR.UserId,ANUR.RoleId
+            string query = @"SELECT ANR.Name,ANU.Email,ANU.UserName, ANU.NormalizedUserName, ANUR.UserId,ANUR.RoleId
                                 FROM AspNetRoles ANR
                                 LEFT OUTER JOIN AspNetUserRoles ANUR
                                 ON ANR.Id=ANUR.RoleId
@@ -166,44 +166,11 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
-
-
-        [HttpPut]
-        public JsonResult Put(string idja , string emri ,string emaili)
+        [Route("GetRole")]
+        [HttpGet]
+        public JsonResult GetRole()
         {
-            string query = @"UPDATE ANUR
-SET ANUR.RoleId = '" +idja+@"'
-FROM AspNetUserRoles ANUR
-INNER JOIN AspNetRoles ANR
-ON ANUR.RoleId=ANR.Id
-INNER JOIN AspNetUsers ANU
-ON ANU.Id=ANUR.UserId
-WHERE ANU.NormalizedUserName='"+emri+@"' AND ANU.NormalizedEmail = '"+emaili+@"'";
-
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
-            SqlDataReader skenarReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    skenarReader = myCommand.ExecuteReader();
-                    table.Load(skenarReader); ;
-
-                    skenarReader.Close();
-                    myCon.Close();
-                }
-            }
-
-        [HttpPut]
-        public JsonResult Put(string RoleId, string Id)
-        {
-            string query = @"update AUR set AUR.RoleId = '" + RoleId + @"' FROM AspNetUserRoles AUNR
-INNER JOIN AspNetRoles ANUR
-ON ANR.RoleId = ANUR.Id
-INNER JOIN AspNetUsers ANU
-ON ANU.Id = AUR.UserId WHERE ANU.Id = " + Id + @"";
+            string query = @"select ANR.Id, ANR.Name from AspNetRoles ANR";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
@@ -217,6 +184,37 @@ ON ANU.Id = AUR.UserId WHERE ANU.Id = " + Id + @"";
                     table.Load(myReader);
 
                     myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+
+        [HttpPut]
+        public JsonResult Put(UpdatesRole rol)
+        {
+            string query = @"UPDATE ANUR
+                          SET ANUR.RoleId = '" + rol.Id + @"'
+                          FROM AspNetUserRoles ANUR
+                          INNER JOIN AspNetRoles ANR
+                          ON ANUR.RoleId=ANR.Id
+                          INNER JOIN AspNetUsers ANU
+                          ON ANU.Id=ANUR.UserId
+                          WHERE ANU.NormalizedUserName='" + rol.emri + @"'";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader skenarReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    skenarReader = myCommand.ExecuteReader();
+                    table.Load(skenarReader); ;
+
+                    skenarReader.Close();
                     myCon.Close();
                 }
             }
