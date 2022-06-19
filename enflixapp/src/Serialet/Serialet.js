@@ -12,31 +12,29 @@ export class Serialet extends Component {
   }
 
   refreshList() {
-    console.log('hini');
     fetch(process.env.REACT_APP_API + "Seriali")
       .then((response) => response.json())
       .then((data) => {
-        console.log('data');
         this.setState({ seri: data });
       });
   }
 
-  // refreshList1(){
-  //   fetch(process.env.REACT_APP_API+'kategoriteeserialit')
-  //   .then(response=>response.json())
-  //   .then(data=>{
-  //       this.setState({sert:data});
-  //   });
-  // }
+  refreshList1(){
+    fetch(process.env.REACT_APP_API+'kategoriteeserialit')
+    .then(response=>response.json())
+    .then(data=>{
+        this.setState({sert:data});
+    });
+  }
 
   componentDidMount() {
     this.refreshList();
-    // this.refreshList1();
+    this.refreshList1();
   }
 
   componentDidUpdate() {
     this.refreshList();
-    // this.refreshList1();
+    this.refreshList1();
   }
 
   render() {
@@ -47,7 +45,7 @@ export class Serialet extends Component {
         <Helmet>
           <title>Serialet</title>
         </Helmet>
-        {/* <Accordion className="container mt-4 w-50">
+        <Accordion className="container mt-4 w-50">
                    <Accordion.Item eventKey="0">
                      <Accordion.Header>Zgjedh Kategorine</Accordion.Header>
                      {sert.map(serr=>
@@ -58,7 +56,7 @@ export class Serialet extends Component {
                        </Accordion.Body>
                        )}
                      </Accordion.Item>
-                   </Accordion> */}
+                   </Accordion>
         <div className="container d-flex mt-4 flex-wrap">
           {seri.map((ser) => (
             <Link

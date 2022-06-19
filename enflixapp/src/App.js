@@ -60,7 +60,8 @@ function App() {
         <Route path="/" component={Filmi} exact />
         <Route path="/Filmat" component={Filmat} exact />
 
-        <Route path="/Serialet" component={Serialet} exact />
+         <Route path="/Serialet" component={Serialet} exact />
+        
       
         
         <Route path="/Admin/registersAdmin" component={RegisterAdmin} exact />

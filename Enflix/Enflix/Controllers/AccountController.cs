@@ -166,11 +166,43 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
+        [HttpGet("GetCurrentUser")]
+        public async Task <ActionResult<string>> GetCurrentUser()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (user == null) return new BadRequestResult();
+            return user?.UserName;
+        }
 
 
-        
-       
-        
+
+        [Route("GetRole")]
+        [HttpGet]
+        public JsonResult GetRole()
+        {
+            string query = @"select ANR.Id, ANR.Name from AspNetRoles ANR";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("EnflixCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult(table);
+        }
+
+
+
+
+
 
 
         [HttpPut]

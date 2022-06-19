@@ -15,7 +15,7 @@ export class Navigation extends Component{
         return(
             <Navbar bg="info" expand="lg">
                 <NavLink className="navbar-brand" to="/">
-                    Enflix
+                   <b>&nbsp;Enflix</b> 
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav "/>
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -46,20 +46,24 @@ export class Navigation extends Component{
                 </NavLink>
                 </Nav>
                 <Nav>
-                <NavLink className="nav-link d-inline p-1 text-light" to="/login">
-                    Login
-                </NavLink>
-                </Nav>
-                <Nav>
-                <NavLink className="nav-link d-inline p-1 text-light" to="/registers">
-                    Register
-                </NavLink>
-                </Nav>
-                <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
                     Dashboard
                 </NavLink>
                 </Nav>
+                </Navbar.Collapse>
+                <Navbar.Collapse className="right">
+                <Nav  className="right">
+                <NavLink className="nav-link d-inline p-1 text-light mr-5" to="/login">
+                    <strong>Login&nbsp;</strong>
+                </NavLink>
+                </Nav>
+                <Nav className="right">
+                <NavLink className="nav-link d-inline p-1 text-light" to="/registers">
+                <strong>Register&nbsp;</strong>
+                </NavLink>
+                </Nav>
+                </Navbar.Collapse>
+                
 
                 {/* <Nav>
                     <NavDropdown title="User Name">
@@ -67,7 +71,7 @@ export class Navigation extends Component{
                     </NavDropdown>
                 </Nav> */}
             
-                </Navbar.Collapse>
+              
             </Navbar>
         )
     }
