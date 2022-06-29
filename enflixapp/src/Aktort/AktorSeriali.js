@@ -28,7 +28,7 @@ export class AktorSeriali extends Component{
     render(){
         const {akto}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Aktort E Serialit</title>
                 </Helmet>

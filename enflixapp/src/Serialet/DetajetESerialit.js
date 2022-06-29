@@ -35,7 +35,7 @@ export class DetajetESerialit extends Component{
     render(){
         const {seri}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Detajet e Serialit</title>
                 </Helmet>

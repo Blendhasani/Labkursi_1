@@ -32,7 +32,7 @@ export class DetajetEFilmit extends Component{
     render(){
         const {film}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Detaji I Filmit</title>
                 </Helmet>

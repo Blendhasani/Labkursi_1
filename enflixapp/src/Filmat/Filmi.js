@@ -1,6 +1,5 @@
 import React,{Component} from "react";
 import {Link} from 'react-router-dom';
-import {Button} from 'react-bootstrap';
 import {Helmet} from "react-helmet";
 import {Card} from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion'
@@ -40,7 +39,7 @@ export class Filmi extends Component{
     render(){
         const {film, filmn}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Filmat</title>
                 </Helmet>
@@ -60,7 +59,7 @@ export class Filmi extends Component{
                 
                 <div className="container d-flex mt-4 flex-wrap">
                 {film.map(fil=>
-                <Link key={fil.FilmatId} className="nav-link d-inline" to={`/detajetefilmit/${fil.FilmatId}`}>
+                <Link key={fil.FilmatId} className="nav-link d-inline shadow p-3 mb-5 bg-white rounded" to={`/detajetefilmit/${fil.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
                     <Card.Img variant="top" style={{width: '271px', height: '325px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
                       <Card.Body>
