@@ -34,7 +34,7 @@ export class RegisterAdmin extends Component{
       }
 
       
-      async submitRegister(event){
+      submitRegister(event){
         event.preventDefault();
         fetch(process.env.REACT_APP_API+'account/register-admin',{
             method:'POST',
