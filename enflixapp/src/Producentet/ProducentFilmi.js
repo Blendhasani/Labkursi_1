@@ -34,7 +34,7 @@ export class ProducentFilmi extends Component{
     render(){
         const {prods} = this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
             <Helmet>
             <title>Producentet e Filmit</title>
             </Helmet>    

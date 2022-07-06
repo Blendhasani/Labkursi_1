@@ -43,7 +43,7 @@ export class KategoritFilmit extends Component{
     render(){
         const {katf, filmn}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Filmat</title>
                 </Helmet>
@@ -66,7 +66,7 @@ export class KategoritFilmit extends Component{
                 
                 <div className="container d-flex mt-4 flex-wrap">
                 {katf.map(kat=>
-                <Link key={kat.FilmatId} className="nav-link d-inline" to={`/detajetefilmit/${kat.FilmatId}`}>
+                <Link key={kat.FilmatId} className="nav-link d-inline shadow p-3 mb-5 bg-white rounded" to={`/detajetefilmit/${kat.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
                     <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATH}${kat.Foto}`} />
                       <Card.Body>

@@ -34,7 +34,7 @@ export class RegisterAdmin extends Component{
       }
 
       
-    submitRegister(event){
+      async submitRegister(event){
         event.preventDefault();
         fetch(process.env.REACT_APP_API+'account/register-admin',{
             method:'POST',
@@ -48,9 +48,11 @@ export class RegisterAdmin extends Component{
                 Password:event.target.Password.value
             })
         })
-        .then(response => this.setState({account: response.data}))
-        .catch(err => { alert(err) })
-        
+        .then(res => res.json())
+  .then(data => alert(data.Message))
+  .catch(err => {
+    alert(err.Message);
+  });
     }
     
     render(){

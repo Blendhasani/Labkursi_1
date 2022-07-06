@@ -42,7 +42,7 @@ export class KategoritSerialit extends Component{
     render(){
         const {kats, sert}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Serialet</title>
                 </Helmet>
@@ -55,7 +55,7 @@ export class KategoritSerialit extends Component{
                            Serialet
                         </Link>
                         {sert.map(serr=>
-                        <Link key={serr.KategoriaSID} className="nav-link" to={`/kategoriteeserialit/${serr.KategoriaSID}`}>
+                        <Link key={serr.KategoriaSID} className="nav-link" to={`/kategoritserialit/${serr.KategoriaSID}`}>
                            {serr.Kategoria}
                         </Link>
                         )}
@@ -65,7 +65,7 @@ export class KategoritSerialit extends Component{
                 
                 <div className="container d-flex mt-4 flex-wrap">
                 {kats.map(kat=>
-                <Link key={kat.SerialiID} className="nav-link d-inline" to={`/detajetesezones/${kat.SerialiID}`}>
+                <Link key={kat.SerialiID} className="nav-link d-inline shadow p-3 mb-5 bg-white rounded" to={`/detajetesezones/${kat.SerialiID}`}>
                   <Card style={{ width: '17rem' }}>
                     <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATHS}${kat.Foto_S}`} />
                       <Card.Body>

@@ -41,7 +41,7 @@ export class Serialet extends Component {
     const { seri, sert } = this.state;
 
     return (
-      <div>
+      <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
         <Helmet>
           <title>Serialet</title>
         </Helmet>
@@ -61,7 +61,7 @@ export class Serialet extends Component {
           {seri.map((ser) => (
             <Link
               key={ser.SerialiID}
-              className="nav-link d-inline"
+              className="nav-link d-inline shadow p-3 mb-5 bg-white rounded"
               to={`/detajetesezones/${ser.SerialiID}`}
             >
               <Card style={{ width: "17rem" }}>

@@ -50,6 +50,8 @@ import { RegisterAdminView } from "./Admin/RegisterAdmin/RegisterAdminView";
 //import { Auth0Provider } from '@auth0/auth0-react';
 
 import { Registers } from "./Register/Registers";
+import { RrethNesh } from "./Admin/RrethNesh/RrethNesh";
+import { RrethNeshsh } from "./RrethNesh/RrethNeshsh";
 
 function App() {
   return (
@@ -161,6 +163,8 @@ function App() {
           component={KategoritSerialit}
           exact
         />
+        <Route path="/rrethnesh" component={RrethNesh} exact />
+        <Route path="/rrethneshh" component={RrethNeshsh} exact />
         <Route component={PageNotFound} exact />
       </Switch>
 

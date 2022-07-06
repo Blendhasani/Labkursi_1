@@ -294,59 +294,9 @@ constraint RoleFk foreign key (RoleId) references AspNetRoles(Id),
 )
 
 
---2
-UPDATE ANUR
-SET ANUR.RoleId = '3b09ab45-6bb4-463e-b3db-6f4cc6dbe499'
-FROM AspNetUserRoles ANUR
-INNER JOIN AspNetRoles ANR
-ON ANUR.RoleId=ANR.Id
-INNER JOIN AspNetUsers ANU
-ON ANU.Id=ANUR.UserId
-WHERE ANU.NormalizedUserName='enes' AND ANU.NormalizedEmail = 'enes@gmail.com'
-
-
-
-
-SELECT * FROM AspNetUsers
-SELECT * FROM AspNetRoles
-SELECT * FROM AspNetUserRoles
-
-
-
-
-SELECT ANUR.UserId,ANUR.RoleId, ANR.Name,ANU.Email,ANU.UserName,ANR.NormalizedName
-FROM AspNetRoles ANR
-LEFT OUTER JOIN AspNetUserRoles ANUR
-ON ANR.Id=ANUR.RoleId
-LEFT OUTER JOIN AspNetUsers ANU
-ON ANU.Id=ANUR.UserId
-ORDER BY 3
-
-
-
-
-
-
-
---me fshi lidhjen totale te userit
-delete ANUR
-FROM AspNetRoles ANR
-full JOIN AspNetUserRoles ANUR
-ON ANR.Id=ANUR.RoleId
-full JOIN AspNetUsers ANU
-ON ANU.Id=ANUR.UserId
-where ANR.Name is not Null and ANU.Email = 'lundergen@yahoo.com' and ANU.UserName ='Drago'
-
-
-
-
-
-
-
-
-
---me fshi user prej aspnetusers
-DELETE ANU
-FROM AspNetUsers ANU
-WHERE ANU.UserName = 'Drago'
+create table RrethNesh(
+TitulliId int Primary Key identity(1,1),
+Titulli varchar(256),
+Teksti varchar(8000)
+)
 

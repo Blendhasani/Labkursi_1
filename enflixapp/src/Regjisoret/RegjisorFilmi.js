@@ -32,7 +32,7 @@ refreshList(){
     render(){
         const{regs}=this.state;
         return(
-            <div className="container">
+            <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                     <title>Regjisoret E Filmit</title>
                 </Helmet>
