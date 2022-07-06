@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Modal,Button, Row, Col, Form} from 'react-bootstrap';
-import * as Yup from 'yup';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 
 
 
@@ -11,20 +10,30 @@ export class AddSerialiSezona extends Component{
     constructor(props){
         super(props);
         this.submitSS=this.submitSS.bind(this);
+        this.state={seri:[], sersez:[]}
     }
 
-
-
-    validationSchema() {
-        return Yup.object().shape({
-            SerialiID: Yup.number()
-            .required('SerialiID duhet te plotesohet'),
-            SezonaID: Yup.number()
-            .required('SezonaID duhet te plotesohet'),
-        
+    refreshList(){
+        fetch(process.env.REACT_APP_API+'seriali')
+        .then(response=>response.json())
+        .then(data=>{
+            this.setState({seri:data});
         });
-      
     }
+
+    refreshList1(){
+        fetch(process.env.REACT_APP_API+'sezona')
+        .then(response=>response.json())
+        .then(data=>{
+            this.setState({sersez:data});
+        });
+    }
+
+    componentDidMount(){
+        this.refreshList();
+        this.refreshList1();
+    }
+
 
     submitSS(event){
         event.preventDefault();
@@ -53,12 +62,6 @@ export class AddSerialiSezona extends Component{
     }
     
 render(){
-    const initialValues={
-        SerialiID : '',
-        SezonaID : '',
-        
-
-    };
 
 
     return(
@@ -77,41 +80,36 @@ render(){
                       <Row>
                       <Col sm={6}>
                       <Formik
-                         initialValues={initialValues}
-                         validationSchema={this.validationSchema}
                          onSubmit={this.submitSS}
                        >
-                           {({ submitSS, isValid, isSubmitting, dirty }) => (
+                           
                                <Form onSubmit={this.submitSS}>
                                    <Form.Group controlId="SerialiID">
-                                  <Form.Label>SerialiID</Form.Label>
-                                  <Field min="1" type="number" name="SerialiID" required placeholder="SerialiID" className="form-control" />
-                                  <ErrorMessage
-                                    name="SerialiID"
-                                    component="div"
-                                    className="text-danger"
-                                   />
+                                  <Form.Label>Seriali</Form.Label>
+                                  <Form.Control as="select">
+                                      {this.state.seri.map(ser=>
+                                      <option key={ser.SerialiID} value={ser.SerialiID}>{ser.Titulli}</option>)}
+                                   </Form.Control>
                                    </Form.Group>
                                    
                                    <Form.Group controlId="SezonaID">
-                                   <Form.Label>SezonaID</Form.Label>
-                                   <Field min="1" type="number" name="SezonaID" required placeholder="SezonaID" className="form-control" />
-                                   <ErrorMessage
-                                    name="SezonaID"
-                                    component="div"
-                                    className="text-danger"
-                                   />
+                                   <Form.Label>Sezona ID</Form.Label>
+                                   <Form.Control as="select">
+                                      {this.state.sersez.map(sers=>
+                                      <option key={sers.SezonaID} value={sers.SezonaID}>{sers.SezonaID
+                                      }</option>)}
+                                   </Form.Control>
                                    </Form.Group>
 
                                  
                                   
                               <Form.Group>
-                                  <Button disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
+                                  <Button variant="primary" type="submit">
                                       Shto Lidhjen
                                   </Button>
                               </Form.Group>
                                </Form>
-                               )}
+                               
                                </Formik>
                       </Col>
                       </Row>
@@ -126,7 +124,7 @@ render(){
 
 
 
-    )
+    ) 
 }
 
 

@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Modal,Button, Row, Col, Form} from 'react-bootstrap';
-import * as Yup from 'yup';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 
 
 
@@ -10,19 +9,31 @@ export class AddSezonaEpisodi extends Component{
     constructor(props){
         super(props);
         this.submitSE=this.submitSE.bind(this);
+        this.state={epis:[], sersez:[]}
     }
 
-
-    validationSchema() {
-        return Yup.object().shape({
-            SezonaID: Yup.number()
-            .required('SezonaID duhet te plotesohet'),
-            EpisodaID: Yup.number()
-            .required('EpisodaID duhet te plotesohet'),
-        
+    refreshList(){
+        fetch(process.env.REACT_APP_API+'episoda')
+        .then(response=>response.json())
+        .then(data=>{
+            this.setState({epis:data});
         });
-      
     }
+
+    refreshList1(){
+        fetch(process.env.REACT_APP_API+'sezona')
+        .then(response=>response.json())
+        .then(data=>{
+            this.setState({sersez:data});
+        });
+    }
+
+    componentDidMount(){
+        this.refreshList();
+        this.refreshList1();
+    }
+
+   
         submitSE(event){
             event.preventDefault();
             fetch(process.env.REACT_APP_API+'sezonaepisodi',{
@@ -49,12 +60,6 @@ export class AddSezonaEpisodi extends Component{
             {window.location.href="/SezonaEpisodi"}
         }
         render(){
-            const initialValues={
-                SezonaID : '',
-                EpisodaID : '',
-                
-      
-            };
 
 
 
@@ -73,41 +78,35 @@ export class AddSezonaEpisodi extends Component{
                             <Row>
                             <Col sm={6}>
                             <Formik
-                               initialValues={initialValues}
-                               validationSchema={this.validationSchema}
                                onSubmit={this.submitSE}
                              >
-                                 {({ submitSE, isValid, isSubmitting, dirty }) => (
+                                 
                                      <Form onSubmit={this.submitSE}>
                                          <Form.Group controlId="SezonaID">
-                                        <Form.Label>SezonaID</Form.Label>
-                                        <Field min="1" type="number" name="SezonaID" required placeholder="SezonaID" className="form-control" />
-                                        <ErrorMessage
-                                          name="SezonaID"
-                                          component="div"
-                                          className="text-danger"
-                                         />
+                                        <Form.Label>Sezona ID</Form.Label>
+                                        <Form.Control as="select">
+                                            {this.state.sersez.map(sers=>
+                                            <option key={sers.SezonaID} value={sers.SezonaID}>{sers.SezonaID}</option>)}
+                                        </Form.Control>
                                          </Form.Group>
                                          
                                          <Form.Group controlId="EpisodaID">
-                                         <Form.Label>EpisodaID</Form.Label>
-                                         <Field min="1" type="number" name="EpisodaID" required placeholder="EpisodaID" className="form-control" />
-                                         <ErrorMessage
-                                          name="EpisodaID"
-                                          component="div"
-                                          className="text-danger"
-                                         />
+                                         <Form.Label>Episoda</Form.Label>
+                                         <Form.Control as="select">
+                                            {this.state.epis.map(epi=>
+                                            <option key={epi.EpisodaID} value={epi.EpisodaID}>{epi.Titulli}</option>)}
+                                         </Form.Control>
                                          </Form.Group>
 
                                        
                                         
                                     <Form.Group>
-                                        <Button disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
+                                        <Button variant="primary" type="submit">
                                             Shto Lidhjen
                                         </Button>
                                     </Form.Group>
                                      </Form>
-                                     )}
+                                     
                                      </Formik>
                             </Col>
                             </Row>
