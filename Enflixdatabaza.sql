@@ -300,3 +300,9 @@ Titulli varchar(256),
 Teksti varchar(8000)
 )
 
+insert into RrethNesh values ('Rreth Nesh','Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolor hic, 
+fugit beatae soluta minus odit numquam ipsum similique nobis aut sint rerum sequi eos delectus et facere nemo quo quod incidunt repudiandae repellat
+consequatur ipsam maxime! Dolor, illo. Expedita quia quam repellendus alias officiis voluptates natus dicta veritatis tempora maiores dolorem ab, sed voluptatum 
+ex molestiae aspernatur odit voluptatibus nobis eius ad. Adipisci laborum tempore, voluptates distinctio temporibus reprehenderit error pariatur quisquam unde culpa 
+asperiores ex ratione. Impedit, doloremque. Eos vitae voluptatibus tempore sequi excepturi, iusto quas cupiditate, sapiente provident in voluptatem maiores soluta rem 
+voluptatum exercitationem perspiciatis ratione.')
