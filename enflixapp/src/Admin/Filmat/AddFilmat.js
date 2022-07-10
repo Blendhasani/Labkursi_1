@@ -222,7 +222,7 @@ export class AddFilmat extends Component{
 
                                     <Form.Group>
                                         <Button disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
-                                            Shto Aktorin
+                                            Shto Filmin
                                         </Button>
                                     </Form.Group>
                                 </Form>

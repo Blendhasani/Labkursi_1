@@ -52,7 +52,8 @@ export class RegisterAdmin extends Component{
   .then(data => alert(data.Message))
   .catch(err => {
     alert(err.Message);
-  });
+  })
+  {window.location.href="/Admin/registersAdmin"}
     }
     
     render(){
@@ -69,7 +70,9 @@ export class RegisterAdmin extends Component{
                 
                 
 
-                <Card style={{ width: '21rem', height: '24rem'}} className="m-auto mt-5 block-example border border-secondary shadow p-3 mb-5 bg-white rounded">
+                <Card>
+                <Card.Body className="m-auto mt-5 block-example border border-secondary shadow p-3 mb-5 bg-white rounded">
+                    <Card.Body>
                     <h6 className="text-center text-primary">Register Admin</h6>
                 <Formik
                 initialValues={initialValues}
@@ -113,6 +116,8 @@ export class RegisterAdmin extends Component{
                     </Form>
                     )}
                     </Formik>
+                    </Card.Body>
+                    </Card.Body>
                     </Card>
                             
             </div>

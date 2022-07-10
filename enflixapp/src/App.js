@@ -52,6 +52,7 @@ import { RegisterAdminView } from "./Admin/RegisterAdmin/RegisterAdminView";
 import { Registers } from "./Register/Registers";
 import { RrethNesh } from "./Admin/RrethNesh/RrethNesh";
 import { RrethNeshsh } from "./RrethNesh/RrethNeshsh";
+import { SkenaristetEFilmit } from "./Admin/SkenaristetEFilmit/SkenaristetEFilmit";
 
 function App() {
   return (
@@ -165,6 +166,7 @@ function App() {
         />
         <Route path="/rrethnesh" component={RrethNesh} exact />
         <Route path="/rrethneshh" component={RrethNeshsh} exact />
+        <Route path="/skenaristetefilmit" component={SkenaristetEFilmit} exact />
         <Route component={PageNotFound} exact />
       </Switch>
 

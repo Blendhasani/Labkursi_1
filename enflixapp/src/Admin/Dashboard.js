@@ -68,7 +68,7 @@ export class Dashboard extends Component{
                   </Card.Body>
                 </Card>
                 </NavLink>
-                <NavLink className="nav-link d-inline" to="#">
+                <NavLink className="nav-link d-inline" to="/skenaristetefilmit">
                 <Card className="mt-4" border="primary" style={{ width: '17rem', height: '10rem' }}>
                   <Card.Body>
                     <Card.Title className="text-primary d-flex justify-content-center">Skenaristet</Card.Title>

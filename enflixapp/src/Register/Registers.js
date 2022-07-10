@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import {Helmet} from "react-helmet";
 import * as Yup from 'yup';
+import {Link} from 'react-router-dom';
 import {Button,Form, Card} from 'react-bootstrap';
 import { Formik, Field, ErrorMessage } from 'formik';
 
@@ -51,12 +52,12 @@ export class Registers extends Component{
                 Password:event.target.Password.value
             })
         })
-
-        .then(response => this.setState({account: response.data}))
- 
-           
-      
-         .catch(err => { alert(err) })
+        .then(res => res.json())
+  .then(data => alert(data.Message))
+  .catch(err => {
+    alert(err.Message);
+  })
+  {window.location.href="/registers"}
         
     }
     
@@ -74,7 +75,9 @@ export class Registers extends Component{
              
                 
 
-                <Card style={{ width: '21rem', height: '24rem'}} className="m-auto mt-5 block-example border border-secondary shadow p-3 mb-5 bg-white rounded">
+                <Card>
+                <Card.Body className="m-auto mt-5 block-example border border-secondary shadow p-3 mb-5 bg-white rounded">
+                    <Card.Body>
                     <h6 className="text-center text-primary">Register</h6>
                 <Formik
                 initialValues={initialValues}
@@ -115,9 +118,12 @@ export class Registers extends Component{
                             Regjistrohu
                                 </Button>
                         </Form.Group>
+                        <h6 className="text-center text-black mt-4">Llogohu: <strong><Link to="/Login">Login</Link></strong></h6>
                     </Form>
                     )}
                     </Formik>
+                    </Card.Body>
+                    </Card.Body>
                     </Card>
                            
             </div>

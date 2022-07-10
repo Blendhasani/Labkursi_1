@@ -2,23 +2,22 @@ import React,{Component} from 'react';
 import {Modal, Button, Row, Col, Form} from 'react-bootstrap';
 
 
-export class EditRegjisoretEFilmit extends Component{
-
+export class EditSkenaristetEFilmit extends Component{
     constructor(props){
-        super(props);
-        this.submitRegjisorinF=this.submitRegjisorinF.bind(this);
+        super(props);  
+        this.submitSkenaristetF=this.submitSkenaristetF.bind(this);
     }
 
-    submitRegjisorinF(event){
+    submitSkenaristetF(event){
       event.preventDefault();
-      fetch(process.env.REACT_APP_API+"regjisoretefilmit",{
+      fetch(process.env.REACT_APP_API+"skenaristatefilmit",{
             method:'PUT',
             headers : {
                 'Accept':'application/json',
                 'Content-Type' : 'application/json'
             },
             body:JSON.stringify({
-                RegjisoriFID:event.target.RegjisoriFID.value,
+                SkenaristatId:event.target.SkenaristatId.value,
                 Emri:event.target.Emri.value,
                 Mbiemri:event.target.Mbiemri.value,
                 Biografia:event.target.Biografia.value
@@ -35,7 +34,7 @@ export class EditRegjisoretEFilmit extends Component{
           alert('Ka ndodhur nje gabim!');
           })
  
-          {window.location.href="/regjisoretefilmit"}
+          {window.location.href="/skenaristetefilmit"}
 
     }
 
@@ -46,32 +45,32 @@ export class EditRegjisoretEFilmit extends Component{
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header>
-                        <Modal.Title  id="contained-modal-title-vcenter">Update Regjisorin e Filmit</Modal.Title>
+                        <Modal.Title  id="contained-modal-title-vcenter">Update Skenaristin e Filmit</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
                         <Row>
                             <Col sm={6}>
-                                <Form onSubmit={this.submitRegjisorinF}>
-                                    <Form.Group controlId="RegjisoriFID">
-                                        <Form.Control  name="RegjisoriFID"required hidden defaultValue ={this.props.regid} 
-                                        placeholder="RegjisoriFID"/>
+                                <Form onSubmit={this.submitSkenaristetF}>
+                                    <Form.Group controlId="SkenaristatId">
+                                        <Form.Control  name="SkenaristatId"required hidden defaultValue ={this.props.skeid} 
+                                        placeholder="SkenaristatId"/>
                                     </Form.Group>
                                     <Form.Group controlId="Emri">
                                         <Form.Label>Emri</Form.Label>
-                                        <Form.Control type = "text" name="Emri" required defaultValue = {this.props.regemri} placeholder="Emri"/> 
+                                        <Form.Control type = "text" name="Emri" required defaultValue = {this.props.skeemri} placeholder="Emri"/> 
                                     </Form.Group>
                                     <Form.Group controlId="Mbiemri">
                                         <Form.Label>Mbiemri</Form.Label>
-                                        <Form.Control type = "text" name="Mbiemri" required defaultValue = {this.props.regmbiemri} placeholder="Mbiemri"/> 
+                                        <Form.Control type = "text" name="Mbiemri" required defaultValue = {this.props.skembiemri} placeholder="Mbiemri"/> 
                                     </Form.Group>
                                     <Form.Group controlId="Biografia">
                                         <Form.Label>Biografia</Form.Label>
-                                        <Form.Control as="textarea" name="Biografia" required defaultValue = {this.props.regbiografia} placeholder="Biografia"/> 
+                                        <Form.Control as="textarea" name="Biografia" required defaultValue = {this.props.skebiografia} placeholder="Biografia"/> 
                                     </Form.Group>
                                     <Form.Group>
                                         <Button variant="primary" type="submit">
-                                            Update Regjisorin
+                                            Update Skenaristin
                                         </Button>
                                     </Form.Group>
                                 </Form>
