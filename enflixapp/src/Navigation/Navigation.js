@@ -12,6 +12,7 @@ export class Navigation extends Component{
         //let user=JSON.parse(localStorage.getItem('user-info'))
         // const history = useHistory();
         //console.warn(user)
+        const token = (localStorage.getItem("token"));
         return(
             <Navbar bg="info" expand="lg">
                 <NavLink className="navbar-brand" to="/">
@@ -50,12 +51,13 @@ export class Navigation extends Component{
                     Rreth Nesh
                 </NavLink>
                 </Nav>
+                {token &&
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
                     Dashboard
                 </NavLink>
-                </Nav>
-                </Navbar.Collapse>
+                </Nav>}
+                </Navbar.Collapse> 
                 <Navbar.Collapse className="right">
                 <Nav  className="right">
                 <NavLink className="nav-link d-inline p-1 text-light mr-5" to="/login">

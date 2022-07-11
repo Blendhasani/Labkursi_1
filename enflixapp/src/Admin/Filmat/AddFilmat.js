@@ -77,7 +77,8 @@ export class AddFilmat extends Component{
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization' : 'bearer ' + (localStorage.getItem("token"))
             },
             body:JSON.stringify({
                 Titulli:event.target.Titulli.value,

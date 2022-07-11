@@ -8,6 +8,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Enflix.Controllers
 {

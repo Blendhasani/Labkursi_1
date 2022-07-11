@@ -66,7 +66,8 @@ export class EditFilmat extends Component{
             method:'PUT',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body:JSON.stringify({
                 FilmatId:event.target.FilmatId.value,

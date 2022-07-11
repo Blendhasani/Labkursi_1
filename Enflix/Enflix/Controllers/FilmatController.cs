@@ -96,6 +96,7 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
+        [Authorize]
         [HttpPost]
         public JsonResult Post(Filmat fil)
         {
@@ -119,6 +120,7 @@ namespace Enflix.Controllers
             return new JsonResult("Eshte shtuar me sukses.");
         }
 
+        [Authorize]
         [HttpPut]
         public JsonResult Put(Filmat fil)
         {

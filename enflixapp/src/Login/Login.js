@@ -11,14 +11,14 @@ export class Login extends Component{
         this.state={
             Username:null,
             Password:null,
-            login:false,
+            token:false,
             store:null
         }
     }
 
 
     login(){
-        fetch('http://localhost:5093/api/Account/login',{
+        fetch('http://localhost:5093/api/account/login',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -30,8 +30,8 @@ export class Login extends Component{
         }).then((response)=>{
             response.json().then((result)=>{
                console.warn("result",result); 
-               localStorage.setItem('login',JSON.stringify({
-                login:true,
+               localStorage.setItem('token',JSON.stringify({
+                token:true,
                 token:result.token
                }))
 
