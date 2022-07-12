@@ -194,13 +194,6 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
-        [HttpGet("GetCurrentUser")]
-        public async Task <ActionResult<string>> GetCurrentUser()
-        {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
-            if (user == null) return new BadRequestResult();
-            return user?.UserName;
-        }
 
 
 
@@ -292,6 +285,20 @@ namespace Enflix.Controllers
             }
             return new JsonResult("Eshte fshire me sukses.");
         }
+        [Authorize]
+        [HttpGet("GetCurrentUser")]
+        public async Task<ActionResult<string>> GetCurrentUser()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (user == null) return new BadRequestResult();
+            return user?.UserName;
+
+        }
 
     }
+
+
+
+  
+
 }
