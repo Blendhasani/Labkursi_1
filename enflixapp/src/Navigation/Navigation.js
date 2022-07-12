@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {NavLink,useHistory} from 'react-router-dom';
-import {Navbar,Nav, NavDropdown} from 'react-bootstrap';
+import {Navbar,Nav} from 'react-bootstrap';
 
 export class Navigation extends Component{
  
@@ -44,6 +44,11 @@ export class Navigation extends Component{
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/producentfilmi">
                     Producentet
+                </NavLink>
+                </Nav>
+                <Nav>
+                <NavLink className="nav-link d-inline p-1 text-light" to="/skenaristfilmi">
+                    Skenaristet
                 </NavLink>
                 </Nav>
                 <Nav>

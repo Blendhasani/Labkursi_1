@@ -10,6 +10,8 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Enflix.Services;
+using Enflix.Services.RoleService;
 
 namespace Enflix.Controllers
 {
@@ -20,12 +22,18 @@ namespace Enflix.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly IUserService _userService;
+        private readonly IRoleService _roleService;
 
         public AccountController(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IUserService userService,
+            IRoleService roleService)
         {
+            _roleService = roleService;
+            _userService = userService;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
@@ -123,8 +131,26 @@ namespace Enflix.Controllers
             return Unauthorized();
         }
 
+        [HttpGet, Authorize]
+        [Route("GetUser")]
+        public ActionResult<string> GetMe()
+        {
+            var userName = _userService.GetMyName();
+            return Ok(userName);
+        }
+
+
+        [HttpGet, Authorize]
+        [Route("GetRoles")]
+        public ActionResult<string> GetRoles()
+        {
+            var role = _roleService.GetMyRole();
+            return Ok(role);
+        }
+
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
+
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
             var token = new JwtSecurityToken(

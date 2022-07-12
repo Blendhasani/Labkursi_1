@@ -43,7 +43,7 @@ namespace Enflix.Controllers
             return new JsonResult(table);
         }
 
-        
+
         [HttpGet("Kategoria/{id}")]
         public JsonResult GetKategoria(int id)
         {

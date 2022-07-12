@@ -31,10 +31,6 @@ export class Filmi extends Component{
         this.refreshList1();
     }
 
-    componentDidUpdate(){
-        this.refreshList();
-        this.refreshList1();
-    }
     
     render(){
         const {film, filmn}=this.state;

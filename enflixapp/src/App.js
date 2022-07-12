@@ -53,6 +53,8 @@ import { Registers } from "./Register/Registers";
 import { RrethNesh } from "./Admin/RrethNesh/RrethNesh";
 import { RrethNeshsh } from "./RrethNesh/RrethNeshsh";
 import { SkenaristetEFilmit } from "./Admin/SkenaristetEFilmit/SkenaristetEFilmit";
+import { SkenaristFilmi } from "./Skenaristet/SkenaristFilmi";
+import { DetajetESkenaristveTeFilmit } from "./Skenaristet/DetajetESkenaristveTeFilmit";
 
 function App() {
   return (
@@ -167,6 +169,8 @@ function App() {
         <Route path="/rrethnesh" component={RrethNesh} exact />
         <Route path="/rrethneshh" component={RrethNeshsh} exact />
         <Route path="/skenaristetefilmit" component={SkenaristetEFilmit} exact />
+        <Route path="/skenaristfilmi" component={SkenaristFilmi} exact />
+        <Route path="/detajeteskenaristvetefilmit" component={DetajetESkenaristveTeFilmit} exact />
         <Route component={PageNotFound} exact />
       </Switch>
 

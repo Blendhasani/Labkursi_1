@@ -2,6 +2,7 @@
 import React,{Component} from "react";
 import {Helmet} from "react-helmet";
 import {Button,Form,ButtonToolbar} from 'react-bootstrap';
+import jwt from 'jwt-decode'
 
 export class Login extends Component{
 
@@ -27,18 +28,22 @@ export class Login extends Component{
                 "Access-Control-Allow-Credentials" : true             
             },
             body:JSON.stringify(this.state)
-        }).then((response)=>{
-            response.json().then((result)=>{
-               console.warn("result",result); 
-               localStorage.setItem('token',JSON.stringify({
-                token:true,
-                token:result.token
-               }))
-
-               this.setState({login:true})
-               {window.location.href="/serialet"}
-            })
+        }).then(response => response.text())
+        .then(result => {
+          if (result != ""){
+            console.log((jwt.result));
+            localStorage.setItem("token", result);
+            localStorage.setItem("role", jwt(result).GetMyRole);
+            {window.location.href="/serialet"}
+          } else{
+            alert('Incorrect email or password!');;
+          }
+  
         })
+        .catch(error => {
+          console.log(error);
+          
+        });
     }
 
    

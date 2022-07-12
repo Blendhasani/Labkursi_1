@@ -32,10 +32,6 @@ export class Serialet extends Component {
     this.refreshList1();
   }
 
-  componentDidUpdate() {
-    this.refreshList();
-    this.refreshList1();
-  }
 
   render() {
     const { seri, sert } = this.state;
