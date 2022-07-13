@@ -18,7 +18,7 @@ export class DetajetESkenaristveTeFilmit extends Component{
     })
     .then(response=>response.json())
     .then(data=>{
-      this.setState({regs:data});
+      this.setState({skens:data});
     });
   }
   componentDidMount(){
@@ -40,11 +40,11 @@ export class DetajetESkenaristveTeFilmit extends Component{
                 </Helmet>
                 <Dropdown  className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
-                    Detajet e Skenaristet te Filmit
+                    Detajet e Skenaristeve te Filmit
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <NavLink className="nav-link d-inline p-1 text-black" to="/skenaristfilmi">
-                      Skenaristet E Filmit
+                    <NavLink className="nav-link d-inline p-1 text-black" to="/skenaristseriali">
+                      Detajet e Skenaristeve te Serialit
                     </NavLink>
                   </Dropdown.Menu>
                 </Dropdown>

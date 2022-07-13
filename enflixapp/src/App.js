@@ -59,6 +59,8 @@ import{DergoMesazh} from "./Kontakti/DergoMesazh";
 import{Kontakti} from "./Admin/Kontaktet/Kontakti";
 import{DetajetEKontaktit} from "./Admin/Kontaktet/DetajetEKontaktit";
 import{SkenaristetESerialit} from "./Admin/SkenaristetESerialit/SkenaristetESerialit";
+import { SkenaristSeriali } from "./Skenaristet/SkenaristSeriali";
+import {DetajetESkenaristveTeSerialit} from './Skenaristet/DetajetESkenaristveTeSerialit'
 function App() {
   return (
     <BrowserRouter>
@@ -180,7 +182,9 @@ function App() {
         <Route path="/rrethneshh" component={RrethNeshsh} exact />
         <Route path="/skenaristetefilmit" component={SkenaristetEFilmit} exact />
         <Route path="/skenaristfilmi" component={SkenaristFilmi} exact />
-        <Route path="/detajeteskenaristvetefilmit" component={DetajetESkenaristveTeFilmit} exact />
+        <Route path="/detajeteskenaristvetefilmit/:id" component={DetajetESkenaristveTeFilmit} exact />
+        <Route path="/skenaristseriali" component={SkenaristSeriali} exact />
+        <Route path="/detajeteskenaristveteserialit/:id" component={DetajetESkenaristveTeSerialit} exact />
         <Route component={PageNotFound} exact />
       </Switch>
 
