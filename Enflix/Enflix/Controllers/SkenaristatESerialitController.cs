@@ -47,7 +47,7 @@ namespace Enflix.Controllers
         [HttpPost]
         public JsonResult Post(SkenaristetESerialit ske)
         {
-            string query = @"insert into Skenaristet_Filmit values ('" + ske.Emri + @"','" + ske.Mbiemri + @"','" + ske.Biografia + @"')";
+            string query = @"insert into Skenaristet_Serialit values ('" + ske.Emri + @"','" + ske.Mbiemri + @"','" + ske.Biografia + @"')";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EnflixCon");

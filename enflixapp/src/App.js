@@ -58,6 +58,7 @@ import { DetajetESkenaristveTeFilmit } from "./Skenaristet/DetajetESkenaristveTe
 import{DergoMesazh} from "./Kontakti/DergoMesazh";
 import{Kontakti} from "./Admin/Kontaktet/Kontakti";
 import{DetajetEKontaktit} from "./Admin/Kontaktet/DetajetEKontaktit";
+import{SkenaristetESerialit} from "./Admin/SkenaristetESerialit/SkenaristetESerialit";
 function App() {
   return (
     <BrowserRouter>
@@ -70,6 +71,7 @@ function App() {
          <Route path="/Serialet" component={Serialet} exact />
         
          <Route path="/dergomesazh" component={DergoMesazh} exact />
+         <Route path="/skenaristeteserialit" component={SkenaristetESerialit} exact />
          <Route path="/kontakti" component={Kontakti} exact />
         <Route path="/Admin/registersAdmin" component={RegisterAdmin} exact />
         <Route path="/registersview" component={RegisterAdminView} exact />

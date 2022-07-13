@@ -58,7 +58,7 @@ export class SkenaristetEFilmit extends Component{
                         Skenaristet e Filmit
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <NavLink className="nav-link d-inline p-1 text-black" to="#">
+                        <NavLink className="nav-link d-inline p-1 text-black" to="skenaristeteserialit">
                             Skenaristet e Serialit
                         </NavLink>
                     </Dropdown.Menu>
