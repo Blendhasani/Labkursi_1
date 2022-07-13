@@ -56,6 +56,11 @@ export class Navigation extends Component{
                     Rreth Nesh
                 </NavLink>
                 </Nav>
+                <Nav>
+                <NavLink className="nav-link d-inline p-1 text-light" to="/dergomesazh">
+                    Kontakti
+                </NavLink>
+                </Nav>
                 {token &&
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
@@ -69,11 +74,11 @@ export class Navigation extends Component{
                     <strong>Login&nbsp;</strong>
                 </NavLink>
                 </Nav>
-                <Nav className="right">
+                {/* <Nav className="right">
                 <NavLink className="nav-link d-inline p-1 text-light" to="/registers">
                 <strong>Register&nbsp;</strong>
                 </NavLink>
-                </Nav>
+                </Nav> */}
                 </Navbar.Collapse>
                 
 

@@ -306,3 +306,21 @@ consequatur ipsam maxime! Dolor, illo. Expedita quia quam repellendus alias offi
 ex molestiae aspernatur odit voluptatibus nobis eius ad. Adipisci laborum tempore, voluptates distinctio temporibus reprehenderit error pariatur quisquam unde culpa 
 asperiores ex ratione. Impedit, doloremque. Eos vitae voluptatibus tempore sequi excepturi, iusto quas cupiditate, sapiente provident in voluptatem maiores soluta rem 
 voluptatum exercitationem perspiciatis ratione.')
+
+
+
+Create Table Contact(
+
+KontaktID int primary key identity(1,1),
+Emri varchar (50),
+Mbiemri varchar (50),
+NrTel varchar(50),
+Mesazhi varchar(8000)
+
+
+)
+
+INSERT INTO Contact VALUES('Blend','Hasani','+38349578654','A do ta publikoni serialin Squid Game sezona 2?')
+
+
+SELECT * FROM Contact

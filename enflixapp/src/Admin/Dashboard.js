@@ -88,22 +88,23 @@ export class Dashboard extends Component{
                   </Card.Body>
                 </Card>
                 </NavLink>
-                <NavLink className="nav-link d-inline" to="#">
-                <Card className="mt-4" border="primary" style={{ width: '17rem', height: '10rem' }}>
-                  <Card.Body>
-                    <Card.Title className="text-primary d-flex justify-content-center">Kontaktet</Card.Title>
-                      <Card.Text className="text-center">
-                        Klikoni ketu per te menaxhuar Kontaktet.
-                      </Card.Text>
-                  </Card.Body>
-                </Card>
-                </NavLink>
+               
                 <NavLink className="nav-link d-inline" to="/registersview">
                 <Card className="mt-4" border="primary" style={{ width: '17rem', height: '10rem' }}>
                   <Card.Body>
                     <Card.Title className="text-primary d-flex justify-content-center">Regjistrimet</Card.Title>
                       <Card.Text className="text-center">
                         Klikoni ketu per te menaxhuar Regjistrimet.
+                      </Card.Text>
+                  </Card.Body>
+                </Card>
+                </NavLink>
+                <NavLink className="nav-link d-inline" to="/kontakti">
+                <Card className="mt-4" border="primary" style={{ width: '17rem', height: '10rem' }}>
+                  <Card.Body>
+                    <Card.Title className="text-primary d-flex justify-content-center">Kontaktet</Card.Title>
+                      <Card.Text className="text-center">
+                        Klikoni ketu per te menaxhuar Kontaktet.
                       </Card.Text>
                   </Card.Body>
                 </Card>

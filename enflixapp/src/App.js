@@ -55,7 +55,9 @@ import { RrethNeshsh } from "./RrethNesh/RrethNeshsh";
 import { SkenaristetEFilmit } from "./Admin/SkenaristetEFilmit/SkenaristetEFilmit";
 import { SkenaristFilmi } from "./Skenaristet/SkenaristFilmi";
 import { DetajetESkenaristveTeFilmit } from "./Skenaristet/DetajetESkenaristveTeFilmit";
-
+import{DergoMesazh} from "./Kontakti/DergoMesazh";
+import{Kontakti} from "./Admin/Kontaktet/Kontakti";
+import{DetajetEKontaktit} from "./Admin/Kontaktet/DetajetEKontaktit";
 function App() {
   return (
     <BrowserRouter>
@@ -67,8 +69,8 @@ function App() {
 
          <Route path="/Serialet" component={Serialet} exact />
         
-      
-        
+         <Route path="/dergomesazh" component={DergoMesazh} exact />
+         <Route path="/kontakti" component={Kontakti} exact />
         <Route path="/Admin/registersAdmin" component={RegisterAdmin} exact />
         <Route path="/registersview" component={RegisterAdminView} exact />
         <Route path="/registers" component={Registers} exact />
@@ -121,6 +123,12 @@ function App() {
           component={DetajetEProducenteveTeFilmit}
           exact
         />
+          <Route
+          path="/detajetekontaktit/:id"
+          component={DetajetEKontaktit}
+          exact
+        />
+       
         <Route
           path="/producenteteserialit"
           component={ProducentetESerialit}
