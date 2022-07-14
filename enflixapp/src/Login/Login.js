@@ -49,7 +49,7 @@ export class Login extends Component{
             response.json().then((result)=>{
                console.warn("result",result); 
                localStorage.setItem('token',JSON.stringify({
-                token:true,
+    
                 token:result.token
                }))
 

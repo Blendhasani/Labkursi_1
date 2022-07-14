@@ -1,9 +1,9 @@
 .footer{
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 20px;
     padding: 1rem;
     background-color: lightblue;
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;

@@ -36,11 +36,11 @@ refreshList(){
                 </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                 <Dropdown.Toggle variant="success">
-                    Regjisoret E Filmit
+                    Regjisoret e Filmit
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     <NavLink className="nav-link d-inline p-1 text-black" to="/regjisorseriali">
-                    Regjisoret E Serialit
+                    Regjisoret e Serialit
                     </NavLink>
                 </Dropdown.Menu>
                 </Dropdown>

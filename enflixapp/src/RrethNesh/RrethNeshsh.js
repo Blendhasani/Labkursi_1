@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import {Helmet} from "react-helmet";
+import img from '../images/c.jpg';
 
 export class RrethNeshsh extends Component{
     constructor(props){
@@ -29,6 +30,9 @@ export class RrethNeshsh extends Component{
                 <Helmet>
                 <title>Rreth Nesh</title>
                 </Helmet>
+                <div className="text-center">
+                <img src={img} alt="Logo" />
+                </div>
                 {rrethn.map(rre=>
                 <div key={rre.TitulliId} className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <strong>

@@ -52,7 +52,7 @@ export class AddKategoritEFilmit extends Component{
                 aria-labelledby="contained-modal-title-vcenter" centered>
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Shto Kategorin e filmit
+                            Shto Kategorine e filmit
                         </Modal.Title>
                     </Modal.Header>
 
@@ -78,7 +78,7 @@ export class AddKategoritEFilmit extends Component{
 
                                     <Form.Group>
                                         <Button disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
-                                            Shto Kategorin
+                                            Shto Kategorine
                                         </Button>
                                     </Form.Group>
                                 </Form>

@@ -47,22 +47,22 @@ export class KategoritEFilmit extends Component{
         return(
             <div className="container">
                 <Helmet>
-                <title>Kategorit E Filmit</title>
+                <title>Kategorite e Filmit</title>
                 </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
-                    Kategorit E Filmit
+                    Kategorite e Filmit
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <NavLink className="nav-link d-inline p-1 text-black" to="kategoriteserialit">
-                      Kategorit E Serialit
+                      Kategorite e Serialit
                     </NavLink>
                   </Dropdown.Menu>
                 </Dropdown>
 
                 <ButtonToolbar>
                     <Button className="mt-4" variant="primary" onClick={()=>this.setState({addModalShow:true})}>
-                       Shto Kategorin
+                       Shto Kategorine
                     </Button>
 
                     <AddKategoritEFilmit show={this.state.addModalShow}
@@ -71,7 +71,7 @@ export class KategoritEFilmit extends Component{
                 <Table className="mt-4" striped bordered hover size="sm">
                     <thead>
                         <tr>
-                        <th>Kategorit</th>
+                        <th>Kategorite</th>
                         <th>Veprime</th>
                         </tr>
                     </thead>
