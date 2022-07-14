@@ -10,8 +10,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-using Enflix.Services;
-using Enflix.Services.RoleService;
 
 namespace Enflix.Controllers
 {
@@ -22,18 +20,13 @@ namespace Enflix.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-        private readonly IUserService _userService;
-        private readonly IRoleService _roleService;
+        
 
         public AccountController(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            IConfiguration configuration,
-            IUserService userService,
-            IRoleService roleService)
+            IConfiguration configuration)
         {
-            _roleService = roleService;
-            _userService = userService;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
@@ -124,6 +117,10 @@ namespace Enflix.Controllers
 
                 return Ok(new
                 {
+                    id = user.Id,
+                    name = user.UserName,
+                    Email = user.Email,
+                    Role = userRoles,
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo
                 });
@@ -131,22 +128,28 @@ namespace Enflix.Controllers
             return Unauthorized();
         }
 
-        [HttpGet, Authorize]
+ /*       [HttpGet, Authorize]
         [Route("GetUser")]
-        public ActionResult<string> GetMe()
+        public async Task<ActionResult<User>> GetCurrentUser()
         {
-            var userName = _userService.GetMyName();
-            return Ok(userName);
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == User.FindFirstValue(ClaimTypes.Name));
+
+            if (user == null) return NotFound();
+
+            return CreateUserObject(user);
         }
 
-
-        [HttpGet, Authorize]
-        [Route("GetRoles")]
-        public ActionResult<string> GetRoles()
+        private User CreateUserObject(IdentityUser user)
         {
-            var role = _roleService.GetMyRole();
-            return Ok(role);
-        }
+            return new User
+            {
+               Id = user.Id,
+               Name = user.UserName,
+               Email = user.Email,
+               Role = _roleService.GetMyRole()
+            };
+        }*/
+
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
@@ -285,7 +288,7 @@ namespace Enflix.Controllers
             }
             return new JsonResult("Eshte fshire me sukses.");
         }
-        [Authorize]
+/*        [Authorize]
         [HttpGet("GetCurrentUser")]
         public async Task<ActionResult<string>> GetCurrentUser()
         {
@@ -293,7 +296,7 @@ namespace Enflix.Controllers
             if (user == null) return new BadRequestResult();
             return user?.UserName;
 
-        }
+        }*/
 
     }
 
