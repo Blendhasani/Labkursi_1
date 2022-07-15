@@ -57,7 +57,6 @@ export class Registers extends Component{
   .catch(err => {
     alert(err.Message);
   })
-  {window.location.href="/registers"}
         
     }
     
@@ -114,7 +113,7 @@ export class Registers extends Component{
                             />
                         </Form.Group>
                         <Form.Group className="mt-3 text-center">
-                        <Button  disabled={isSubmitting || !dirty || !isValid} variant="primary" type="submit">
+                        <Button  disabled={isSubmitting || !dirty || !isValid} onClick={() => {window.location.href="/registers"}} variant="primary" type="submit">
                             Regjistrohu
                                 </Button>
                         </Form.Group>

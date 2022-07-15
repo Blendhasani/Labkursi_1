@@ -81,7 +81,7 @@ export class DetajetESerialit extends Component{
                         </Card.Text>
 
                         <Card.Text className="mx-auto">
-                         Emri dhe Mbiemri i Skenaristit: <strong>{ser.Emri3} {ser.Mbiemri3}</strong>
+                         Emri dhe Mbiemri i Skenaristit:<Link className="nav-link d-inline" to={`/detajeteskenaristveteserialit/${ser.SkenaristatSId}`}> <strong>{ser.Emri3} {ser.Mbiemri3}</strong></Link>
                         </Card.Text>
 
                       </Card.Body>

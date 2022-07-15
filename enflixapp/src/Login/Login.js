@@ -48,10 +48,9 @@ export class Login extends Component{
         }).then((response)=>{
             response.json().then((result)=>{
                console.warn("result",result); 
-               localStorage.setItem('token',JSON.stringify({
-                token:true,
-                token:result.token
-               }))
+               localStorage.setItem('token',result.token);
+               localStorage.setItem('emri',result.name);
+               localStorage.setItem('role',result.Role);
 
                {window.location.href="/serialet"}
             })

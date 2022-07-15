@@ -70,7 +70,7 @@ export class DetajetEFilmit extends Component{
                          Emri dhe Mbiemri i Regjisorit:<Link className="nav-link d-inline" to={`/detajeteregjisorevetefilmit/${fil.RegjisoriFID}`}><strong>{fil.Emri2} {fil.Mbiemri2}</strong></Link>
                         </Card.Text>
                         <Card.Text className="mx-auto">
-                         Emri dhe Mbiemri i Skenaristit: <strong>{fil.Emri3} {fil.Mbiemri3}</strong>
+                         Emri dhe Mbiemri i Skenaristit:<Link className="nav-link d-inline" to={`/detajeteskenaristvetefilmit/${fil.SkenaristatId}`}> <strong>{fil.Emri3} {fil.Mbiemri3}</strong></Link>
                         </Card.Text>
                       </Card.Body>
                     </Card.Body>

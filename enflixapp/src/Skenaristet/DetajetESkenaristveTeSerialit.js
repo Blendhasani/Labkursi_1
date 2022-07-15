@@ -43,8 +43,8 @@ export class DetajetESkenaristveTeSerialit extends Component{
                     Detajet e Skenaristeve te Serialit
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <NavLink className="nav-link d-inline p-1 text-black" to="/skenaristfilmi">
-                    Detajet e Skenaristeve te Filmit
+                    <NavLink className="nav-link d-inline p-1 text-black" to="/skenaristseriali">
+                    Skenaristet e Serialit
                     </NavLink>
                   </Dropdown.Menu>
                 </Dropdown>

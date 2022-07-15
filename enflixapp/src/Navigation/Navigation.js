@@ -1,18 +1,24 @@
 import React,{Component} from 'react';
-import {NavLink,useHistory} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {Navbar,Nav} from 'react-bootstrap';
 
 export class Navigation extends Component{
  
-    //  logout() {
-    //     localStorage.clear();
-    //     history.push('/login')
-    // }
     render(){
-        //let user=JSON.parse(localStorage.getItem('user-info'))
-        // const history = useHistory();
-        //console.warn(user)
+        function logout(){
+            localStorage.clear();
+            {window.location.href="/"}
+          }
+
+          function Admin(){
+            const role = (localStorage.getItem("role"));
+            if (role === "Admin"){
+              return true;
+            }
+          }
+
         const token = (localStorage.getItem("token"));
+        const emri = (localStorage.getItem("emri"));
         return(
             <Navbar bg="info" expand="lg">
                 <NavLink className="navbar-brand" to="/">
@@ -61,32 +67,32 @@ export class Navigation extends Component{
                     Kontakti
                 </NavLink>
                 </Nav>
-                {token &&
+                {token && Admin() && 
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/dashboard">
                     Dashboard
                 </NavLink>
                 </Nav>}
                 </Navbar.Collapse> 
-                <Navbar.Collapse className="right">
+                {!token &&<Navbar.Collapse className="right">
                 <Nav  className="right">
                 <NavLink className="nav-link d-inline p-1 text-light mr-5" to="/login">
                     <strong>Login&nbsp;</strong>
                 </NavLink>
                 </Nav>
-                {/* <Nav className="right">
-                <NavLink className="nav-link d-inline p-1 text-light" to="/registers">
-                <strong>Register&nbsp;</strong>
+                </Navbar.Collapse>}
+                {token && <Navbar.Collapse className="right">
+                <Nav  className="right">
+                <NavLink className="nav-link d-inline p-1 text-light mr-5" onClick={logout} to="/">
+                     <strong>Logout&nbsp;</strong>
                 </NavLink>
-                </Nav> */}
-                </Navbar.Collapse>
-                
-
-                {/* <Nav>
-                    <NavDropdown title="User Name">
-                        <NavDropdown.Item >Logout</NavDropdown.Item>
-                    </NavDropdown>
-                </Nav> */}
+                </Nav>
+                <Nav  className="right">
+                <NavLink className="nav-link d-inline p-1 text-light mr-5" to="#">
+                     <strong>Mirsevini, {emri}&nbsp;</strong>
+                </NavLink>
+                </Nav>
+                </Navbar.Collapse>}
             
               
             </Navbar>

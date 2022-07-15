@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import {Link} from 'react-router-dom';
 import {Helmet} from "react-helmet";
-import {Card} from 'react-bootstrap';
+import {Card, Button} from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion'
 
 export class Filmi extends Component{
@@ -33,14 +33,18 @@ export class Filmi extends Component{
 
     
     render(){
+        const token = (localStorage.getItem("token"));
         const {film, filmn}=this.state;
         return(
             <div className="container shadow p-3 mb-5 bg-white rounded mt-4">
                 <Helmet>
                 <title>Filmat</title>
                 </Helmet>
+                {!token && <h1 className="text-center">Duhet te Llogoheni: <Link to="/login"><Button variant="primary" type="submit">
+                            Login
+                                </Button></Link></h1>}
                 
-                <Accordion className="container mt-4 w-50">
+                {token &&<Accordion className="container mt-4 w-50">
                    <Accordion.Item eventKey="0">
                      <Accordion.Header>Zgjedh Kategorine</Accordion.Header>
                      {filmn.map(filmm=>
@@ -51,9 +55,9 @@ export class Filmi extends Component{
                        </Accordion.Body>
                        )}
                      </Accordion.Item>
-                   </Accordion>
+                   </Accordion>}
                 
-                <div className="container d-flex mt-4 flex-wrap">
+                {token && <div className="container d-flex mt-4 flex-wrap">
                 {film.map(fil=>
                 <Link key={fil.FilmatId} className="nav-link d-inline shadow p-3 mb-5 bg-white rounded" to={`/detajetefilmit/${fil.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
@@ -69,6 +73,7 @@ export class Filmi extends Component{
                 </Link>
                 )}
                 </div>
+    }
             </div>
         )
     }

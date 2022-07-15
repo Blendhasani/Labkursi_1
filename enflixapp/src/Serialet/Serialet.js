@@ -34,6 +34,7 @@ export class Serialet extends Component {
 
 
   render() {
+    const token = (localStorage.getItem("token"));
     const { seri, sert } = this.state;
 
     return (
@@ -41,7 +42,11 @@ export class Serialet extends Component {
         <Helmet>
           <title>Serialet</title>
         </Helmet>
-        <Accordion className="container mt-4 w-50">
+        {!token && <h1 className="text-center">Duhet te Llogoheni: <Link to="/login"><Button variant="primary" type="submit">
+                            Login
+                                </Button></Link></h1>}
+
+        {token &&<Accordion className="container mt-4 w-50">
                    <Accordion.Item eventKey="0">
                      <Accordion.Header>Zgjedh Kategorine</Accordion.Header>
                      {sert.map(serr=>
@@ -52,8 +57,9 @@ export class Serialet extends Component {
                        </Accordion.Body>
                        )}
                      </Accordion.Item>
-                   </Accordion>
-        <div className="container d-flex mt-4 flex-wrap">
+                   </Accordion>}
+                  
+        {token &&<div className="container d-flex mt-4 flex-wrap">
           {seri.map((ser) => (
             <Link
               key={ser.SerialiID}
@@ -77,7 +83,7 @@ export class Serialet extends Component {
               </Card>
             </Link>
           ))}
-        </div>
+        </div>}
       </div>
     );
   }
