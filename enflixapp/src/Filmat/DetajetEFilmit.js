@@ -55,22 +55,22 @@ export class DetajetEFilmit extends Component{
                         </Card.Text>
                     
 
-                      <Card.Text>
+                      <Card.Text  className="mx-auto">
                          Data Postimit: <strong>{fil.Data_Postimit}</strong>
                         </Card.Text>
                        
                         
                         <Card.Text>
-                         Emri dhe Mbiemri i Aktorit Kryesor:<Link className="nav-link d-inline" to={`/detajeteaktorittefilmit/${fil.AktortiFId}`}><strong>{fil.Emri} {fil.Mbiemri}</strong></Link>
+                         Aktori Kryesor:<Link className="nav-link d-inline" to={`/detajeteaktorittefilmit/${fil.AktortiFId}`}><strong>{fil.Emri} {fil.Mbiemri}</strong></Link>
                         </Card.Text>
                         <Card.Text className="mx-auto">
-                         Emri dhe Mbiemri i Producentit:<Link className="nav-link d-inline" to={`/detajeteproducentevetefilmit/${fil.ProducentiID}`}><strong>{fil.Emri1} {fil.Mbiemri1}</strong></Link>
+                         Producenti:<Link className="nav-link d-inline" to={`/detajeteproducentevetefilmit/${fil.ProducentiID}`}><strong>{fil.Emri1} {fil.Mbiemri1}</strong></Link>
                         </Card.Text>
                         <Card.Text>
-                         Emri dhe Mbiemri i Regjisorit:<Link className="nav-link d-inline" to={`/detajeteregjisorevetefilmit/${fil.RegjisoriFID}`}><strong>{fil.Emri2} {fil.Mbiemri2}</strong></Link>
+                         Regjisori:<Link className="nav-link d-inline" to={`/detajeteregjisorevetefilmit/${fil.RegjisoriFID}`}><strong>{fil.Emri2} {fil.Mbiemri2}</strong></Link>
                         </Card.Text>
                         <Card.Text className="mx-auto">
-                         Emri dhe Mbiemri i Skenaristit:<Link className="nav-link d-inline" to={`/detajeteskenaristvetefilmit/${fil.SkenaristatId}`}> <strong>{fil.Emri3} {fil.Mbiemri3}</strong></Link>
+                         Skenaristi:<Link className="nav-link d-inline" to={`/detajeteskenaristvetefilmit/${fil.SkenaristatId}`}><strong>{fil.Emri3} {fil.Mbiemri3}</strong></Link>
                         </Card.Text>
                       </Card.Body>
                     </Card.Body>
@@ -80,7 +80,7 @@ export class DetajetEFilmit extends Component{
                 <Card className="mt-4">
                   <Card.Body>
                     <Card.Text className="mx-auto">
-                         Pershkrimi i Filmit: <strong>{fil.Pershkrimi_Filmit}</strong>
+                    <strong>Pershkrimi i Filmit: </strong>{fil.Pershkrimi_Filmit}
                         </Card.Text>
                       </Card.Body>
                   </Card>

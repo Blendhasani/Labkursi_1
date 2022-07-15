@@ -61,10 +61,10 @@ export class Filmi extends Component{
                 {film.map(fil=>
                 <Link key={fil.FilmatId} className="nav-link d-inline shadow p-3 mb-5 bg-white rounded" to={`/detajetefilmit/${fil.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
-                    <Card.Img variant="top" style={{width: '271px', height: '325px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
+                    <Card.Img variant="top" style={{width: '271px', height: '335px'}} src={`${process.env.REACT_APP_PHOTOPATH}${fil.Foto}`} />
                       <Card.Body>
-                        <Card.Title className="mb-4 d-flex justify-content-center">{fil.Titulli}</Card.Title>
-                        <Card.Text className="mb-4 d-flex justify-content-center">
+                        <Card.Title className="mb-4 d-flex justify-content-center text-center">{fil.Titulli}</Card.Title>
+                        <Card.Text className="mb-4 d-flex justify-content-center text-center">
                          Kategoria: {fil.Kategoria}
                         </Card.Text>
                       

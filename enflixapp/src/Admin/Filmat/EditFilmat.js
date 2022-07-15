@@ -191,7 +191,7 @@ export class EditFilmat extends Component{
 
                                     <Form.Group>
                                         <Button variant="primary" type="submit">
-                                            Update Aktorin
+                                            Update Filmin
                                         </Button>
                                     </Form.Group>
                                 </Form>

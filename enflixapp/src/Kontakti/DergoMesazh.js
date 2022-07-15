@@ -91,7 +91,7 @@ render(){
                 </Helmet>
 
             
-                <Card>
+                <Card className="mt-5">
                 <Card.Body className="m-auto mt-5 block-example border border-secondary shadow p-3 mb-5 bg-white rounded">
                     <Card.Body>
                     <h6 className="text-center text-primary">Contact</h6>

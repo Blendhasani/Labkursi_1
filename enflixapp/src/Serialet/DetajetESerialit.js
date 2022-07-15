@@ -69,19 +69,19 @@ export class DetajetESerialit extends Component{
                         </Card.Text>
                     
                         <Card.Text>
-                         Emri dhe Mbiemri i Aktorit Kryesor<Link className="nav-link d-inline" to={`/detajeteaktoritteserialit/${ser.AktortSId}`}><strong>{ser.Emri} {ser.Mbiemri}</strong></Link>
+                          Aktori Kryesor<Link className="nav-link d-inline" to={`/detajeteaktoritteserialit/${ser.AktortSId}`}><strong>{ser.Emri} {ser.Mbiemri}</strong></Link>
                         </Card.Text>
 
                         <Card.Text className="mx-auto">
-                         Emri dhe Mbiemri i Producentit:<Link className="nav-link d-inline" to={`/detajeteproducenteveteserialit/${ser.ProducentiSID}`}><strong>{ser.Emri1} {ser.Mbiemri1}</strong></Link>
+                          Producenti:<Link className="nav-link d-inline" to={`/detajeteproducenteveteserialit/${ser.ProducentiSID}`}><strong>{ser.Emri1} {ser.Mbiemri1}</strong></Link>
                         </Card.Text>
 
                         <Card.Text>
-                         Emri dhe Mbiemri i Regjisorit:<Link className="nav-link d-inline" to={`/detajeteregjisoritteserialit/${ser.RegjisoriSID}`}><strong>{ser.Emri2} {ser.Mbiemri2}</strong></Link>
+                        Regjisori:<Link className="nav-link d-inline" to={`/detajeteregjisoritteserialit/${ser.RegjisoriSID}`}><strong>{ser.Emri2} {ser.Mbiemri2}</strong></Link>
                         </Card.Text>
 
                         <Card.Text className="mx-auto">
-                         Emri dhe Mbiemri i Skenaristit:<Link className="nav-link d-inline" to={`/detajeteskenaristveteserialit/${ser.SkenaristatSId}`}> <strong>{ser.Emri3} {ser.Mbiemri3}</strong></Link>
+                     Skenaristi: <Link className="nav-link d-inline" to={`/detajeteskenaristitteserialit/${ser.SkenaristatSId}`}><strong>{ser.Emri3} {ser.Mbiemri3}</strong></Link>
                         </Card.Text>
 
                       </Card.Body>

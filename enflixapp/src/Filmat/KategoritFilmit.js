@@ -68,13 +68,13 @@ export class KategoritFilmit extends Component{
                 {katf.map(kat=>
                 <Link key={kat.FilmatId} className="nav-link d-inline shadow p-3 mb-5 bg-white rounded" to={`/detajetefilmit/${kat.FilmatId}`}>
                   <Card style={{ width: '17rem' }}>
-                    <Card.Img variant="top" style={{width: '271px', height: '300px'}} src={`${process.env.REACT_APP_PHOTOPATH}${kat.Foto}`} />
+                    <Card.Img variant="top" style={{width: '271px', height: '335px'}} src={`${process.env.REACT_APP_PHOTOPATH}${kat.Foto}`} />
                       <Card.Body>
-                        <Card.Title>{kat.Titulli}</Card.Title>
-                        <Card.Text>
+                        <Card.Title className="mb-4 d-flex justify-content-center text-center">{kat.Titulli}</Card.Title>
+                        <Card.Text className=" mb-4 d-flex justify-content-center">
                          Kategoria: {kat.Kategoria}
                         </Card.Text>
-                      <Button variant="primary">Shiko me Shume</Button>
+          
                     </Card.Body>
                   </Card>
                 </Link>

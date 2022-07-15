@@ -52,11 +52,11 @@ export class AktortEFilmit extends Component{
                 </Helmet>
                 <Dropdown className="d-flex justify-content-end mt-4">
                   <Dropdown.Toggle variant="success">
-                    Aktort E Filmit
+                    Aktort e Filmit
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     <NavLink className="nav-link d-inline p-1 text-black" to="aktorteserialit">
-                      Aktort E Serialit
+                      Aktort e Serialit
                     </NavLink>
                   </Dropdown.Menu>
                 </Dropdown>

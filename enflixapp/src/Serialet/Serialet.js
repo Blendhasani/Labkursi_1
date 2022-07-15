@@ -69,7 +69,7 @@ export class Serialet extends Component {
               <Card style={{ width: "17rem" }}>
                 <Card.Img
                   variant="top"
-                  style={{ width: "271px", height: "325px" }}
+                  style={{ width: "271px", height: "335px" }}
                   src={`${process.env.REACT_APP_PHOTOPATHS}${ser.Foto_S}`}
                 />
                 <Card.Body>
