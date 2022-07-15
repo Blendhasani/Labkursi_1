@@ -40,8 +40,8 @@ export class Filmi extends Component{
                 <Helmet>
                 <title>Filmat</title>
                 </Helmet>
-                {!token && <h1 className="text-center">Duhet te Llogoheni: <Link to="/login"><Button variant="primary" type="submit">
-                            Login
+                {!token && <h1 className="text-center">Nuk jeni te kyqur!<br></br> <Link to="/login"><Button variant="primary" type="submit">
+                            Log in
                                 </Button></Link></h1>}
                 
                 {token &&<Accordion className="container mt-4 w-50">

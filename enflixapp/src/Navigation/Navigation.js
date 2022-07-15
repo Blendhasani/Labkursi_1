@@ -17,6 +17,7 @@ export class Navigation extends Component{
             }
           }
 
+          
         const token = (localStorage.getItem("token"));
         const emri = (localStorage.getItem("emri"));
         return(
@@ -39,7 +40,7 @@ export class Navigation extends Component{
                 </Nav>
                 <Nav>
                 <NavLink className="nav-link d-inline p-1 text-light" to="/aktorfilmi">
-                    Aktort
+                    Aktoret
                 </NavLink>
                 </Nav>
                 <Nav>
